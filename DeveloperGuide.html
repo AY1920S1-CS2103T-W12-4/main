@@ -33,7 +33,11 @@
 <li><a href="#dev-ops">6. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-find-transaction-item">C.1. Use case: Find transaction item</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#product-survey">Appendix F: Product Survey</a></li>
@@ -705,6 +709,48 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of net worth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set my current wealth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of how much money I have</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transactions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">record transactions</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transactions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit transactions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update any errors made when adding transactions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transactions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view transactions</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transactions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">organize transactions by category</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transactions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete transactions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete wrongly added or refunded transactions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of budget</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set my monthly expenditure budget</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of how much I can spend for the month</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of budget</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">set my monthly expenditure budget</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of how much I can spend for the month</p></td>
@@ -759,15 +805,21 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user who is tracking net worth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of net worth</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">view my monthly income trends</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of how much I earn per month</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user who is tracking net worth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of net worth</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">view my monthly balance trends</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of how much I save per month</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">long-term user who is keeping track of transactions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find transactions by keyword</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">conveniently search for transactions to edit or review</p></td>
 </tr>
 </tbody>
 </table>
@@ -781,6 +833,110 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="sectionbody">
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>IchiFund</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+</div>
+<h3 id="use-case-set-current-wealth" class="discrete">Use case: Set current wealth</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to set current wealth.</p>
+</li>
+<li>
+<p>System sets current wealth.</p>
+</li>
+<li>
+<p>System reflects newly set current wealth.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-add-transaction-item" class="discrete">Use case: Add transaction item</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters information about transaction.</p>
+</li>
+<li>
+<p>System creates transaction item.</p>
+</li>
+<li>
+<p>System shows newly updated list of transaction items.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-edit-transaction-item" class="discrete">Use case: Edit transaction item</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User <u>finds transaction item</u>.</p>
+</li>
+<li>
+<p>User specifies transaction to be edited and information to edit.</p>
+</li>
+<li>
+<p>System updates the transaction item.</p>
+</li>
+<li>
+<p>System shows newly updated list of transaction items.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-delete-transaction-item" class="discrete">Use case: Delete transaction item</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User <u>finds transaction item</u>.</p>
+</li>
+<li>
+<p>User specifies transaction to be deleted.</p>
+</li>
+<li>
+<p>System removes the transaction item.</p>
+</li>
+<li>
+<p>System shows newly updated list of transaction items.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="use-case-find-transaction-item"><a class="link" href="#use-case-find-transaction-item">C.1. Use case: Find transaction item</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User specifies month, year, and/or category of the transaction</p>
+</li>
+<li>
+<p>System shows filtered list of transaction items.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
 </div>
 <h3 id="use-case-set-monthly-expenditure-budget" class="discrete">Use case: Set monthly expenditure budget</h3>
 <div class="paragraph">
@@ -890,6 +1046,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
 <div class="sectionbody">
@@ -899,7 +1056,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 1000 transactions without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
@@ -1074,4 +1231,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-01 11:31:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-01 13:25:37 UTC</div></div></div></body></html>
