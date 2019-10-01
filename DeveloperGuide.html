@@ -33,11 +33,7 @@
 <li><a href="#dev-ops">6. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a>
-<ul class="sectlevel2">
-<li><a href="#use-case-find-transaction-item">C.1. Use case: Find transaction item</a></li>
-</ul>
-</li>
+<li><a href="#use-cases">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#product-survey">Appendix F: Product Survey</a></li>
@@ -709,12 +705,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of net worth</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">set my current wealth</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of how much money I have</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transactions</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">record transactions</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -742,6 +732,36 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transactions</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete transactions</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete wrongly added or refunded transactions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transaction recurrence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create transaction repeaters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">insert new transaction repeater.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transaction recurrence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit transaction repeaters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update any changes or errors in existing transaction repeaters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transaction recurrence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete transaction repeaters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete no longer relevant transaction repeaters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of transaction recurrence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">filter transaction repeaters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quickly find transaction repeaters relevant to a search query.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who is keeping track of net worth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set my current wealth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of how much money I have</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -920,8 +940,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ol>
 </div>
-<div class="sect2">
-<h3 id="use-case-find-transaction-item"><a class="link" href="#use-case-find-transaction-item">C.1. Use case: Find transaction item</a></h3>
+<h3 id="use-case-find-transaction-item" class="discrete">Use case: Find transaction item</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -935,6 +954,57 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-create-transaction-repeater" class="discrete">Use case: Create transaction repeater</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to create a transaction repeater with specified arguments.</p>
+</li>
+<li>
+<p>System creates the transaction repeater.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-filter-transaction-repeaters" class="discrete">Use case: Filter transaction repeaters</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find transaction repeaters by specified fields.</p>
+</li>
+<li>
+<p>System filters existing transaction repeaters against specified fields.</p>
+</li>
+<li>
+<p>System shows filtered transaction repeaters.</p>
+</li>
+</ol>
+</div>
+<h3 id="use-case-delete-transaction-repeaters-including-all-produced-transactions" class="discrete">Use case: Delete transaction repeaters including all produced transactions</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to delete a transaction repeater together with all its produced transactions.</p>
+</li>
+<li>
+<p>System removes existing transactions produced from transaction repeater.</p>
+</li>
+<li>
+<p>System removes transaction repeater.</p>
 </li>
 </ol>
 </div>
@@ -1043,7 +1113,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </li>
 </ol>
-</div>
 </div>
 </div>
 </div>
@@ -1231,4 +1300,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-01 13:25:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-01 13:44:02 UTC</div></div></div></body></html>
