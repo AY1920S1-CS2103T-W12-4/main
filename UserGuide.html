@@ -16,7 +16,7 @@
 <li><a href="#ichifund-basics">3.1. IchiFund Basics</a></li>
 <li><a href="#wealth">3.2. Wealth</a></li>
 <li><a href="#transactions">3.3. Transactions</a></li>
-<li><a href="#repeating-transactions">3.4. Repeating Transactions</a></li>
+<li><a href="#transaction-repeaters">3.4. Transaction Repeaters</a></li>
 <li><a href="#loans">3.5. Loans</a></li>
 <li><a href="#budgets">3.6. Budgets</a></li>
 <li><a href="#analytics">3.7. Analytics</a></li>
@@ -176,7 +176,7 @@ Creates an income transaction of $2101.00 titled "Salary" occurring today under 
 </li>
 <li>
 <p><code>txadd t/out m/Lunch a/12.31 c/Food d/10092019</code><br>
-Creates an expenditure transaction of $12.32 titled "Food" occuring on the 10th of September, 2019 under the category "Food".</p>
+Creates an expenditure transaction of $12.32 titled "Food" occuring on the 10th September 2019 under the category "Food".</p>
 </li>
 </ul>
 </div>
@@ -220,7 +220,7 @@ Deletes the 5th transaction in the current list.</p>
 <div class="sect3">
 <h4 id="finding-transaction-code-txfind-code"><a class="link" href="#finding-transaction-code-txfind-code">3.3.4. Finding transaction: <code>txfind</code></a></h4>
 <div class="paragraph">
-<p>Filters transactions in current list by type, keywords, category, month and/or year.<br>
+<p>Filters transactions in current list by type, keywords, category, month, and/or year.<br>
 Format: <code>txfind [t/TYPE] [s/KEYWORD]&#8230;&#8203; [m/MONTH] [y/YEAR] [c/CATEGORY]</code></p>
 </div>
 <div class="paragraph">
@@ -244,12 +244,12 @@ Format <code>txlist</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="repeating-transactions"><a class="link" href="#repeating-transactions">3.4. Repeating Transactions</a></h3>
+<h3 id="transaction-repeaters"><a class="link" href="#transaction-repeaters">3.4. Transaction Repeaters</a></h3>
 <div class="sect3">
-<h4 id="creating-repeating-transaction-code-repadd-code"><a class="link" href="#creating-repeating-transaction-code-repadd-code">3.4.1. Creating repeating transaction: <code>repadd</code></a></h4>
+<h4 id="creating-transaction-repeater-code-repadd-code"><a class="link" href="#creating-transaction-repeater-code-repadd-code">3.4.1. Creating transaction repeater: <code>repadd</code></a></h4>
 <div class="paragraph">
-<p>Creates monthly repeating transaction.<br>
-Format: <code>repadd m/DESCRIPTION a/AMOUNT [p/DAY]&#8230;&#8203;</code></p>
+<p>Creates monthly transaction repeater.<br>
+Format: <code>repadd [t/TYPE] m/DESCRIPTION a/AMOUNT [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -257,17 +257,17 @@ Format: <code>repadd m/DESCRIPTION a/AMOUNT [p/DAY]&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>repadd m/Travelling a/32.70 p/7 p/14 p/21 p/28</code><br>
-Creates a repeating transaction titled "Travelling" for a $32.70 deduction every 7th, 14th, 21st and 28th of the month.</p>
+<p><code>repadd t/in m/Phone Bills a/32.70 p/7 p/14 p/21 p/28</code><br>
+Creates a transaction repeater titled "PhoneBills" for a $32.70 deduction every 7th, 14th, 21st, and 28th of the month.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-repeating-transaction-code-repedit-code"><a class="link" href="#editing-repeating-transaction-code-repedit-code">3.4.2. Editing repeating transaction: <code>repedit</code></a></h4>
+<h4 id="editing-transaction-repaeter-code-repedit-code"><a class="link" href="#editing-transaction-repaeter-code-repedit-code">3.4.2. Editing transaction repaeter <code>repedit</code></a></h4>
 <div class="paragraph">
-<p>Edits repeating transaction.<br>
-Format: <code>repedit i/ID [m/DESCRIPTION] [a/AMOUNT] [p/DAY]&#8230;&#8203;</code></p>
+<p>Edits transaction repeater.<br>
+Format: <code>repedit i/ID [t/TYPE] [m/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -275,16 +275,16 @@ Format: <code>repedit i/ID [m/DESCRIPTION] [a/AMOUNT] [p/DAY]&#8230;&#8203;</cod
 <div class="ulist">
 <ul>
 <li>
-<p><code>repedit i/12 a/62.45 p/11 p/12</code><br>
-Edits the 12th repeating transaction for a $62.45 deduction every 11th and 12th of the month.</p>
+<p><code>repedit i/12 a/62.45 c/Food p/11 p/12</code><br>
+Edits the 12th transaction repeater for a $62.45 deduction every 11th and 12th of the month.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-repeating-transaction-code-repdelete-code"><a class="link" href="#deleting-repeating-transaction-code-repdelete-code">3.4.3. Deleting repeating transaction: <code>repdelete</code></a></h4>
+<h4 id="deleting-transaction-repeater-code-repdelete-code"><a class="link" href="#deleting-transaction-repeater-code-repdelete-code">3.4.3. Deleting transaction repeater: <code>repdelete</code></a></h4>
 <div class="paragraph">
-<p>Deletes repeating transaction. Optionally deletes transactions previously produced from the repeating transaction.<br>
+<p>Deletes transaction repeater. Optionally deletes transactions previously produced from the transaction repeater.<br>
 Format: <code>repdelete i/ID [d/DELETEALL]</code></p>
 </div>
 <div class="paragraph">
@@ -294,16 +294,16 @@ Format: <code>repdelete i/ID [d/DELETEALL]</code></p>
 <ul>
 <li>
 <p><code>repdelete i/12 p/TRUE</code><br>
-Deletes the 12th repeating transaction.</p>
+Deletes the 12th transaction repeater.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-repeating-transaction-code-repfind-code"><a class="link" href="#finding-repeating-transaction-code-repfind-code">3.4.4. Finding repeating transaction: <code>repfind</code></a></h4>
+<h4 id="finding-transaction-repeater-code-repfind-code"><a class="link" href="#finding-transaction-repeater-code-repfind-code">3.4.4. Finding transaction repeater: <code>repfind</code></a></h4>
 <div class="paragraph">
-<p>Filters repeating transactions by keyword and repeating days.<br>
-Format: <code>repfind [s/KEYWORD]&#8230;&#8203; [p/DAY]&#8230;&#8203;</code></p>
+<p>Filters transaction repeaters by keyword, category, and repeating days.<br>
+Format: <code>repfind [t/TYPE] [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -312,7 +312,7 @@ Format: <code>repfind [s/KEYWORD]&#8230;&#8203; [p/DAY]&#8230;&#8203;</code></p>
 <ul>
 <li>
 <p><code>repfind s/Income p/7 p/13</code><br>
-Finds all repeating transactions with "Income" contained in their descriptions, and that occur on the 7th and 13th of the month.</p>
+Finds all transaction repeater with "Income" contained in their descriptions, and that occur on the 7th and 13th of the month.</p>
 </li>
 </ul>
 </div>
@@ -343,9 +343,9 @@ Sets monthly expenditure budget to $1000.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="excluding-transaction-from-budget-code-bexclude-code"><a class="link" href="#excluding-transaction-from-budget-code-bexclude-code">3.6.2. Excluding transaction from budget: <code>bexclude</code></a></h4>
+<h4 id="excluding-expenditure-from-budget-code-bexclude-code"><a class="link" href="#excluding-expenditure-from-budget-code-bexclude-code">3.6.2. Excluding expenditure from budget: <code>bexclude</code></a></h4>
 <div class="paragraph">
-<p>Excludes transaction from computation of budget.<br>
+<p>Excludes expenditure from computation of budget.<br>
 Format: <code>bexclude i/TRANSACTION_ID</code></p>
 </div>
 <div class="sidebarblock">
@@ -353,10 +353,13 @@ Format: <code>bexclude i/TRANSACTION_ID</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>All transactions are included by default.</p>
+<p>All expenditures are included by default.</p>
 </li>
 <li>
-<p>Excluding an already excluded transaction has no effect.</p>
+<p>Excluding an income has no effect.</p>
+</li>
+<li>
+<p>Excluding an already excluded expenditure has no effect.</p>
 </li>
 </ul>
 </div>
@@ -368,17 +371,17 @@ Format: <code>bexclude i/TRANSACTION_ID</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
+<p><code>txlist</code><br>
 <code>bexclude i/2</code><br>
-Excludes the 2nd transaction in the list from computation of budget.</p>
+Excludes the 2nd expenditure in the list from computation of budget.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="including-transaction-in-budget-code-binclude-code"><a class="link" href="#including-transaction-in-budget-code-binclude-code">3.6.3. Including transaction in budget: <code>binclude</code></a></h4>
+<h4 id="including-expenditure-in-budget-code-binclude-code"><a class="link" href="#including-expenditure-in-budget-code-binclude-code">3.6.3. Including expenditure in budget: <code>binclude</code></a></h4>
 <div class="paragraph">
-<p>Includes transaction in computation of budget.<br>
+<p>Includes expenditure in computation of budget.<br>
 Format: <code>binclude i/TRANSACTION_ID</code></p>
 </div>
 <div class="sidebarblock">
@@ -386,10 +389,13 @@ Format: <code>binclude i/TRANSACTION_ID</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>All transactions are included by default.</p>
+<p>All expenditures are included by default.</p>
 </li>
 <li>
-<p>Including an already included transaction has no effect.</p>
+<p>Including an income has no effect.</p>
+</li>
+<li>
+<p>Including an already included expenditures has no effect.</p>
 </li>
 </ul>
 </div>
@@ -401,9 +407,9 @@ Format: <code>binclude i/TRANSACTION_ID</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>bexclude i/2</code><br>
-Includes the 2nd transaction in the list from computation of budget.</p>
+<p><code>txlist</code><br>
+<code>binclude i/2</code><br>
+Includes the 2nd expenditure in the list from computation of budget.</p>
 </li>
 </ul>
 </div>
@@ -414,6 +420,18 @@ Includes the 2nd transaction in the list from computation of budget.</p>
 <p>Displays budget information.<br>
 Format: <code>binfo [m/MONTH y/YEAR]</code></p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+This shows the budget breakdown by category.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -421,11 +439,11 @@ Format: <code>binfo [m/MONTH y/YEAR]</code></p>
 <ul>
 <li>
 <p><code>binfo</code><br>
-Displays expenditure budget left and a list of all excluded transactions for current month.</p>
+Displays expenditure budget left and a list of all excluded expenditures for current month.</p>
 </li>
 <li>
 <p><code>binfo m/7 y/2019</code><br>
-Displays expenditure budget left and a list of all excluded transactions for July 2019.</p>
+Displays expenditure budget left and a list of all excluded expenditures for July 2019.</p>
 </li>
 </ul>
 </div>
@@ -436,7 +454,7 @@ Displays expenditure budget left and a list of all excluded transactions for Jul
 <div class="sect3">
 <h4 id="viewing-expenditure-trend-code-aexpend-code"><a class="link" href="#viewing-expenditure-trend-code-aexpend-code">3.7.1. Viewing expenditure trend: <code>aexpend</code></a></h4>
 <div class="paragraph">
-<p>Displays annual expenditure trend.<br>
+<p>Displays monthly expenditure trend for current year.
 Format: <code>aexpend [y/YEAR]</code></p>
 </div>
 <div class="paragraph">
@@ -446,11 +464,11 @@ Format: <code>aexpend [y/YEAR]</code></p>
 <ul>
 <li>
 <p><code>aexpend</code><br>
-Displays annual expenditure trend for current year.</p>
+Displays monthly expenditure trend for current year.</p>
 </li>
 <li>
 <p><code>aexpend 2019</code><br>
-Displays annual expenditure trend for 2019.</p>
+Displays monthly expenditure trend for 2019.</p>
 </li>
 </ul>
 </div>
@@ -458,7 +476,7 @@ Displays annual expenditure trend for 2019.</p>
 <div class="sect3">
 <h4 id="viewing-income-trend-code-aincome-code"><a class="link" href="#viewing-income-trend-code-aincome-code">3.7.2. Viewing income trend: <code>aincome</code></a></h4>
 <div class="paragraph">
-<p>Displays annual income trend.<br>
+<p>Displays monthly income trend for current year.<br>
 Format: <code>aincome [y/YEAR]</code></p>
 </div>
 <div class="paragraph">
@@ -468,11 +486,11 @@ Format: <code>aincome [y/YEAR]</code></p>
 <ul>
 <li>
 <p><code>aincome</code><br>
-Displays annual income trend for current year.</p>
+Displays monthly income trend for current year.</p>
 </li>
 <li>
 <p><code>aincome 2019</code><br>
-Displays annual income trend for 2019.</p>
+Displays monthly income trend for 2019.</p>
 </li>
 </ul>
 </div>
@@ -480,7 +498,7 @@ Displays annual income trend for 2019.</p>
 <div class="sect3">
 <h4 id="viewing-balance-trend-code-abalance-code"><a class="link" href="#viewing-balance-trend-code-abalance-code">3.7.3. Viewing balance trend: <code>abalance</code></a></h4>
 <div class="paragraph">
-<p>Displays annual balance (income - expenditure) trend.<br>
+<p>Displays monthly balance (income - expenditure) trend for current year.<br>
 Format: <code>abalance [y/YEAR]</code></p>
 </div>
 <div class="paragraph">
@@ -490,11 +508,11 @@ Format: <code>abalance [y/YEAR]</code></p>
 <ul>
 <li>
 <p><code>abalance</code><br>
-Displays annual balance trend for current year.</p>
+Displays monthly balance trend for current year.</p>
 </li>
 <li>
 <p><code>abalance 2019</code><br>
-Displays annual balance trend for 2019.</p>
+Displays monthly balance trend for 2019.</p>
 </li>
 </ul>
 </div>
@@ -629,16 +647,16 @@ Displays expenditure ranking chart for July 2019.</p>
 <p><strong>Transaction List</strong> : <code>txlist</code></p>
 </li>
 <li>
-<p><strong>Repeating Transaction Add</strong> : <code>repadd m/DESCRIPTION a/AMOUNT [p/DAY]&#8230;&#8203;</code></p>
+<p><strong>Transaction Repeater Add</strong> : <code>repadd m/DESCRIPTION a/AMOUNT [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p><strong>Repeating Transaction Edit</strong> : <code>repedit i/ID [m/DESCRIPTION] [a/AMOUNT] [p/DAY]&#8230;&#8203;</code></p>
+<p><strong>Transaction Repeater Edit</strong> : <code>repedit i/ID [m/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p><strong>Repeating Transaction Delete</strong> : <code>repdelete i/ID [d/DELETEALL]</code></p>
+<p><strong>Transaction Repeater Delete</strong> : <code>repdelete i/ID [d/DELETEALL]</code></p>
 </li>
 <li>
-<p><strong>Repeating Transaction Find</strong> : <code>repfind [s/KEYWORD]&#8230;&#8203; [p/DAY]&#8230;&#8203;</code></p>
+<p><strong>Transaction Repeater Find</strong> : <code>repfind [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
 </li>
 <li>
 <p><strong>Budget Set</strong> : <code>bset a/AMOUNT</code></p>
@@ -676,4 +694,4 @@ Displays expenditure ranking chart for July 2019.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-01 07:42:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-01 09:55:07 UTC</div></div></div></body></html>
