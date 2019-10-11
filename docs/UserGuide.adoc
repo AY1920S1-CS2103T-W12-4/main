@@ -345,4 +345,3 @@ Displays expenditure ranking chart for July 2019.
 * *Categorical Ranking Chart* : `acatrank [m/MONTH] [y/YEAR]`
 * *Month-Based Ranking Chart* : `amthrank [y/YEAR]`
 * *Ranking Chart* : `aexprank [m/MONTH] [y/YEAR]`
-
