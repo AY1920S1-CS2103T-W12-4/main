@@ -320,7 +320,114 @@ Finds all transaction repeater with "Income" contained in their descriptions, an
 </div>
 <div class="sect2">
 <h3 id="loans"><a class="link" href="#loans">3.5. Loans</a></h3>
-
+<div class="sect3">
+<h4 id="adding-new-loan-loannew"><a class="link" href="#adding-new-loan-loannew">3.5.1. Adding new loan: `loannew `</a></h4>
+<div class="paragraph">
+<p>Adds new loan to list.<br>
+Format: <code>loannew  i/AMOUNT  n/NAME d/DESCRIPTION</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loannew  a/10000 d/12122014 n/Charlie d/For food in Indonesia</code><br>
+Takes input with initialization values and adds them to a lost of current unpaid loans.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="marking-loan-paid-code-loan-paid-code"><a class="link" href="#marking-loan-paid-code-loan-paid-code">3.5.2. Marking Loan Paid: <code>loan paid</code></a></h4>
+<div class="paragraph">
+<p>Marks loan as paid or reduces amount from payment.<br>
+Format: <code>loanpaid i/INDEX [i/AMOUNT]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loanpaid i/4 a/4000</code><br>
+Takes input with initialization values and adds them to a lost of current unpaid loans.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="loan-categorical-search-code-loanshow-code"><a class="link" href="#loan-categorical-search-code-loanshow-code">3.5.3. Loan Categorical Search: <code>loanshow</code></a></h4>
+<div class="paragraph">
+<p>Shows all loans with certain name or description or date , or all loans+
+Format: <code>loanshow [s/KEYWORD]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loanshow s/charlie</code><br>
+Shows all loans when no keyword is given, when keyword is added, all loans with given dat/name or description are shown.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-new-loan-code-loantotal-code"><a class="link" href="#adding-new-loan-code-loantotal-code">3.5.4. Adding new loan: <code>loantotal</code></a></h4>
+<div class="paragraph">
+<p>Finds and shows nett amount to pay/owed with keyword+
+Format: <code>loantotal s/KEYWORD</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loantotal s/12/12/2000</code><br>
+If no keyword is given, it returns total difference in amount owed to other parties and amount to be paid.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-new-loan-code-loanset-code"><a class="link" href="#adding-new-loan-code-loanset-code">3.5.5. Adding new loan: <code>loanset</code></a></h4>
+<div class="paragraph">
+<p>Changes existing loan<br>
+Format: <code>loanset i/INDEX [a/AMOUNT] [d/DATE] [n/NAME] [d/DESCRIPTION]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loanset i/3 n/Lee d/For food in NY</code><br>
+Takes input with initialization values for current loan identified by index, change any value.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-new-loan-code-loansort-code"><a class="link" href="#adding-new-loan-code-loansort-code">3.5.6. Adding new loan: <code>loansort</code></a></h4>
+<div class="paragraph">
+<p>Finds and shows all loans sorted<br>
+Format: <code>loansort s/BY</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loansort s/DATE</code><br>
+Loans shown sorted by any given constrain, date or value owed.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="budgets"><a class="link" href="#budgets">3.6. Budgets</a></h3>
@@ -691,7 +798,25 @@ Displays expenditure ranking chart for July 2019.</p>
 <li>
 <p><strong>Ranking Chart</strong> : <code>aexprank [m/MONTH] [y/YEAR]</code></p>
 </li>
+<li>
+<p><strong>Loan Add new</strong> : <code>loannew a/Amount [d/DATE] [n/NAME]</code></p>
+</li>
+<li>
+<p><strong>Loan Payment</strong> : <code>loanpaid i/INDEX [n/NAME] [a/AMOUNT]</code></p>
+</li>
+<li>
+<p><strong>Loan Categorical Search</strong> : <code>loanshow [s/KEYWORD]</code></p>
+</li>
+<li>
+<p><strong>Loan Net Amount</strong> : <code>loantotal [s/KEYWORD]</code></p>
+</li>
+<li>
+<p><strong>Loan Value Update</strong> : <code>loanset i/INDEX [a/AMOUNT] [s/DATE] [n/NAME] [d/DESCRIPTION]</code></p>
+</li>
+<li>
+<p><strong>Loan Sort By Value</strong> : <code>loansort s/BY</code></p>
+</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-13 07:40:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-13 07:57:30 UTC</div></div></div></body></html>

@@ -644,6 +644,9 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>has a need to track net worth</p>
 </li>
 <li>
+<p>has a need to track loans and money owed</p>
+</li>
+<li>
 <p>prefers desktop apps over other types</p>
 </li>
 <li>
@@ -834,6 +837,54 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <td class="tableblock halign-left valign-top"><p class="tableblock">long-term user who is keeping track of transactions</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">find transactions by keyword</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">conveniently search for transactions to edit or review</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who wants to keep track of money owed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view all loans</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see all money i am owed or currently owe others</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who wants to keep track of money owed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view all positive loans</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see all money people owe me</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who wants to keep track of money owed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view all negative loans</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see all money i owe people</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who wants to keep track of money owed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">select loans by names/keywords</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see all loans by a particular person</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who wants to keep track of money owed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new loan in the list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a new loan to keep track of</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who wants to keep track of money owed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mark loan as loan paid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove one of the loans</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who wants to keep track of money owed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">paid/add by part</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">some amont of loan is paid off</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who wants to keep track of money owed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reminders to pay loans with dates</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I can see updates and reminders for urgent loans</p></td>
 </tr>
 </tbody>
 </table>
@@ -1038,6 +1089,72 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>System set the monthly expenditure budget.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-add-loan" class="discrete">Use case: Add loan</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add a new loan with name, amount and date by.</p>
+</li>
+<li>
+<p>System parses request to retrive details.</p>
+</li>
+<li>
+<p>System adds new loan to list.</p>
+</li>
+<li>
+<p>System updates list and displays what was added.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-view-loans-with-search" class="discrete">Use case: View loans with search</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to search for all loans, with search keywords.</p>
+</li>
+<li>
+<p>System parses and decides the request search constrains.</p>
+</li>
+<li>
+<p>System displays seelected search results.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-mark-loans-as-part-done" class="discrete">Use case: Mark loans as part done</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to mark a lone as paid off.</p>
+</li>
+<li>
+<p>System removes existing loan from the list.</p>
+</li>
+<li>
+<p>System updates the total loan value.</p>
+</li>
+<li>
+<p>System shows the new total loan value, with the new paid off loan.</p>
+<div class="paragraph">
+<p>Use case ends</p>
 </div>
 </li>
 </ol>
@@ -1317,4 +1434,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-13 07:40:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-13 07:57:30 UTC</div></div></div></body></html>
