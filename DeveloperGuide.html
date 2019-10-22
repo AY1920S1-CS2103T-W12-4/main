@@ -24,10 +24,13 @@
 <ul class="sectlevel2">
 <li><a href="#global-features">3.1. Global Features</a></li>
 <li><a href="#transaction">3.2. Transaction</a></li>
-<li><a href="#budget">3.3. Budget</a></li>
-<li><a href="#demo-use-this-as-template-for-your-section">3.4. [Demo] Use this as template for your section</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
+<li><a href="#repeaters">3.3. Repeaters</a></li>
+<li><a href="#adding-repeater-code-addrep-code">3.4. Adding Repeater : <code>addrep</code></a></li>
+<li><a href="#deleting-repeater-code-delrep-code">3.5. Deleting Repeater : <code>delrep</code></a></li>
+<li><a href="#budget">3.6. Budget</a></li>
+<li><a href="#demo-use-this-as-template-for-your-section">3.7. [Demo] Use this as template for your section</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -376,11 +379,81 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="budget"><a class="link" href="#budget">3.3. Budget</a></h3>
+<h3 id="repeaters"><a class="link" href="#repeaters">3.3. Repeaters</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="adding-repeater-code-addrep-code"><a class="link" href="#adding-repeater-code-addrep-code">3.4. Adding Repeater : <code>addrep</code></a></h3>
 <div class="sect3">
-<h4 id="adding-budget"><a class="link" href="#adding-budget">3.3.1. Adding Budget</a></h4>
+<h4 id="overview"><a class="link" href="#overview">3.4.1. Overview</a></h4>
+<div class="paragraph">
+<p>This feature allows the user to add a repeater in IchiFund. Adding a repeater also creates the transactions associated with the added repeater.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-6"><a class="link" href="#implementation-6">3.4.2. Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>addrep</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>addrep</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: The user executes <code>addrep de/Phone bills a/42.15 c/Utilities ty/exp so/3 eo/2 sd/1 sm/1 sy/2019 ed/31 em/12 ey/2019</code> to add a repeater for phone bills with an amount of $42.15 on the third and second last day of every month between 1st January 2019 and 31st December 2019.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>IchiFundParser</code> determines which command is being used and creates the respective <code>AddRepeaterCommandParser</code> parser with the user&#8217;s input as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>AddRepeaterCommandParser</code> does a validation check on the user&#8217;s input before creating and returning an <code>AddRepeaterCommand</code> with desired <code>Repeater</code> as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>LogicManager</code> uses <code>AddRepeaterCommand#execute()</code> to add the <code>Repeater</code> and the associated <code>Transaction</code>s into the <code>Model</code> which is handled by <code>ModelManager</code>. In doing so, it also fetches the <code>RepeaterUniqueId</code> counter tracked by the <code>Model</code>, sets it as the created <code>Repeater</code>'s unique id, and increments the counter in the <code>Model</code> by 1.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>AddRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-repeater-code-delrep-code"><a class="link" href="#deleting-repeater-code-delrep-code">3.5. Deleting Repeater : <code>delrep</code></a></h3>
+<div class="sect3">
+<h4 id="overview-2"><a class="link" href="#overview-2">3.5.1. Overview</a></h4>
+<div class="paragraph">
+<p>This feature allows the user to delete repeater in IchiFund. Delete a repeater also deletes the transactions associated with the deleted repeater.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-7"><a class="link" href="#implementation-7">3.5.2. Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>delrep</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>delrep</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: The user executes <code>delrep 2</code> to delete the repeater in the 2nd index.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>IchiFundParser</code> determines which command is being used and creates the respective <code>DeleteRepeaterCommandParser</code> parser with the user&#8217;s input as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>DeleteRepeaterCommandParser</code> does a validation check on the user&#8217;s input before creating and returning an <code>DeleteRepeaterCommand</code> with desired <code>Index</code> as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>LogicManager</code> uses <code>DeleteRepeaterCommand#execute()</code> to delete the <code>Repeater</code> and the associated <code>Transaction</code>s from the <code>Model</code> which is handled by <code>ModelManager</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>DeleteRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="budget"><a class="link" href="#budget">3.6. Budget</a></h3>
+<div class="sect3">
+<h4 id="adding-budget"><a class="link" href="#adding-budget">3.6.1. Adding Budget</a></h4>
 <div class="sect4">
-<h5 id="implementation-6"><a class="link" href="#implementation-6">Implementation</a></h5>
+<h5 id="implementation-8"><a class="link" href="#implementation-8">Implementation</a></h5>
 
 </div>
 <div class="sect4">
@@ -390,9 +463,9 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="demo-use-this-as-template-for-your-section"><a class="link" href="#demo-use-this-as-template-for-your-section">3.4. [Demo] Use this as template for your section</a></h3>
+<h3 id="demo-use-this-as-template-for-your-section"><a class="link" href="#demo-use-this-as-template-for-your-section">3.7. [Demo] Use this as template for your section</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.4.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.7.1. Proposed Implementation</a></h4>
 <div class="sect4">
 <h5 id="test"><a class="link" href="#test">Test</a></h5>
 <div class="paragraph">
@@ -537,7 +610,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -607,14 +680,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -645,7 +718,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1491,4 +1564,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-22 13:45:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-22 15:16:44 UTC</div></div></div></body></html>
