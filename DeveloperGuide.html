@@ -9,33 +9,34 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a></li>
-<li><a href="#design">2. Design</a>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#setting-up">2. Setting up</a></li>
+<li><a href="#design">3. Design</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#Design-Architecture">3.1. Architecture</a></li>
+<li><a href="#Design-Ui">3.2. UI component</a></li>
+<li><a href="#Design-Logic">3.3. Logic component</a></li>
+<li><a href="#Design-Model">3.4. Model component</a></li>
+<li><a href="#Design-Storage">3.5. Storage component</a></li>
+<li><a href="#Design-Commons">3.6. Common classes</a></li>
 </ul>
 </li>
-<li><a href="#implementation">3. Implementation</a>
+<li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#global-features">3.1. Global Features</a></li>
-<li><a href="#transaction">3.2. Transaction</a></li>
-<li><a href="#repeaters">3.3. Repeaters</a></li>
-<li><a href="#adding-repeater-code-addrep-code">3.4. Adding Repeater : <code>addrep</code></a></li>
-<li><a href="#deleting-repeater-code-delrep-code">3.5. Deleting Repeater : <code>delrep</code></a></li>
-<li><a href="#budget">3.6. Budget</a></li>
-<li><a href="#demo-use-this-as-template-for-your-section">3.7. [Demo] Use this as template for your section</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#global-features">4.1. Global Features</a></li>
+<li><a href="#transaction">4.2. Transaction</a></li>
+<li><a href="#repeaters">4.3. Repeaters</a></li>
+<li><a href="#adding-repeater-code-addrep-code">4.4. Adding Repeater : <code>addrep</code></a></li>
+<li><a href="#deleting-repeater-code-delrep-code">4.5. Deleting Repeater : <code>delrep</code></a></li>
+<li><a href="#budget">4.6. Budget</a></li>
+<li><a href="#demo-use-this-as-template-for-your-section">4.7. [Demo] Use this as template for your section</a></li>
+<li><a href="#logging">4.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.9. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#documentation">4. Documentation</a></li>
-<li><a href="#testing">5. Testing</a></li>
-<li><a href="#dev-ops">6. Dev Ops</a></li>
+<li><a href="#documentation">5. Documentation</a></li>
+<li><a href="#testing">6. Testing</a></li>
+<li><a href="#dev-ops">7. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
@@ -53,7 +54,28 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>IchiFund is a financial tracking application that manages transactions, loans, as well as budgets.</p>
+</div>
+<div class="paragraph">
+<p>Shown below is the GUI of IchiFund:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui.png" alt="Ui">
+</div>
+</div>
+<div class="paragraph">
+<p>This document serves to give an introduction to the architecture of IchiFund for developers who wish to
+modify the software, or simply to understand how it works. We describe the high-level architecture, and also delve into
+important details of the implementation of each feature.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
@@ -61,10 +83,10 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
@@ -167,7 +189,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
@@ -204,7 +226,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
@@ -245,7 +267,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -290,7 +312,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
@@ -315,7 +337,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
@@ -323,26 +345,220 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="global-features"><a class="link" href="#global-features">3.1. Global Features</a></h3>
+<h3 id="global-features"><a class="link" href="#global-features">4.1. Global Features</a></h3>
 <div class="sect3">
-<h4 id="separate-parsing-and-tab-switching"><a class="link" href="#separate-parsing-and-tab-switching">3.1.1. Separate Parsing and Tab Switching</a></h4>
+<h4 id="separate-parsing-and-tab-switching"><a class="link" href="#separate-parsing-and-tab-switching">4.1.1. Separate Parsing and Tab Switching</a></h4>
+<div class="paragraph">
+<p>In IchiFund, we separate the features by tabs. This is illustrated in the image below, which displays the five
+tabs of IchiFund, with the "Transaction" tab selected:</p>
+</div>
+<div id="fig-FeatureTabs" class="imageblock">
+<div class="content">
+<img src="images/FeatureTabs.png" alt="FeatureTabs">
+</div>
+<div class="title">Figure 9. Feature Tabs in IchiFund</div>
+</div>
+<div class="paragraph">
+<p>The parsing of commands for each feature is done separately, tied to their respective tabs.
+In other words, the commands specific to each feature can only be recognised when the feature is selected as the
+current tab.
+This allows for the overloading of commands across different features, reducing the complexity of commands for users.</p>
+</div>
 <div class="sect4">
 <h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
-
+<div class="paragraph">
+<p>There are two aspects to consider in implementing separate parsing:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Detecting when the user switches tabs and communicating this to the <code>Logic</code> component</p>
+</li>
+<li>
+<p>Determining how to parse commands on the end of <code>Logic</code> given which tab is selected.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In our implementation, we first separate the parsing of commands for different features by delegating them to their
+respective <code>FeatureParser</code> parsers. The main parser, <code>IchiFundParser</code>, keeps track of all <code>FeatureParser</code> objects, as
+well as the <code>FeatureParser</code> that is currently in use.</p>
+</div>
+<div class="paragraph">
+<p>This is illustrated in the object diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ParserObjectDiagram.png" alt="ParserObjectDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>When <code>IchiFundParser</code> parses a command, it first checks whether it is a global command (e.g. <code>help</code>, <code>exit</code>).
+Otherwise, it passes the command to <code>currentParserManager</code>, which checks if it is a valid command, and passes the
+arguments to the appropriate <code>Parser</code>.</p>
+</div>
+<div class="paragraph">
+<p>What remains is determining when to change <code>currentParserManager</code>. Here, we support 3 modes of tab switching:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Specific commands (CLI)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Users can switch between tabs using specific commands (<code>tx</code>, <code>rep</code>, <code>budget</code>, <code>loan</code>, <code>analytics</code>).</p>
+</div>
+<div class="paragraph">
+<p>These commands are global commands that are directly recognised by <code>IchiFundParser</code>, which changes
+<code>currentFeatureParser</code> and the index stored.</p>
+</div>
+<div class="paragraph">
+<p>Much like the <code>Model</code> data, <code>MainWindow</code> listens to changes to the index through <code>FeatureParserIndexListener</code>.
+Whenever the value of the index changes, the listener triggers an event to change the tab throw the <code>invalidated()</code>
+method shown in the code snippet below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ListenerCodeSnippet.png" alt="ListenerCodeSnippet">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>InvalidationListener</code> constructed from the above code is added to an <code>ObservableValue</code> in <code>MainWindow</code>
+that tracks the index of the current <code>FeatureParser</code> used, and changes to the appropriate tab using
+the value of the index stored.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Shortcut keys (GUI)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Users can also switch tabs using the shortcut keys <code>Ctrl + 1</code> to <code>Ctrl + 5</code>. Upon using the shortcut keys,
+the following handler is triggered:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MainWindowShortcutKeyCodeSnippet.png" alt="MainWindowShortcutKeyCodeSnippet">
+</div>
+</div>
+<div class="paragraph">
+<p>When <code>handleShowTransaction()</code> is called, <code>currentFeatureParser</code> in <code>IchiFundParser</code>, is set to
+<code>TransactionFeatureParser</code>, which has a <code>tabIndex</code> of zero. Other handler methods are similar to
+<code>handleShowTransaction</code>, with the only difference being the index passed to <code>Logic</code>.</p>
+</div>
+<div class="paragraph">
+<p>The control flow of <code>handleShowTransaction()</code> is illustrated with more details in the sequence diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SetFeatureParserSequenceDiagram.png" alt="SetFeatureParserSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>As the different <code>FeatureParser</code> objects have different values for <code>tabIndex</code>, a different
+index is passed, and a different <code>FeatureParser</code> is set as <code>currentFeatureParser</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+After the handler method is run, the change in <code>IchiFundParser</code> is also detected by
+<code>InvalidationListener</code>, which results in a tab switch similar to how the specific commands would.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+For developers who wish to add more features to IchiFund, care has to be taken in ensuring that the indices of the
+<code>FeatureParser</code> objects matches that of the tabs, as well as its index in <code>featureParsers</code>.
+In our current implementation, we do not use enum for the indices due to the small scale of usage.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>Clicking of tabs (GUI)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Users can switch tabs by clicking on the tabs shown in <a href="#fig-FeatureTabs">Figure 9, &#8220;Feature Tabs in IchiFund&#8221;</a>.
+This triggers a handler, shown in the following code snippet:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MainWindowMouseCodeSnippet.png" alt="MainWindowMouseCodeSnippet">
+</div>
+</div>
+<div class="paragraph">
+<p>The control flow for this handler is similar to that of the shortcut keys.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
-
+<div class="paragraph">
+<p>In designing the specific commands for tab switching, we considered an alternative implementation for
+passing information about tab switching to <code>Ui</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> <code>Ui</code> detects change through an <code>InvalidationListener</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: <code>Logic</code> does not need to be aware of <code>Ui</code>.</p>
+</li>
+<li>
+<p>Cons: Requires greater understanding of JavaFX API to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> <code>Logic</code> directly calls <code>Ui</code> whenever the specific command is made.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Creates a dependency from <code>Logic</code> to <code>Ui</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>While Alternative 2 is much simpler to implement, we chose Alternative 1
+as we prioritised preserving the independence of <code>Logic</code> from <code>Ui</code>.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="tasks"><a class="link" href="#tasks">3.1.2. Tasks</a></h4>
+<h4 id="tasks"><a class="link" href="#tasks">4.1.2. Tasks</a></h4>
 <div class="paragraph">
 <p>Some models in IchiFund must be refreshed after a command is executed.
 For instance, when a new <code>Transaction</code> is added, all <code>Budget</code> must be recomputed.
@@ -381,9 +597,34 @@ When the <code>LogicManager#execute()</code> is called, the following chain of o
 </div>
 </div>
 <div class="sect2">
-<h3 id="transaction"><a class="link" href="#transaction">3.2. Transaction</a></h3>
+<h3 id="transaction"><a class="link" href="#transaction">4.2. Transaction</a></h3>
 <div class="sect3">
-<h4 id="filtering-transactions"><a class="link" href="#filtering-transactions">3.2.1. Filtering Transactions</a></h4>
+<h4 id="filtering-transactions"><a class="link" href="#filtering-transactions">4.2.1. Filtering Transactions</a></h4>
+<div class="paragraph">
+<p>The filter transactions feature allows the user to change the filter for the list of transactions.
+This feature is facilitated by <code>TransactionFeatureParser</code>, <code>FilterTransactionCommandParser</code>, and <code>TransactionCommand</code>.
+The arguments supported by this feature includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Month</code> (optional)</p>
+</li>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+<li>
+<p><code>Category</code> (optional)</p>
+</li>
+<li>
+<p><code>TransactionType</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Although all arguments are optional, the user has to input at least one argument for the command
+to be valid.</p>
+</div>
 <div class="sect4">
 <h5 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h5>
 
@@ -394,7 +635,37 @@ When the <code>LogicManager#execute()</code> is called, the following chain of o
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-transactions"><a class="link" href="#adding-transactions">3.2.2. Adding Transactions</a></h4>
+<h4 id="adding-transactions"><a class="link" href="#adding-transactions">4.2.2. Adding Transactions</a></h4>
+<div class="paragraph">
+<p>The add transaction feature allows the user to add a transaction into IchiFund.
+This feature is facilitated by <code>BudgetFeatureParser</code>, <code>AddBudgetCommandParser</code>, and <code>AddBudgetCommand</code>.
+The arguments supported by this feature includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Description</code></p>
+</li>
+<li>
+<p><code>Amount</code></p>
+</li>
+<li>
+<p><code>Category</code> (optional)</p>
+</li>
+<li>
+<p><code>Day</code> (optional)</p>
+</li>
+<li>
+<p><code>Month</code> (optional)</p>
+</li>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+<li>
+<p><code>TransactionType</code> (optional)</p>
+</li>
+</ul>
+</div>
 <div class="sect4">
 <h5 id="implementation-5"><a class="link" href="#implementation-5">Implementation</a></h5>
 
@@ -406,19 +677,19 @@ When the <code>LogicManager#execute()</code> is called, the following chain of o
 </div>
 </div>
 <div class="sect2">
-<h3 id="repeaters"><a class="link" href="#repeaters">3.3. Repeaters</a></h3>
+<h3 id="repeaters"><a class="link" href="#repeaters">4.3. Repeaters</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="adding-repeater-code-addrep-code"><a class="link" href="#adding-repeater-code-addrep-code">3.4. Adding Repeater : <code>addrep</code></a></h3>
+<h3 id="adding-repeater-code-addrep-code"><a class="link" href="#adding-repeater-code-addrep-code">4.4. Adding Repeater : <code>addrep</code></a></h3>
 <div class="sect3">
-<h4 id="overview"><a class="link" href="#overview">3.4.1. Overview</a></h4>
+<h4 id="overview"><a class="link" href="#overview">4.4.1. Overview</a></h4>
 <div class="paragraph">
 <p>This feature allows the user to add a repeater in IchiFund. Adding a repeater also creates the transactions associated with the added repeater.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">3.4.2. Implementation</a></h4>
+<h4 id="implementation-6"><a class="link" href="#implementation-6">4.4.2. Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>addrep</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>addrep</code> behaves at each step.</p>
 </div>
@@ -443,15 +714,15 @@ When the <code>LogicManager#execute()</code> is called, the following chain of o
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-repeater-code-delrep-code"><a class="link" href="#deleting-repeater-code-delrep-code">3.5. Deleting Repeater : <code>delrep</code></a></h3>
+<h3 id="deleting-repeater-code-delrep-code"><a class="link" href="#deleting-repeater-code-delrep-code">4.5. Deleting Repeater : <code>delrep</code></a></h3>
 <div class="sect3">
-<h4 id="overview-2"><a class="link" href="#overview-2">3.5.1. Overview</a></h4>
+<h4 id="overview-2"><a class="link" href="#overview-2">4.5.1. Overview</a></h4>
 <div class="paragraph">
 <p>This feature allows the user to delete repeater in IchiFund. Delete a repeater also deletes the transactions associated with the deleted repeater.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-7"><a class="link" href="#implementation-7">3.5.2. Implementation</a></h4>
+<h4 id="implementation-7"><a class="link" href="#implementation-7">4.5.2. Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>delrep</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>delrep</code> behaves at each step.</p>
 </div>
@@ -476,9 +747,9 @@ When the <code>LogicManager#execute()</code> is called, the following chain of o
 </div>
 </div>
 <div class="sect2">
-<h3 id="budget"><a class="link" href="#budget">3.6. Budget</a></h3>
+<h3 id="budget"><a class="link" href="#budget">4.6. Budget</a></h3>
 <div class="sect3">
-<h4 id="adding-budget"><a class="link" href="#adding-budget">3.6.1. Adding Budget</a></h4>
+<h4 id="adding-budget"><a class="link" href="#adding-budget">4.6.1. Adding Budget</a></h4>
 <div class="paragraph">
 <p>The add budget feature allows the user to add a budget into IchiFund.
 This feature is facilitated by <code>BudgetFeatureParser</code>, <code>AddBudgetCommandParser</code>, and <code>AddBudgetCommand</code>.
@@ -540,15 +811,15 @@ The arguments supported by this feature includes:</p>
 <div class="content">
 <img src="images/AddBudgetSequenceDiagram.png" alt="AddBudgetSequenceDiagram">
 </div>
-<div class="title">Figure 9. Sequence Diagram for <code>add</code> Command under Budget Tab</div>
+<div class="title">Figure 10. Sequence Diagram for <code>add</code> Command under Budget Tab</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="demo-use-this-as-template-for-your-section"><a class="link" href="#demo-use-this-as-template-for-your-section">3.7. [Demo] Use this as template for your section</a></h3>
+<h3 id="demo-use-this-as-template-for-your-section"><a class="link" href="#demo-use-this-as-template-for-your-section">4.7. [Demo] Use this as template for your section</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.7.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.7.1. Proposed Implementation</a></h4>
 <div class="sect4">
 <h5 id="test"><a class="link" href="#test">Test</a></h5>
 <div class="paragraph">
@@ -693,7 +964,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.7.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -763,14 +1034,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -801,7 +1072,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -809,7 +1080,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Documentation.html">here</a>.</p>
@@ -817,7 +1088,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">5. Testing</a></h2>
+<h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Testing.html">here</a>.</p>
@@ -825,7 +1096,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="DevOps.html">here</a>.</p>
@@ -1647,4 +1918,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-22 15:29:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 10:46:20 UTC</div></div></div></body></html>
