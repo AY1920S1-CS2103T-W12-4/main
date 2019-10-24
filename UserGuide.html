@@ -71,10 +71,10 @@ Here are some example commands you can try in the transaction tab:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>add</code></strong><code>de/Lunch a/12.30</code> : adds an expenditure item for "Lunch" to IchiFund.</p>
+<p><strong><code>addtx</code></strong><code>de/Lunch a/12.30</code> : adds an expenditure item for "Lunch" to IchiFund.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong><code>filtertx</code></strong><code>m/10 y/2019 c/!all ty/exp</code> : finds all expenditure items from October 2019.</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -115,7 +115,7 @@ is the "Transactions" tab.</p>
 <div class="sect2">
 <h3 id="switching-tabs"><a class="link" href="#switching-tabs">3.1. Switching tabs</a></h3>
 <div class="paragraph">
-<p>We offer three modes for you to switch tab:</p>
+<p>We offer three modes for you to switch tabs:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -193,16 +193,16 @@ These commands are recognised regardless of which tab you are currently using.</
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>addtx de/DESCRIPTION a/AMOUNT</code>, <code>DESCRIPTION</code> and <code>AMOUNT</code> are parameters which can be used as <code>addtx de/AirPods a/299.00</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>badd de/DESCRIPTION a/AMOUNT [c/CATEGORY] ` can be used as `badd de/Saving for iPhone 11 Pro Max a/271.80 c/Gadgets</code> or as <code>badd de/Saving for iPhone 11 Pro Max a/271.80</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…​</code> after them can be used multiple times including zero times e.g. <code>[s/KEYWORD]…​</code> can be used as ` ` (i.e. 0 times), <code>s/Macbook</code>, <code>s/Macbook s/iPad</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>addtx de/DESCRIPTION a/AMOUNT</code>, <code>addtx a/AMOUNT de/DESCRIPTION</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -247,10 +247,10 @@ There is no need to save manually.</p>
 <div class="sect2">
 <h3 id="transactions"><a class="link" href="#transactions">4.2. Transactions</a></h3>
 <div class="sect3">
-<h4 id="creating-transaction-code-txadd-code"><a class="link" href="#creating-transaction-code-txadd-code">4.2.1. Creating transaction: <code>txadd</code></a></h4>
+<h4 id="creating-transaction-code-addtx-code"><a class="link" href="#creating-transaction-code-addtx-code">4.2.1. Creating transaction: <code>addtx</code></a></h4>
 <div class="paragraph">
 <p>Creates a transaction.<br>
-Format: <code>txadd t/TYPE m/DESCRIPTION a/AMOUNT [d/DATE] [c/CATEGORY]</code></p>
+Format: <code>addtx de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -258,21 +258,21 @@ Format: <code>txadd t/TYPE m/DESCRIPTION a/AMOUNT [d/DATE] [c/CATEGORY]</code></
 <div class="ulist">
 <ul>
 <li>
-<p><code>txadd t/in m/Salary a/2101.00 c/Work</code><br>
+<p><code>addtx de/Salary a/2101.00 c/Work ty/in</code><br>
 Creates an income transaction of $2101.00 titled "Salary" occurring today under the category "Work".</p>
 </li>
 <li>
-<p><code>txadd t/out m/Lunch a/12.31 c/Food d/10092019</code><br>
-Creates an expenditure transaction of $12.32 titled "Food" occuring on the 10th September 2019 under the category "Food".</p>
+<p><code>addtx de/Lunch a/12.31 c/Food d/10 m/09 y/2019 ty/exp</code><br>
+Creates an expenditure transaction of $12.32 titled "Food" occurring on the 10th September 2019 under the category "Food".</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-transaction-code-txedit-code"><a class="link" href="#editing-transaction-code-txedit-code">4.2.2. Editing transaction: <code>txedit</code></a></h4>
+<h4 id="editing-transaction-code-edittx-code"><a class="link" href="#editing-transaction-code-edittx-code">4.2.2. Editing transaction: <code>edittx</code></a></h4>
 <div class="paragraph">
 <p>Edits a transaction.<br>
-Format: <code>txedit i/TRANSACTION_ID [t/TYPE] [m/DESCRIPTION] [a/AMOUNT] [d/DATE] [c/CATEGORY]</code></p>
+Format: <code>edittx INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -280,17 +280,17 @@ Format: <code>txedit i/TRANSACTION_ID [t/TYPE] [m/DESCRIPTION] [a/AMOUNT] [d/DAT
 <div class="ulist">
 <ul>
 <li>
-<p><code>txedit i/1 m/Dinner a/32.30</code><br>
+<p><code>edittx 1 de/Dinner a/32.30</code><br>
 Edits the description of the 1st transaction in the current list to "Dinner", and its amount to $32.30.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-transaction-code-txdelete-code"><a class="link" href="#deleting-transaction-code-txdelete-code">4.2.3. Deleting transaction: <code>txdelete</code></a></h4>
+<h4 id="deleting-transaction-code-deletetx-code"><a class="link" href="#deleting-transaction-code-deletetx-code">4.2.3. Deleting transaction: <code>deletetx</code></a></h4>
 <div class="paragraph">
 <p>Deletes a transaction.<br>
-Format: <code>txdelete i/TRANSACTION_ID</code></p>
+Format: <code>deletetx INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -298,17 +298,17 @@ Format: <code>txdelete i/TRANSACTION_ID</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>txdelete i/5</code><br>
+<p><code>deletetx 5</code><br>
 Deletes the 5th transaction in the current list.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-transaction-code-txfind-code"><a class="link" href="#finding-transaction-code-txfind-code">4.2.4. Finding transaction: <code>txfind</code></a></h4>
+<h4 id="finding-transaction-code-findtx-code"><a class="link" href="#finding-transaction-code-findtx-code">4.2.4. Finding transaction: <code>findtx</code></a></h4>
 <div class="paragraph">
-<p>Filters transactions in current list by type, keywords, category, month, and/or year.<br>
-Format: <code>txfind [t/TYPE] [s/KEYWORD]&#8230;&#8203; [m/MONTH] [y/YEAR] [c/CATEGORY]</code></p>
+<p>Filters transactions in current list by keywords, category, month, year and/or type.<br>
+Format: <code>findtx [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -316,7 +316,7 @@ Format: <code>txfind [t/TYPE] [s/KEYWORD]&#8230;&#8203; [m/MONTH] [y/YEAR] [c/CA
 <div class="ulist">
 <ul>
 <li>
-<p><code>txfind m/5 y/2019 c/Education</code><br>
+<p><code>findtx m/5 y/2019 c/Education</code><br>
 Finds all transactions in the current list from May 2019 from the category "Education".</p>
 </li>
 </ul>
@@ -326,17 +326,17 @@ Finds all transactions in the current list from May 2019 from the category "Educ
 <h4 id="list-all-transactions-code-txlist-code"><a class="link" href="#list-all-transactions-code-txlist-code">4.2.5. List all transactions: <code>txlist</code></a></h4>
 <div class="paragraph">
 <p>Lists all transactions.<br>
-Format <code>txlist</code></p>
+Format <code>listtx</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="transaction-repeaters"><a class="link" href="#transaction-repeaters">4.3. Transaction Repeaters</a></h3>
 <div class="sect3">
-<h4 id="creating-transaction-repeater-code-repadd-code"><a class="link" href="#creating-transaction-repeater-code-repadd-code">4.3.1. Creating transaction repeater: <code>repadd</code></a></h4>
+<h4 id="creating-transaction-repeater-code-addrep-code"><a class="link" href="#creating-transaction-repeater-code-addrep-code">4.3.1. Creating transaction repeater: <code>addrep</code></a></h4>
 <div class="paragraph">
 <p>Creates monthly transaction repeater.<br>
-Format: <code>repadd [t/TYPE] m/DESCRIPTION a/AMOUNT [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
+Format: <code>addrep de/DESCRIPTION a/AMOUNT p/DAY_OF_MONTH&#8230;&#8203; ty/TRANSACTION_TYPE</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -344,17 +344,17 @@ Format: <code>repadd [t/TYPE] m/DESCRIPTION a/AMOUNT [c/CATEGORY] [p/DAY]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>repadd t/in m/Phone Bills a/32.70 p/7 p/14 p/21 p/28</code><br>
+<p><code>addrep de/Phone Bills a/32.70 p/7 p/14 p/21 p/28 ty/exp</code><br>
 Creates a transaction repeater titled "PhoneBills" for a $32.70 deduction every 7th, 14th, 21st, and 28th of the month.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-transaction-repaeter-code-repedit-code"><a class="link" href="#editing-transaction-repaeter-code-repedit-code">4.3.2. Editing transaction repaeter <code>repedit</code></a></h4>
+<h4 id="editing-transaction-repeater-code-editrep-code"><a class="link" href="#editing-transaction-repeater-code-editrep-code">4.3.2. Editing transaction repeater <code>editrep</code></a></h4>
 <div class="paragraph">
 <p>Edits transaction repeater.<br>
-Format: <code>repedit i/ID [t/TYPE] [m/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
+Format: <code>editrep INDEX [de/DESCRIPTION] [a/AMOUNT] [p/DAY_OF_MONTH]&#8230;&#8203; [c/CATEGORY] [ty/TRANSACTION_TYPE]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -362,17 +362,17 @@ Format: <code>repedit i/ID [t/TYPE] [m/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [p/D
 <div class="ulist">
 <ul>
 <li>
-<p><code>repedit i/12 a/62.45 c/Food p/11 p/12</code><br>
+<p><code>editrep 12 a/62.45 c/Food p/11 p/12</code><br>
 Edits the 12th transaction repeater for a $62.45 deduction every 11th and 12th of the month.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-transaction-repeater-code-repdelete-code"><a class="link" href="#deleting-transaction-repeater-code-repdelete-code">4.3.3. Deleting transaction repeater: <code>repdelete</code></a></h4>
+<h4 id="deleting-transaction-repeater-code-deleterep-code"><a class="link" href="#deleting-transaction-repeater-code-deleterep-code">4.3.3. Deleting transaction repeater: <code>deleterep</code></a></h4>
 <div class="paragraph">
 <p>Deletes transaction repeater. Optionally deletes transactions previously produced from the transaction repeater.<br>
-Format: <code>repdelete i/ID [d/DELETEALL]</code></p>
+Format: <code>deleterep INDEX [d/DELETEALL]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -380,17 +380,17 @@ Format: <code>repdelete i/ID [d/DELETEALL]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>repdelete i/12 p/TRUE</code><br>
+<p><code>deleterep 12</code><br>
 Deletes the 12th transaction repeater.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-transaction-repeater-code-repfind-code"><a class="link" href="#finding-transaction-repeater-code-repfind-code">4.3.4. Finding transaction repeater: <code>repfind</code></a></h4>
+<h4 id="finding-transaction-repeater-code-findrep-code"><a class="link" href="#finding-transaction-repeater-code-findrep-code">4.3.4. Finding transaction repeater: <code>findrep</code></a></h4>
 <div class="paragraph">
 <p>Filters transaction repeaters by keyword, category, and repeating days.<br>
-Format: <code>repfind [t/TYPE] [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
+Format: <code>findrep [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY_OF_MONTH]&#8230;&#8203; [ty/TRANSACTION_TYPE]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -398,7 +398,7 @@ Format: <code>repfind [t/TYPE] [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY]&#8
 <div class="ulist">
 <ul>
 <li>
-<p><code>repfind s/Income p/7 p/13</code><br>
+<p><code>findrep s/Income p/7 p/13</code><br>
 Finds all transaction repeater with "Income" contained in their descriptions, and that occur on the 7th and 13th of the month.</p>
 </li>
 </ul>
@@ -522,7 +522,7 @@ Loans shown sorted by any given constrain, date or value owed.</p>
 <h4 id="add-a-monthly-budget-code-badd-code"><a class="link" href="#add-a-monthly-budget-code-badd-code">4.5.1. Add a monthly budget: <code>badd</code></a></h4>
 <div class="paragraph">
 <p>Sets monthly expenditure budget.<br>
-Format: <code>badd de/DESCRIPTION a/AMOUNT</code></p>
+Format: <code>badd de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -530,7 +530,7 @@ Format: <code>badd de/DESCRIPTION a/AMOUNT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>badd de/Saving for future a/1000</code><br>
+<p><code>badd de/Saving for future a/1000.00</code><br>
 Sets monthly expenditure budget to $1000.</p>
 </li>
 </ul>
@@ -558,7 +558,7 @@ Deletes the first entry on the displayed budget list.</p>
 <h4 id="excluding-expenditure-from-budget-code-bexclude-code"><a class="link" href="#excluding-expenditure-from-budget-code-bexclude-code">4.5.3. Excluding expenditure from budget: <code>bexclude</code></a></h4>
 <div class="paragraph">
 <p>Excludes expenditure from computation of budget.<br>
-Format: <code>bexclude i/TRANSACTION_ID</code></p>
+Format: <code>bexclude INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -583,8 +583,8 @@ Format: <code>bexclude i/TRANSACTION_ID</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>txlist</code><br>
-<code>bexclude i/2</code><br>
+<p><code>listtx</code><br>
+<code>bexclude 2</code><br>
 Excludes the 2nd expenditure in the list from computation of budget.</p>
 </li>
 </ul>
@@ -594,7 +594,7 @@ Excludes the 2nd expenditure in the list from computation of budget.</p>
 <h4 id="including-expenditure-in-budget-code-binclude-code"><a class="link" href="#including-expenditure-in-budget-code-binclude-code">4.5.4. Including expenditure in budget: <code>binclude</code></a></h4>
 <div class="paragraph">
 <p>Includes expenditure in computation of budget.<br>
-Format: <code>binclude i/TRANSACTION_ID</code></p>
+Format: <code>binclude INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -619,8 +619,8 @@ Format: <code>binclude i/TRANSACTION_ID</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>txlist</code><br>
-<code>binclude i/2</code><br>
+<p><code>listtx</code><br>
+<code>binclude 2</code><br>
 Includes the 2nd expenditure in the list from computation of budget.</p>
 </li>
 </ul>
@@ -664,10 +664,10 @@ Displays expenditure budget left and a list of all excluded expenditures for Jul
 <div class="sect2">
 <h3 id="analytics"><a class="link" href="#analytics">4.6. Analytics</a></h3>
 <div class="sect3">
-<h4 id="viewing-expenditure-trend-code-aexpend-code"><a class="link" href="#viewing-expenditure-trend-code-aexpend-code">4.6.1. Viewing expenditure trend: <code>aexpend</code></a></h4>
+<h4 id="viewing-expenditure-trend-code-expenditure-code"><a class="link" href="#viewing-expenditure-trend-code-expenditure-code">4.6.1. Viewing expenditure trend: <code>expenditure</code></a></h4>
 <div class="paragraph">
 <p>Displays monthly expenditure trend for current year.
-Format: <code>aexpend [y/YEAR]</code></p>
+Format: <code>expenditure [y/YEAR]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -675,21 +675,21 @@ Format: <code>aexpend [y/YEAR]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>aexpend</code><br>
+<p><code>expenditure</code><br>
 Displays monthly expenditure trend for current year.</p>
 </li>
 <li>
-<p><code>aexpend 2019</code><br>
+<p><code>expenditure y/2019</code><br>
 Displays monthly expenditure trend for 2019.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-income-trend-code-aincome-code"><a class="link" href="#viewing-income-trend-code-aincome-code">4.6.2. Viewing income trend: <code>aincome</code></a></h4>
+<h4 id="viewing-income-trend-code-income-code"><a class="link" href="#viewing-income-trend-code-income-code">4.6.2. Viewing income trend: <code>income</code></a></h4>
 <div class="paragraph">
 <p>Displays monthly income trend for current year.<br>
-Format: <code>aincome [y/YEAR]</code></p>
+Format: <code>income [y/YEAR]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -697,21 +697,21 @@ Format: <code>aincome [y/YEAR]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>aincome</code><br>
+<p><code>income</code><br>
 Displays monthly income trend for current year.</p>
 </li>
 <li>
-<p><code>aincome 2019</code><br>
+<p><code>income y/2019</code><br>
 Displays monthly income trend for 2019.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-balance-trend-code-abalance-code"><a class="link" href="#viewing-balance-trend-code-abalance-code">4.6.3. Viewing balance trend: <code>abalance</code></a></h4>
+<h4 id="viewing-balance-trend-code-balance-code"><a class="link" href="#viewing-balance-trend-code-balance-code">4.6.3. Viewing balance trend: <code>balance</code></a></h4>
 <div class="paragraph">
 <p>Displays monthly balance (income - expenditure) trend for current year.<br>
-Format: <code>abalance [y/YEAR]</code></p>
+Format: <code>balance [y/YEAR]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -719,21 +719,21 @@ Format: <code>abalance [y/YEAR]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>abalance</code><br>
+<p><code>balance</code><br>
 Displays monthly balance trend for current year.</p>
 </li>
 <li>
-<p><code>abalance 2019</code><br>
+<p><code>balance y/2019</code><br>
 Displays monthly balance trend for 2019.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-expenditure-breakdown-by-category-code-abreakdown-code"><a class="link" href="#viewing-expenditure-breakdown-by-category-code-abreakdown-code">4.6.4. Viewing expenditure breakdown by category: <code>abreakdown</code></a></h4>
+<h4 id="viewing-expenditure-breakdown-by-category-code-breakdown-code"><a class="link" href="#viewing-expenditure-breakdown-by-category-code-breakdown-code">4.6.4. Viewing expenditure breakdown by category: <code>breakdown</code></a></h4>
 <div class="paragraph">
 <p>Displays breakdown of expenditure by category.<br>
-Format: <code>abreakdown [m/MONTH] [y/YEAR]</code></p>
+Format: <code>catbreakdown [m/MONTH] [y/YEAR]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -741,21 +741,21 @@ Format: <code>abreakdown [m/MONTH] [y/YEAR]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>abreakdown</code><br>
+<p><code>catbreakdown</code><br>
 Displays expenditure breakdown by category for current month.</p>
 </li>
 <li>
-<p><code>abreakdown m/7 y/2019</code><br>
+<p><code>catbreakdown m/7 y/2019</code><br>
 Displays expenditure breakdown by category for July 2019.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-expenditure-category-ranking-chart-code-acatrank-code"><a class="link" href="#viewing-expenditure-category-ranking-chart-code-acatrank-code">4.6.5. Viewing expenditure category ranking chart: <code>acatrank</code></a></h4>
+<h4 id="viewing-expenditure-category-ranking-chart-code-catrank-code"><a class="link" href="#viewing-expenditure-category-ranking-chart-code-catrank-code">4.6.5. Viewing expenditure category ranking chart: <code>catrank</code></a></h4>
 <div class="paragraph">
 <p>Displays expenditure category ranking chart.<br>
-Format: <code>acatrank [m/MONTH] [y/YEAR]</code></p>
+Format: <code>catrank [m/MONTH] [y/YEAR]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -763,21 +763,21 @@ Format: <code>acatrank [m/MONTH] [y/YEAR]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>acatrank</code><br>
+<p><code>catrank</code><br>
 Displays expenditure category ranking chart for current month.</p>
 </li>
 <li>
-<p><code>acatrank m/7 y/2019</code><br>
+<p><code>catrank m/7 y/2019</code><br>
 Displays expenditure category ranking chart for July 2019.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-expenditure-ranking-chart-by-month-code-amthrank-code"><a class="link" href="#viewing-expenditure-ranking-chart-by-month-code-amthrank-code">4.6.6. Viewing expenditure ranking chart by month: <code>amthrank</code></a></h4>
+<h4 id="viewing-expenditure-ranking-chart-by-month-code-mthrank-code"><a class="link" href="#viewing-expenditure-ranking-chart-by-month-code-mthrank-code">4.6.6. Viewing expenditure ranking chart by month: <code>mthrank</code></a></h4>
 <div class="paragraph">
 <p>Displays expenditure ranking chart by month.<br>
-Format: <code>amthrank [y/YEAR]</code></p>
+Format: <code>mthrank [y/YEAR]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -785,21 +785,21 @@ Format: <code>amthrank [y/YEAR]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>amthrank</code><br>
+<p><code>mthrank</code><br>
 Displays all-time expenditure ranking chart by month.</p>
 </li>
 <li>
-<p><code>amthrank y/2019</code><br>
+<p><code>mthrank y/2019</code><br>
 Displays expenditure ranking chart by month for 2019.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-expenditure-ranking-chart-code-aexprank-code"><a class="link" href="#viewing-expenditure-ranking-chart-code-aexprank-code">4.6.7. Viewing expenditure ranking chart: <code>aexprank</code></a></h4>
+<h4 id="viewing-expenditure-ranking-chart-code-exprank-code"><a class="link" href="#viewing-expenditure-ranking-chart-code-exprank-code">4.6.7. Viewing expenditure ranking chart: <code>exprank</code></a></h4>
 <div class="paragraph">
 <p>Displays expenditure ranking chart.<br>
-Format: <code>aexprank [m/MONTH] [y/YEAR]</code></p>
+Format: <code>exprank [m/MONTH] [y/YEAR]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -807,11 +807,11 @@ Format: <code>aexprank [m/MONTH] [y/YEAR]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>aexprank</code><br>
+<p><code>exprank</code><br>
 Displays all-time expenditure ranking chart.</p>
 </li>
 <li>
-<p><code>aexprank m/7 y/2019</code><br>
+<p><code>exprank m/7 y/2019</code><br>
 Displays expenditure ranking chart for July 2019.</p>
 </li>
 </ul>
@@ -841,67 +841,31 @@ Displays expenditure ranking chart for July 2019.</p>
 <p><strong>Exit</strong> : <code>exit</code></p>
 </li>
 <li>
-<p><strong>Wealth Set</strong> : <code>wealthset a/AMOUNT</code></p>
+<p><strong>Transaction Add</strong> : <code>addtx de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </li>
 <li>
-<p><strong>Transaction Add</strong> : <code>txadd t/TYPE m/DESCRIPTION a/AMOUNT [d/DATE] [c/CATEGORY]</code></p>
+<p><strong>Transaction Edit</strong> : <code>edittx INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </li>
 <li>
-<p><strong>Transaction Edit</strong> : <code>txedit i/ID [t/TYPE] [m/DESCRIPTION] [a/AMOUNT] [d/DATE] [c/CATEGORY]</code></p>
+<p><strong>Transaction Delete</strong> : <code>deletetx INDEX</code></p>
 </li>
 <li>
-<p><strong>Transaction Delete</strong> : <code>txdelete i/TRANSACTION_ID</code></p>
+<p><strong>Transaction Find</strong> : <code>findtx [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </li>
 <li>
-<p><strong>Transaction Find</strong> : <code>txfind [t/TYPE] [s/KEYWORD]&#8230;&#8203; [m/MONTH] [y/YEAR] [c/CATEGORY]</code></p>
+<p><strong>Transaction List</strong> : <code>listtx</code></p>
 </li>
 <li>
-<p><strong>Transaction List</strong> : <code>txlist</code></p>
+<p><strong>Transaction Repeater Add</strong> : <code>addrep de/DESCRIPTION a/AMOUNT p/DAY_OF_MONTH&#8230;&#8203; ty/TRANSACTION_TYPE</code></p>
 </li>
 <li>
-<p><strong>Transaction Repeater Add</strong> : <code>repadd m/DESCRIPTION a/AMOUNT [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
+<p><strong>Transaction Repeater Edit</strong> : <code>editrep INDEX [de/DESCRIPTION] [a/AMOUNT] [p/DAY_OF_MONTH]&#8230;&#8203; [c/CATEGORY] [ty/TRANSACTION_TYPE]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p><strong>Transaction Repeater Edit</strong> : <code>repedit i/ID [m/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
+<p><strong>Transaction Repeater Delete</strong> : <code>deleterep INDEX [d/DELETEALL]</code></p>
 </li>
 <li>
-<p><strong>Transaction Repeater Delete</strong> : <code>repdelete i/ID [d/DELETEALL]</code></p>
-</li>
-<li>
-<p><strong>Transaction Repeater Find</strong> : <code>repfind [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY]&#8230;&#8203;</code></p>
-</li>
-<li>
-<p><strong>Budget Set</strong> : <code>bset a/AMOUNT</code></p>
-</li>
-<li>
-<p><strong>Budget Exclude</strong> : <code>bexclude i/TRANSACTION_ID</code></p>
-</li>
-<li>
-<p><strong>Budget Include</strong> : <code>binclude i/TRANSACTION_ID</code></p>
-</li>
-<li>
-<p><strong>Budget Info</strong> : <code>binfo [m/MONTH y/YEAR]</code></p>
-</li>
-<li>
-<p><strong>Expenditure Trend</strong> : <code>aexpend [y/YEAR]</code></p>
-</li>
-<li>
-<p><strong>Income Trend</strong> : <code>aincome [y/YEAR]</code></p>
-</li>
-<li>
-<p><strong>Balance Trend</strong> : <code>abalance [y/YEAR]</code></p>
-</li>
-<li>
-<p><strong>Categorical Breakdown</strong> : <code>abreakdown [m/MONTH] [y/YEAR]</code></p>
-</li>
-<li>
-<p><strong>Categorical Ranking Chart</strong> : <code>acatrank [m/MONTH] [y/YEAR]</code></p>
-</li>
-<li>
-<p><strong>Month-Based Ranking Chart</strong> : <code>amthrank [y/YEAR]</code></p>
-</li>
-<li>
-<p><strong>Ranking Chart</strong> : <code>aexprank [m/MONTH] [y/YEAR]</code></p>
+<p><strong>Transaction Repeater Find</strong> : <code>findrep [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY_OF_MONTH]&#8230;&#8203; [ty/TRANSACTION_TYPE]</code></p>
 </li>
 <li>
 <p><strong>Loan Add new</strong> : <code>loannew a/Amount [d/DATE] [n/NAME]</code></p>
@@ -921,7 +885,43 @@ Displays expenditure ranking chart for July 2019.</p>
 <li>
 <p><strong>Loan Sort By Value</strong> : <code>loansort s/BY</code></p>
 </li>
+<li>
+<p><strong>Budget Add</strong> : <code>badd de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Budget Delete</strong> : <code>bdelete INDEX</code></p>
+</li>
+<li>
+<p><strong>Budget Exclude</strong> : <code>bexclude INDEX</code></p>
+</li>
+<li>
+<p><strong>Budget Include</strong> : <code>binclude INDEX</code></p>
+</li>
+<li>
+<p><strong>Budget Info</strong> : <code>binfo [m/MONTH y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Expenditure Trend</strong> : <code>expenditure [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Income Trend</strong> : <code>income [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Balance Trend</strong> : <code>balance [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Categorical Breakdown</strong> : <code>catbreakdown [m/MONTH] [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Categorical Ranking Chart</strong> : <code>catrank [m/MONTH] [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Month-Based Ranking Chart</strong> : <code>mthrank [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Ranking Chart</strong> : <code>exprank [m/MONTH] [y/YEAR]</code></p>
+</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 02:18:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 02:18:57 UTC</div></div></div></body></html>
