@@ -29,9 +29,10 @@
 <li><a href="#adding-repeater-code-addrep-code">4.4. Adding Repeater : <code>addrep</code></a></li>
 <li><a href="#deleting-repeater-code-delrep-code">4.5. Deleting Repeater : <code>delrep</code></a></li>
 <li><a href="#budget">4.6. Budget</a></li>
-<li><a href="#demo-use-this-as-template-for-your-section">4.7. [Demo] Use this as template for your section</a></li>
-<li><a href="#logging">4.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.9. Configuration</a></li>
+<li><a href="#analytics">4.7. Analytics</a></li>
+<li><a href="#demo-use-this-as-template-for-your-section">4.8. [Demo] Use this as template for your section</a></li>
+<li><a href="#logging">4.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -817,9 +818,150 @@ The arguments supported by this feature includes:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="demo-use-this-as-template-for-your-section"><a class="link" href="#demo-use-this-as-template-for-your-section">4.7. [Demo] Use this as template for your section</a></h3>
+<h3 id="analytics"><a class="link" href="#analytics">4.7. Analytics</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.7.1. Proposed Implementation</a></h4>
+<h4 id="view-expenditure-trend"><a class="link" href="#view-expenditure-trend">4.7.1. View expenditure trend</a></h4>
+<div class="paragraph">
+<p>The view expenditure trend feature allows the user to view monthly expenditure trend for a year.
+This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>ExpenditureTrendCommandParser</code>, and <code>ExpenditureTrendCommand</code>.
+The argument supported by this feature is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="implementation-9"><a class="link" href="#implementation-9">Implementation</a></h5>
+<div class="paragraph">
+<p>When the user input the <code>expenditure</code> command in the Analytics tab, the following chain of operations occurs:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</li>
+<li>
+<p>The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>ExpenditureTrendCommandParser</code>.</p>
+</li>
+<li>
+<p><code>ExpenditureTrendCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</li>
+<li>
+<p>This arguments will be tokenized and the respective models for each argument are created.</p>
+</li>
+<li>
+<p>If the parsing of all arguments are successful, a new <code>ExpenditureTrendCommand</code> is returned back to <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The <code>LogicManager</code> executes <code>ExpenditureTrendCommand#execute()</code>.</p>
+</li>
+<li>
+<p>The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-income-trend"><a class="link" href="#view-income-trend">4.7.2. View income trend</a></h4>
+<div class="paragraph">
+<p>The view income trend feature allows the user to view monthly income trend for a year.
+This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>IncomeTrendCommandParser</code>, and <code>IncomeTrendCommand</code>.
+The argument supported by this feature is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="implementation-10"><a class="link" href="#implementation-10">Implementation</a></h5>
+<div class="paragraph">
+<p>When the user input the <code>income</code> command in the Analytics tab, the following chain of operations occurs:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</li>
+<li>
+<p>The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>IncomeTrendCommandParser</code>.</p>
+</li>
+<li>
+<p><code>IncomeTrendCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</li>
+<li>
+<p>This arguments will be tokenized and the respective models for each argument are created.</p>
+</li>
+<li>
+<p>If the parsing of all arguments are successful, a new <code>IncomeTrendCommand</code> is returned back to <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The <code>LogicManager</code> executes <code>IncomeTrendCommand#execute()</code>.</p>
+</li>
+<li>
+<p>The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-balance-trend"><a class="link" href="#view-balance-trend">4.7.3. View balance trend</a></h4>
+<div class="paragraph">
+<p>The view balance trend feature allows the user to view monthly balance trend for a year.
+This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>BalanceTrendCommandParser</code>, and <code>BalanceTrendCommand</code>.
+The argument supported by this feature is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="implementation-11"><a class="link" href="#implementation-11">Implementation</a></h5>
+<div class="paragraph">
+<p>When the user input the <code>balance</code> command in the Analytics tab, the following chain of operations occurs:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</li>
+<li>
+<p>The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>BalanceTrendCommandParser</code>.</p>
+</li>
+<li>
+<p><code>BalanceTrendCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</li>
+<li>
+<p>This arguments will be tokenized and the respective models for each argument are created.</p>
+</li>
+<li>
+<p>If the parsing of all arguments are successful, a new <code>BalanceTrendCommand</code> is returned back to <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The <code>LogicManager</code> executes <code>BalanceTrendCommand#execute()</code>.</p>
+</li>
+<li>
+<p>The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="demo-use-this-as-template-for-your-section"><a class="link" href="#demo-use-this-as-template-for-your-section">4.8. [Demo] Use this as template for your section</a></h3>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.8.1. Proposed Implementation</a></h4>
 <div class="sect4">
 <h5 id="test"><a class="link" href="#test">Test</a></h5>
 <div class="paragraph">
@@ -964,7 +1106,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.8.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1034,14 +1176,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1072,7 +1214,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1918,4 +2060,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 10:46:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 02:18:16 UTC</div></div></div></body></html>
