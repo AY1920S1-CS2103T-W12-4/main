@@ -20,7 +20,7 @@
 <ul class="sectlevel2">
 <li><a href="#ichifund-basics">4.1. IchiFund Basics</a></li>
 <li><a href="#transactions">4.2. Transactions</a></li>
-<li><a href="#transaction-repeaters">4.3. Transaction Repeaters</a></li>
+<li><a href="#repeaters">4.3. Repeaters</a></li>
 <li><a href="#loans">4.4. Loans</a></li>
 <li><a href="#budgets">4.5. Budgets</a></li>
 <li><a href="#analytics">4.6. Analytics</a></li>
@@ -331,12 +331,12 @@ Format <code>listtx</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="transaction-repeaters"><a class="link" href="#transaction-repeaters">4.3. Transaction Repeaters</a></h3>
+<h3 id="repeaters"><a class="link" href="#repeaters">4.3. Repeaters</a></h3>
 <div class="sect3">
-<h4 id="creating-transaction-repeater-code-addrep-code"><a class="link" href="#creating-transaction-repeater-code-addrep-code">4.3.1. Creating transaction repeater: <code>addrep</code></a></h4>
+<h4 id="creating-repeater-code-addrep-code"><a class="link" href="#creating-repeater-code-addrep-code">4.3.1. Creating repeater: <code>addrep</code></a></h4>
 <div class="paragraph">
-<p>Creates monthly transaction repeater.<br>
-Format: <code>addrep de/DESCRIPTION a/AMOUNT p/DAY_OF_MONTH&#8230;&#8203; ty/TRANSACTION_TYPE</code></p>
+<p>Creates repeater together with the associated transactions.<br>
+Format: <code>de/DESCRIPTION a/AMOUNT c/CATEGORY ty/TRANSACTION_TYPE so/MONTH_START_OFFSET eo/MONTH_END_OFFSET sm/START_MONTH sy/START_YEAR em/END_MONTH ey/END_YEAR</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -344,17 +344,17 @@ Format: <code>addrep de/DESCRIPTION a/AMOUNT p/DAY_OF_MONTH&#8230;&#8203; ty/TRA
 <div class="ulist">
 <ul>
 <li>
-<p><code>addrep de/Phone Bills a/32.70 p/7 p/14 p/21 p/28 ty/exp</code><br>
-Creates a transaction repeater titled "PhoneBills" for a $32.70 deduction every 7th, 14th, 21st, and 28th of the month.</p>
+<p><code>addrep de/Phone bills a/42.15 c/Utilities ty/exp so/3 eo/2 sm/1 sy/2019 em/12 ey/2025</code><br>
+Creates a repeater titled "Phone bills" as an expenditure for Utilities of $42.15 for every third day and second last day of the month, between January 2019 to December 2025. Also creates the associated transactions.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-transaction-repeater-code-editrep-code"><a class="link" href="#editing-transaction-repeater-code-editrep-code">4.3.2. Editing transaction repeater <code>editrep</code></a></h4>
+<h4 id="editing-repeater-code-editrep-code"><a class="link" href="#editing-repeater-code-editrep-code">4.3.2. Editing repeater <code>editrep</code></a></h4>
 <div class="paragraph">
-<p>Edits transaction repeater.<br>
-Format: <code>editrep INDEX [de/DESCRIPTION] [a/AMOUNT] [p/DAY_OF_MONTH]&#8230;&#8203; [c/CATEGORY] [ty/TRANSACTION_TYPE]&#8230;&#8203;</code></p>
+<p>Edits repeater together with the associated transactions.<br>
+Format: <code>editrep INDEX (must be a positive integer) [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [ty/TRANSACTION_TYPE] [so/MONTH_START_OFFSET] [eo/MONTH_END_OFFSET] [sm/START_MONTH] [sy/START_YEAR] [em/END_MONTH] [ey/END_YEAR]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -362,17 +362,17 @@ Format: <code>editrep INDEX [de/DESCRIPTION] [a/AMOUNT] [p/DAY_OF_MONTH]&#8230;&
 <div class="ulist">
 <ul>
 <li>
-<p><code>editrep 12 a/62.45 c/Food p/11 p/12</code><br>
-Edits the 12th transaction repeater for a $62.45 deduction every 11th and 12th of the month.</p>
+<p><code>editrep 1 a/31.34 c/Food ty/in so/1 eo/-1 sm/1 sy/2019 em/12 ey/2020</code><br>
+Edits the first repeater in the current list into a $31.34 expenditure for every first day of the month, between January 2019 and December 2020. Also updates the associated transactions.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-transaction-repeater-code-deleterep-code"><a class="link" href="#deleting-transaction-repeater-code-deleterep-code">4.3.3. Deleting transaction repeater: <code>deleterep</code></a></h4>
+<h4 id="deleting-repeater-code-delrep-code"><a class="link" href="#deleting-repeater-code-delrep-code">4.3.3. Deleting repeater: <code>delrep</code></a></h4>
 <div class="paragraph">
-<p>Deletes transaction repeater. Optionally deletes transactions previously produced from the transaction repeater.<br>
-Format: <code>deleterep INDEX [d/DELETEALL]</code></p>
+<p>Deletes repeater together with all created transactions associated with the specified repeater.<br>
+Format: <code>delrep INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -380,29 +380,15 @@ Format: <code>deleterep INDEX [d/DELETEALL]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>deleterep 12</code><br>
-Deletes the 12th transaction repeater.</p>
+<p><code>delrep 12</code><br>
+Deletes the 12th repeater in the current list. Also updates the associated transactions.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-transaction-repeater-code-findrep-code"><a class="link" href="#finding-transaction-repeater-code-findrep-code">4.3.4. Finding transaction repeater: <code>findrep</code></a></h4>
-<div class="paragraph">
-<p>Filters transaction repeaters by keyword, category, and repeating days.<br>
-Format: <code>findrep [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY_OF_MONTH]&#8230;&#8203; [ty/TRANSACTION_TYPE]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>findrep s/Income p/7 p/13</code><br>
-Finds all transaction repeater with "Income" contained in their descriptions, and that occur on the 7th and 13th of the month.</p>
-</li>
-</ul>
-</div>
+<h4 id="finding-repeater-code-findrep-code-coming-in-v2-0"><a class="link" href="#finding-repeater-code-findrep-code-coming-in-v2-0">4.3.4. Finding repeater: <code>findrep</code> [Coming in v2.0]</a></h4>
+
 </div>
 </div>
 <div class="sect2">
@@ -924,4 +910,4 @@ Displays expenditure ranking chart for July 2019.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 12:58:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 14:00:29 UTC</div></div></div></body></html>
