@@ -250,6 +250,8 @@ There is no need to save manually.</p>
 <p>Do you ever feel overwhelmed by the ever-growing number of transactions you have to keep track of?
 With our transactions feature, you can organise your transactions in a fuss-free manner!</p>
 </div>
+<div class="sect3">
+<h4 id="overview"><a class="link" href="#overview">4.2.1. Overview</a></h4>
 <div class="paragraph">
 <p>In the transactions tab, you can maintain a list of your transactions, adding, editing, deleting and filtering items
 as you like. The image below gives an overview of the GUI of the feature:</p>
@@ -303,7 +305,7 @@ the category shown, as well as whether only expenditure/income items are shown.<
 </div>
 <div class="paragraph">
 <p>The filter title changes along with the filter that is applied to the list. You can change the filter using
-the <code>filtertx</code> command in <a href="#filtertx">Section 4.2.3, &#8220;Filtering transactions: <code>filtertx</code>&#8221;</a></p>
+the <code>filtertx</code> command in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transactions: <code>filtertx</code>&#8221;</a></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -323,13 +325,19 @@ This makes it easier for you to access the transactions in the current month!
 </table>
 </div>
 </div>
+</div>
 <div class="sect3">
-<h4 id="filtertx"><a class="link" href="#filtertx">4.2.3. Filtering transactions: <code>filtertx</code></a></h4>
+<h4 id="filtertx"><a class="link" href="#filtertx">4.2.2. Filtering transactions: <code>filtertx</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>filtertx [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TYPE]</code></p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s say you are currently viewing transactions from September 2018. The GUI of Ichifund may look like this:</p>
+<p>To better understand how your money goes down the drain, it is critical to organise and filter your
+transactions. <code>filtertx</code> does the job for you.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you are currently viewing transactions from
+September 2018. The GUI of Ichifund may look like this:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -381,7 +389,7 @@ The GUI will update accordingly, as follows:</p>
 </td>
 <td class="content">
 To see only expenditure items, enter <code>filtertx ty/exp</code>; to see only income items, enter <code>filtertx ty/in</code>. This
-also applies when you are adding transactions in <a href="#addtx">Section 4.2.4, &#8220;Creating transaction: <code>addtx</code>&#8221;</a>
+also applies when you are adding transactions in <a href="#addtx">Section 4.2.3, &#8220;Creating transaction: <code>addtx</code>&#8221;</a>
 </td>
 </tr>
 </table>
@@ -426,17 +434,21 @@ the command word <code>filtertx</code> is keyed in at the start.
 </div>
 </div>
 <div class="sect3">
-<h4 id="addtx"><a class="link" href="#addtx">4.2.4. Creating transaction: <code>addtx</code></a></h4>
+<h4 id="addtx"><a class="link" href="#addtx">4.2.3. Creating transaction: <code>addtx</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>addtx de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </div>
 <div class="paragraph">
-<p>Imagine you are browsing your transactions under the category of "Transportation" in November.
-Your GUI may look like this:</p>
+<p>As painful as it is to remind yourself each time you part with your money, it is essential to meticulously
+record your transactions. <code>addtx</code> eases this process.</p>
+</div>
+<div class="paragraph">
+<p>Imagine you are browsing your transactions under the category of "Transportation"
+in November. Your GUI may look like this:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/addtx1.png" alt="addtx1">
+<img src="images/addtx1.png" alt="addtx1" width="960">
 </div>
 </div>
 <div class="paragraph">
@@ -454,7 +466,7 @@ command <code>addtx de/Lunch a/12.31 c/food d/31 m/10 y/2019 ty/exp</code></p>
 </div>
 <div class="paragraph">
 <p>Here, IchiFund automatically changes the filter for you, so that you can review the addition
-you made. This makes it convenient if you want to edit your transactions, as detailed in <a href="#edittx">[edittx]</a></p>
+you made. This makes it convenient if you want to edit your transactions, as detailed in <a href="#edittx">Section 4.2.4, &#8220;Editing transaction: <code>edittx</code>&#8221;</a></p>
 </div>
 <div class="paragraph">
 <p>Also, note that the transaction appears at the top of the list. This is because we automatically sort
@@ -469,7 +481,7 @@ transactions.</p>
 </td>
 <td class="content">
 When specifying whether a transaction is an expenditure item or an income item, use the arguments
-<code>ty/exp</code> or <code>ty/in</code> respectively, similar to how would do so in <a href="#filtertx">Section 4.2.3, &#8220;Filtering transactions: <code>filtertx</code>&#8221;</a>
+<code>ty/exp</code> or <code>ty/in</code> respectively, similar to how would do so in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transactions: <code>filtertx</code>&#8221;</a>
 </td>
 </tr>
 </table>
@@ -601,41 +613,103 @@ feature to its fullest, you are recommended to add transactions on the day it oc
 <div class="paragraph">
 <p>Additionally, the transaction feature works best when the system time functions normally, with no change in time zone.</p>
 </div>
-<div class="paragraph">
-<p><a href="#edittx">[edittx]</a>
-==== Editing transaction: <code>edittx</code> [Coming in v2.0]
-Edits a transaction.<br>
-Format: <code>edittx INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edittx 1 de/Dinner a/32.30</code><br>
-Edits the description of the 1st transaction in the current list to "Dinner", and its amount to $32.30.</p>
-</li>
-</ul>
-</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-transaction-code-deletetx-code-coming-in-v2-0"><a class="link" href="#deleting-transaction-code-deletetx-code-coming-in-v2-0">4.2.5. Deleting transaction: <code>deletetx</code> [Coming in v2.0]</a></h4>
+<h4 id="edittx"><a class="link" href="#edittx">4.2.4. Editing transaction: <code>edittx</code></a></h4>
 <div class="paragraph">
-<p>Deletes a transaction.<br>
-Format: <code>deletetx INDEX</code></p>
+<p>Format: <code>edittx INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Occasionally, you may make a mistake entering your transactions. Perhaps you entered the wrong amount, or made
+a heinous spelling error in your description. Fret not! You can correct these mistakes using <code>edittx</code>, and it would
+be as if it never happened.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>deletetx 5</code><br>
-Deletes the 5th transaction in the current list.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Suppose you wanted to record your cab fare to the hospital, and you mistakenly record the amount you spent as
+$10.00 instead of $20.00:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addtx3.png" alt="addtx3">
+</div>
+</div>
+<div class="paragraph">
+<p>You can rectify this error simply by entering the command <code>edittx 2 a/20.00</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/edittx.png" alt="edittx">
+</div>
+</div>
+<div class="paragraph">
+<p>Here, the number "2" specified near the start of the command corresponds to the index of the transaction
+you want to edit, as shown in the current transaction list.
+Apart from that, you need to specify only the information you want to edit.</p>
+</div>
+<div class="paragraph">
+<p>In addition, to make it easier for you to review your edits,
+the filter of the transaction list changes accordingly such that the edited transaction is shown.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Unfortunately, transactions created from repeaters cannot be edited or deleted directly.
+For a more detailed guide on how to modify these transactions, refer to <a href="#repeaters">Section 4.3, &#8220;Repeaters&#8221;</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deletetx"><a class="link" href="#deletetx">4.2.5. Deleting transaction: <code>deletetx</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>deletetx INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>By a stroke of luck, you may sometimes get a reimbursement for your expenditure! While you celebrate the
+influx of precious money, do take a moment to update IchiFund using <code>deletetx</code>.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you have just recorded and edited your cab ride to the hospital:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addtx3.png" alt="addtx3">
+</div>
+</div>
+<div class="paragraph">
+<p>Suppose you now find out that the expenditure is somehow covered by your insurance plan.
+Simply enter the command <code>delete 2</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/deletetx.png" alt="deletetx">
+</div>
+</div>
+<div class="paragraph">
+<p>Voila! The transaction is now deleted.</p>
+</div>
+<div class="paragraph">
+<p>Again, you only have to specify the index of the transaction you want to delete, as shown in the current
+transaction list.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Unfortunately, transactions created from repeaters cannot be edited or deleted directly.
+For a more detailed guide on how to modify these transactions, refer to <a href="#repeaters">Section 4.3, &#8220;Repeaters&#8221;</a>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -1239,4 +1313,4 @@ Displays expenditure ranking chart for July 2019.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 18:30:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 21:04:38 UTC</div></div></div></body></html>
