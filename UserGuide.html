@@ -21,8 +21,8 @@
 <li><a href="#ichifund-basics">4.1. IchiFund Basics</a></li>
 <li><a href="#transactions">4.2. Transactions</a></li>
 <li><a href="#repeaters">4.3. Repeaters</a></li>
-<li><a href="#loans">4.4. Loans</a></li>
-<li><a href="#budgets">4.5. Budgets</a></li>
+<li><a href="#budgets">4.4. Budgets</a></li>
+<li><a href="#loans">4.5. Loans</a></li>
 <li><a href="#analytics">4.6. Analytics</a></li>
 </ul>
 </li>
@@ -701,9 +701,174 @@ Deletes the 12th repeater in the current list. Also updates the associated trans
 </div>
 </div>
 <div class="sect2">
-<h3 id="loans"><a class="link" href="#loans">4.4. Loans</a></h3>
+<h3 id="budgets"><a class="link" href="#budgets">4.4. Budgets</a></h3>
+<div class="paragraph">
+<p>After taking the effort to record your expenditures, you want to ensure that you are spending within your limit.
+This is made simple with the budgeting features in IchiFund.</p>
+</div>
+<div class="paragraph">
+<p>Each budget that you create will have a description and a maximum expenditure limit.
+For advanced users who require finer control in their budgeting, you can also
+restrict which expenditures to include in the budget computation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In v1.4, all budgets are restricted to monthly budget.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the budget tab, you can maintain a list of your monthly budgets, adding, deleting and filtering items
+as you like. The image below gives an overview of the GUI of the feature:</p>
+</div>
+<div id="budgetsScreenshot" class="imageblock">
+<div class="content">
+<img src="images/BudgetsScreenshot.png" alt="BudgetsScreenshot">
+</div>
+<div class="title">Figure 3. Budgets tab</div>
+</div>
+<div class="paragraph">
+<p>The budget list comprises several budget cells. Each budget cell represents a single budget.
+We give a further breakdown of the information each budget cell displays in the following image:</p>
+</div>
+<div id="budgetCell" class="imageblock">
+<div class="content">
+<img src="images/BudgetCell.png" alt="BudgetCell">
+</div>
+<div class="title">Figure 4. Information in a budget cell</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The budget bar will turn from green to red when you spend over 80% of the total amount.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
-<h4 id="adding-new-loan-loannew"><a class="link" href="#adding-new-loan-loannew">4.4.1. Adding new loan: `loannew `</a></h4>
+<h4 id="creating-monthly-budget-code-addbud-code"><a class="link" href="#creating-monthly-budget-code-addbud-code">4.4.1. Creating monthly budget: <code>addbud</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>addbud de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>You can use the <code>addbud</code> command to create a monthly budget.
+Let us walk through the process for creating a budget for tracking your spending on food.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check to make sure you are in the budgets tab. If not, switch to it.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addbud1.png" alt="addbud1">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Type <code>addbud de/Saving my tummy a/82.69 c/food</code> into the command bar.
+This will create a $82.69 budget named <em>Saving my tummy</em> that tracks this month&#8217;s expenditures tagged with the <em>food</em> category.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the optional arguments <code>m/MONTH</code> and <code>y/YEAR</code> are not provided, the budget will track the current month.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addbud2.png" alt="addbud2">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>Press enter to run the command.
+You should see the newly created budget in the budget list.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addbud3.png" alt="addbud3">
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to track all monthly expenditures, simply leave out the <code>c/CATEGORY</code> argument.
+For instance, the following command creates a $500.00 budget that is applicable to all expenditures:
+<code>addbud de/General budgeting a/500</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-monthly-budget-code-deletebud-code"><a class="link" href="#deleting-monthly-budget-code-deletebud-code">4.4.2. Deleting monthly budget: <code>deletebud</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>deletebud INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>You can use <code>deletebud</code> to delete the budget.
+Let us walk through the process of deleting the <em>Saving my tummy</em> budget we created previously.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify the index of the budget you are deleting. Here, the index is 2.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/deletebud1.png" alt="deletebud1">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Type <code>deletebud 2</code> into the command bar and press enter.
+You should see the <em>Saving my tummy</em> budget disappear from the budget list.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-monthly-budget-by-keywords-code-findbud-code"><a class="link" href="#finding-monthly-budget-by-keywords-code-findbud-code">4.4.3. Finding monthly budget by keywords: <code>findbud</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>findbud KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="paragraph">
+<p>You can use <code>findbud</code> to find budgets with description that matches all the given keywords. To illustrate this, let us suppose you want to find all budgets with the word <em>saving</em> in its description.
+To do so, type <code>findbud saving</code> into the command bar and press enter.
+You should see the search result in the budget list.</p>
+</div>
+<div class="paragraph">
+<p>To revert the budget list so that all budgets are listed, simply execute <code>findbud</code> without any argument.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="loans"><a class="link" href="#loans">4.5. Loans</a></h3>
+<div class="sect3">
+<h4 id="adding-new-loan-loannew"><a class="link" href="#adding-new-loan-loannew">4.5.1. Adding new loan: `loannew `</a></h4>
 <div class="paragraph">
 <p>Adds new loan to list.<br>
 Format: <code>loannew  i/AMOUNT  n/NAME d/DESCRIPTION</code></p>
@@ -721,7 +886,7 @@ Takes input with initialization values and adds them to a lost of current unpaid
 </div>
 </div>
 <div class="sect3">
-<h4 id="marking-loan-paid-code-loan-paid-code"><a class="link" href="#marking-loan-paid-code-loan-paid-code">4.4.2. Marking Loan Paid: <code>loan paid</code></a></h4>
+<h4 id="marking-loan-paid-code-loan-paid-code"><a class="link" href="#marking-loan-paid-code-loan-paid-code">4.5.2. Marking Loan Paid: <code>loan paid</code></a></h4>
 <div class="paragraph">
 <p>Marks loan as paid or reduces amount from payment.<br>
 Format: <code>loanpaid i/INDEX [i/AMOUNT]</code></p>
@@ -739,7 +904,7 @@ Takes input with initialization values and adds them to a lost of current unpaid
 </div>
 </div>
 <div class="sect3">
-<h4 id="loan-categorical-search-code-loanshow-code"><a class="link" href="#loan-categorical-search-code-loanshow-code">4.4.3. Loan Categorical Search: <code>loanshow</code></a></h4>
+<h4 id="loan-categorical-search-code-loanshow-code"><a class="link" href="#loan-categorical-search-code-loanshow-code">4.5.3. Loan Categorical Search: <code>loanshow</code></a></h4>
 <div class="paragraph">
 <p>Shows all loans with certain name or description or date , or all loans+
 Format: <code>loanshow [s/KEYWORD]</code></p>
@@ -757,7 +922,7 @@ Shows all loans when no keyword is given, when keyword is added, all loans with 
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-new-loan-code-loantotal-code"><a class="link" href="#adding-new-loan-code-loantotal-code">4.4.4. Adding new loan: <code>loantotal</code></a></h4>
+<h4 id="adding-new-loan-code-loantotal-code"><a class="link" href="#adding-new-loan-code-loantotal-code">4.5.4. Adding new loan: <code>loantotal</code></a></h4>
 <div class="paragraph">
 <p>Finds and shows nett amount to pay/owed with keyword+
 Format: <code>loantotal s/KEYWORD</code></p>
@@ -775,7 +940,7 @@ If no keyword is given, it returns total difference in amount owed to other part
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-new-loan-code-loanset-code"><a class="link" href="#adding-new-loan-code-loanset-code">4.4.5. Adding new loan: <code>loanset</code></a></h4>
+<h4 id="adding-new-loan-code-loanset-code"><a class="link" href="#adding-new-loan-code-loanset-code">4.5.5. Adding new loan: <code>loanset</code></a></h4>
 <div class="paragraph">
 <p>Changes existing loan<br>
 Format: <code>loanset i/INDEX [a/AMOUNT] [d/DATE] [n/NAME] [d/DESCRIPTION]</code></p>
@@ -793,7 +958,7 @@ Takes input with initialization values for current loan identified by index, cha
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-new-loan-code-loansort-code"><a class="link" href="#adding-new-loan-code-loansort-code">4.4.6. Adding new loan: <code>loansort</code></a></h4>
+<h4 id="adding-new-loan-code-loansort-code"><a class="link" href="#adding-new-loan-code-loansort-code">4.5.6. Adding new loan: <code>loansort</code></a></h4>
 <div class="paragraph">
 <p>Finds and shows all loans sorted<br>
 Format: <code>loansort s/BY</code></p>
@@ -806,151 +971,6 @@ Format: <code>loansort s/BY</code></p>
 <li>
 <p><code>loansort s/DATE</code><br>
 Loans shown sorted by any given constrain, date or value owed.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="budgets"><a class="link" href="#budgets">4.5. Budgets</a></h3>
-<div class="sect3">
-<h4 id="add-a-monthly-budget-code-badd-code"><a class="link" href="#add-a-monthly-budget-code-badd-code">4.5.1. Add a monthly budget: <code>badd</code></a></h4>
-<div class="paragraph">
-<p>Sets monthly expenditure budget.<br>
-Format: <code>badd de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>badd de/Saving for future a/1000.00</code><br>
-Sets monthly expenditure budget to $1000.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-a-monthly-budget-code-bdelete-code"><a class="link" href="#delete-a-monthly-budget-code-bdelete-code">4.5.2. Delete a monthly budget: <code>bdelete</code></a></h4>
-<div class="paragraph">
-<p>Deletes the budget identified by the index number used in the displayed budget list.<br>
-Format: <code>bdelete INDEX</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>bdelete 1</code><br>
-Deletes the first entry on the displayed budget list.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="excluding-expenditure-from-budget-code-bexclude-code"><a class="link" href="#excluding-expenditure-from-budget-code-bexclude-code">4.5.3. Excluding expenditure from budget: <code>bexclude</code></a></h4>
-<div class="paragraph">
-<p>Excludes expenditure from computation of budget.<br>
-Format: <code>bexclude INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>All expenditures are included by default.</p>
-</li>
-<li>
-<p>Excluding an income has no effect.</p>
-</li>
-<li>
-<p>Excluding an already excluded expenditure has no effect.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listtx</code><br>
-<code>bexclude 2</code><br>
-Excludes the 2nd expenditure in the list from computation of budget.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="including-expenditure-in-budget-code-binclude-code"><a class="link" href="#including-expenditure-in-budget-code-binclude-code">4.5.4. Including expenditure in budget: <code>binclude</code></a></h4>
-<div class="paragraph">
-<p>Includes expenditure in computation of budget.<br>
-Format: <code>binclude INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>All expenditures are included by default.</p>
-</li>
-<li>
-<p>Including an income has no effect.</p>
-</li>
-<li>
-<p>Including an already included expenditures has no effect.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listtx</code><br>
-<code>binclude 2</code><br>
-Includes the 2nd expenditure in the list from computation of budget.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="viewing-budget-information-code-binfo-code"><a class="link" href="#viewing-budget-information-code-binfo-code">4.5.5. Viewing budget information: <code>binfo</code></a></h4>
-<div class="paragraph">
-<p>Displays budget information.<br>
-Format: <code>binfo [m/MONTH y/YEAR]</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-This shows the budget breakdown by category.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>binfo</code><br>
-Displays expenditure budget left and a list of all excluded expenditures for current month.</p>
-</li>
-<li>
-<p><code>binfo m/7 y/2019</code><br>
-Displays expenditure budget left and a list of all excluded expenditures for July 2019.</p>
 </li>
 </ul>
 </div>
@@ -1219,4 +1239,4 @@ Displays expenditure ranking chart for July 2019.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 18:30:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 18:30:57 UTC</div></div></div></body></html>
