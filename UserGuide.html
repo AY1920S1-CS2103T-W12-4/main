@@ -22,7 +22,7 @@
 <li><a href="#transactions">4.2. Transactions</a></li>
 <li><a href="#repeaters">4.3. Repeaters</a></li>
 <li><a href="#budgets">4.4. Budgets</a></li>
-<li><a href="#loans">4.5. Loans</a></li>
+<li><a href="#loans-coming-in-v2-0">4.5. Loans [Coming in v2.0]</a></li>
 <li><a href="#analytics">4.6. Analytics</a></li>
 </ul>
 </li>
@@ -970,7 +970,7 @@ You should see the search result in the budget list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="loans"><a class="link" href="#loans">4.5. Loans</a></h3>
+<h3 id="loans-coming-in-v2-0"><a class="link" href="#loans-coming-in-v2-0">4.5. Loans [Coming in v2.0]</a></h3>
 <div class="sect3">
 <h4 id="adding-new-loan-loannew"><a class="link" href="#adding-new-loan-loannew">4.5.1. Adding new loan: `loannew `</a></h4>
 <div class="paragraph">
@@ -1273,10 +1273,7 @@ Displays expenditure ranking chart for July 2019.</p>
 <p><strong>Transaction Delete</strong> : <code>deletetx INDEX</code></p>
 </li>
 <li>
-<p><strong>Transaction Find</strong> : <code>findtx [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
-</li>
-<li>
-<p><strong>Transaction List</strong> : <code>listtx</code></p>
+<p><strong>Transaction Find</strong> : <code>filtertx [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TRANSACTION_TYPE]</code></p>
 </li>
 <li>
 <p><strong>Transaction Repeater Add</strong> : <code>addrep de/DESCRIPTION a/AMOUNT p/DAY_OF_MONTH&#8230;&#8203; ty/TRANSACTION_TYPE</code></p>
@@ -1288,40 +1285,34 @@ Displays expenditure ranking chart for July 2019.</p>
 <p><strong>Transaction Repeater Delete</strong> : <code>deleterep INDEX [d/DELETEALL]</code></p>
 </li>
 <li>
-<p><strong>Transaction Repeater Find</strong> : <code>findrep [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY_OF_MONTH]&#8230;&#8203; [ty/TRANSACTION_TYPE]</code></p>
+<p><strong>Transaction Repeater Find</strong> : <code>findrep [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY_OF_MONTH]&#8230;&#8203; [ty/TRANSACTION_TYPE]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Add new</strong> : <code>loannew a/Amount [d/DATE] [n/NAME]</code></p>
+<p><strong>Loan Add new</strong> : <code>loannew a/Amount [d/DATE] [n/NAME]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Payment</strong> : <code>loanpaid i/INDEX [n/NAME] [a/AMOUNT]</code></p>
+<p><strong>Loan Payment</strong> : <code>loanpaid i/INDEX [n/NAME] [a/AMOUNT]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Categorical Search</strong> : <code>loanshow [s/KEYWORD]</code></p>
+<p><strong>Loan Categorical Search</strong> : <code>loanshow [s/KEYWORD]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Net Amount</strong> : <code>loantotal [s/KEYWORD]</code></p>
+<p><strong>Loan Net Amount</strong> : <code>loantotal [s/KEYWORD]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Value Update</strong> : <code>loanset i/INDEX [a/AMOUNT] [s/DATE] [n/NAME] [d/DESCRIPTION]</code></p>
+<p><strong>Loan Value Update</strong> : <code>loanset i/INDEX [a/AMOUNT] [s/DATE] [n/NAME] [d/DESCRIPTION]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Sort By Value</strong> : <code>loansort s/BY</code></p>
+<p><strong>Loan Sort By Value</strong> : <code>loansort s/BY</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Budget Add</strong> : <code>badd de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
+<p><strong>Budget Add</strong> : <code>addbud de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
 </li>
 <li>
-<p><strong>Budget Delete</strong> : <code>bdelete INDEX</code></p>
+<p><strong>Budget Delete</strong> : <code>deletebud INDEX</code></p>
 </li>
 <li>
-<p><strong>Budget Exclude</strong> : <code>bexclude INDEX</code></p>
-</li>
-<li>
-<p><strong>Budget Include</strong> : <code>binclude INDEX</code></p>
-</li>
-<li>
-<p><strong>Budget Info</strong> : <code>binfo [m/MONTH y/YEAR]</code></p>
+<p><strong>Budget Find</strong> : <code>findbud KEYWORD [MORE_KEYWORDS]</code></p>
 </li>
 <li>
 <p><strong>Expenditure Trend</strong> : <code>expenditure [y/YEAR]</code></p>
@@ -1347,4 +1338,4 @@ Displays expenditure ranking chart for July 2019.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 05:26:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 05:32:16 UTC</div></div></div></body></html>
