@@ -71,10 +71,10 @@ Here are some example commands you can try in the transaction tab:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>addtx</code></strong><code>de/Lunch a/12.30</code> : adds an expenditure item for "Lunch" to IchiFund.</p>
+<p><strong><code>add</code></strong><code>de/Lunch a/12.30</code> : adds an expenditure item for "Lunch" to IchiFund.</p>
 </li>
 <li>
-<p><strong><code>filtertx</code></strong><code>m/10 y/2019 c/!all ty/exp</code> : finds all expenditure items from October 2019.</p>
+<p><strong><code>filter</code></strong><code>m/10 y/2019 c/!all ty/exp</code> : finds all expenditure items from October 2019.</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits IchiFund</p>
@@ -194,18 +194,18 @@ These commands are recognised regardless of which tab you are currently using.</
 <ul>
 <li>
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by you.<br>
-E.g., <strong><code>addtx</code></strong><code>de/DESCRIPTION a/AMOUNT</code>, <code>DESCRIPTION</code> and <code>AMOUNT</code> are parameters which can be used as <strong><code>addtx</code></strong><code>de/AirPods a/299.00</code>.</p>
+E.g., <strong><code>add</code></strong><code>de/DESCRIPTION a/AMOUNT</code>, <code>DESCRIPTION</code> and <code>AMOUNT</code> are parameters which can be used as <strong><code>addtx</code></strong><code>de/AirPods a/299.00</code>.</p>
 </li>
 <li>
 <p>Items in square brackets are optional.<br>
-E.g. <strong><code>badd</code></strong><code>de/DESCRIPTION a/AMOUNT [c/CATEGORY]</code> can be used as</p>
+E.g. <strong><code>add</code></strong><code>de/DESCRIPTION a/AMOUNT [c/CATEGORY]</code> can be used as</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>badd</code></strong><code>de/Saving for iPhone 11 Pro Max a/271.80 c/Gadgets</code></p>
+<p><strong><code>add</code></strong><code>de/Saving for iPhone 11 Pro Max a/271.80 c/Gadgets</code></p>
 </li>
 <li>
-<p><strong><code>badd</code></strong><code>de/Saving for iPhone 11 Pro Max a/271.80</code>.</p>
+<p><strong><code>add</code></strong><code>de/Saving for iPhone 11 Pro Max a/271.80</code>.</p>
 </li>
 </ul>
 </div>
@@ -232,7 +232,7 @@ E.g., <code>[s/KEYWORD]…​</code> can be used as</p>
 </li>
 <li>
 <p>You can enter parameters in any order.<br>
-E.g., if the command specifies <strong><code>addtx</code></strong><code>de/DESCRIPTION a/AMOUNT</code>, <strong><code>addtx</code></strong><code>a/AMOUNT de/DESCRIPTION</code> is also acceptable.</p>
+E.g., if the command specifies <strong><code>add</code></strong><code>de/DESCRIPTION a/AMOUNT</code>, <strong><code>add</code></strong><code>a/AMOUNT de/DESCRIPTION</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -335,7 +335,7 @@ the category shown, as well as whether only expenditure/income items are shown.<
 </div>
 <div class="paragraph">
 <p>The filter title changes along with the filter that is applied to the list. You can change the filter using
-the <code>filtertx</code> command in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transactions: <code>filtertx</code>&#8221;</a></p>
+the <code>filter</code> command in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transactions: <code>filter</code>&#8221;</a></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -357,13 +357,13 @@ This makes it easier for you to access the transactions in the current month!
 </div>
 </div>
 <div class="sect3">
-<h4 id="filtertx"><a class="link" href="#filtertx">4.2.2. Filtering transactions: <code>filtertx</code></a></h4>
+<h4 id="filtertx"><a class="link" href="#filtertx">4.2.2. Filtering transactions: <code>filter</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>filtertx [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TYPE]</code></p>
+<p>Format: <code>filter [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TYPE]</code></p>
 </div>
 <div class="paragraph">
 <p>To better understand how your money goes down the drain, it is critical to organise and filter your
-transactions. <code>filtertx</code> does the job for you.</p>
+transactions. <code>filter</code> does the job for you.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s say you are currently viewing transactions from
@@ -376,7 +376,7 @@ September 2018. The GUI of Ichifund may look like this:</p>
 </div>
 <div class="paragraph">
 <p>Suppose you want to view transactions from a different month, say, September 2018.
-You can simply enter the command <code>filtertx m/9 y/2018</code>, which results in the following view:</p>
+You can simply enter the command <code>filter m/9 y/2018</code>, which results in the following view:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -384,7 +384,7 @@ You can simply enter the command <code>filtertx m/9 y/2018</code>, which results
 </div>
 </div>
 <div class="paragraph">
-<p>Now, if you want to only see expenditure items, simply enter the command <code>filtertx ty/exp</code>.</p>
+<p>Now, if you want to only see expenditure items, simply enter the command <code>filter ty/exp</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -394,7 +394,7 @@ You can simply enter the command <code>filtertx m/9 y/2018</code>, which results
 <div class="paragraph">
 <p>You may find that this view of the list is still too cluttered for you. In that case,
 you can further limit the transactions in the list to contain only items from the category "FOOD" using
-the command <code>filtertx c/food</code></p>
+the command <code>filter c/food</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -403,7 +403,7 @@ the command <code>filtertx c/food</code></p>
 </div>
 <div class="paragraph">
 <p>If you want to see expenditure items of the same time, but in a different month, say, August 2019, enter
-the command <code>filtertx m/8</code>. Note that you do not need to enter the year, category, or transaction type again.
+the command <code>filter m/8</code>. Note that you do not need to enter the year, category, or transaction type again.
 The GUI will update accordingly, as follows:</p>
 </div>
 <div class="imageblock">
@@ -418,7 +418,7 @@ The GUI will update accordingly, as follows:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-To see only expenditure items, enter <code>filtertx ty/exp</code>; to see only income items, enter <code>filtertx ty/in</code>. This
+To see only expenditure items, enter <code>filter ty/exp</code>; to see only income items, enter <code>filter ty/in</code>. This
 also applies when you are adding transactions in <a href="#addtx">Section 4.2.3, &#8220;Creating transaction: <code>addtx</code>&#8221;</a>
 </td>
 </tr>
@@ -428,7 +428,7 @@ also applies when you are adding transactions in <a href="#addtx">Section 4.2.3,
 <h5 id="removing-category-and-transaction-type-filter"><a class="link" href="#removing-category-and-transaction-type-filter">Removing category and transaction type filter</a></h5>
 <div class="paragraph">
 <p>Now, if you want to remove both the category filter and the transaction type, you can enter the command
-<code>filtertx c/!all ty/!all</code>.</p>
+<code>filter c/!all ty/!all</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -456,7 +456,7 @@ the removal of the month and year filter.
 </td>
 <td class="content">
 Like the other commands in IchiFund, you can enter the arguments in any order, as long as
-the command word <code>filtertx</code> is keyed in at the start.
+the command word <code>filter</code> is keyed in at the start.
 </td>
 </tr>
 </table>
@@ -466,11 +466,11 @@ the command word <code>filtertx</code> is keyed in at the start.
 <div class="sect3">
 <h4 id="addtx"><a class="link" href="#addtx">4.2.3. Creating transaction: <code>addtx</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>addtx de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
+<p>Format: <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </div>
 <div class="paragraph">
 <p>As painful as it is to remind yourself each time you part with your money, it is essential to meticulously
-record your transactions. <code>addtx</code> eases this process.</p>
+record your transactions. <code>add</code> eases this process.</p>
 </div>
 <div class="paragraph">
 <p>Imagine you are browsing your transactions under the category of "Transportation"
@@ -484,7 +484,7 @@ in November. Your GUI may look like this:</p>
 <div class="paragraph">
 <p>Let&#8217;s say you remember that spent $12.31 on lunch on 31 October 2019.
 If you want to record this transaction under the category "FOOD", you can enter the full
-command <code>addtx de/Lunch a/12.31 c/food d/31 m/10 y/2019 ty/exp</code></p>
+command <code>add de/Lunch a/12.31 c/food d/31 m/10 y/2019 ty/exp</code></p>
 </div>
 <div class="paragraph">
 <p>The application now looks like this:</p>
@@ -496,7 +496,7 @@ command <code>addtx de/Lunch a/12.31 c/food d/31 m/10 y/2019 ty/exp</code></p>
 </div>
 <div class="paragraph">
 <p>Here, IchiFund automatically changes the filter for you, so that you can review the addition
-you made. This makes it convenient if you want to edit your transactions, as detailed in <a href="#edittx">Section 4.2.4, &#8220;Editing transaction: <code>edittx</code>&#8221;</a></p>
+you made. This makes it convenient if you want to edit your transactions, as detailed in <a href="#edittx">Section 4.2.4, &#8220;Editing transaction: <code>edit</code>&#8221;</a></p>
 </div>
 <div class="paragraph">
 <p>Also, note that the transaction appears at the top of the list. This is because we automatically sort
@@ -511,7 +511,7 @@ transactions.</p>
 </td>
 <td class="content">
 When specifying whether a transaction is an expenditure item or an income item, use the arguments
-<code>ty/exp</code> or <code>ty/in</code> respectively, similar to how would do so in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transactions: <code>filtertx</code>&#8221;</a>
+<code>ty/exp</code> or <code>ty/in</code> respectively, similar to how would do so in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transactions: <code>filter</code>&#8221;</a>
 </td>
 </tr>
 </table>
@@ -530,7 +530,7 @@ arguments. To illustrate this, let&#8217;s return to the earlier scenario:</p>
 <div class="paragraph">
 <p>Let&#8217;s say it is 1 November 2019 today. You have just spent another $10.00 hiring a cab to go to the hospital,
 and want to record this transaction under the category of "Transportation". You can simply enter
-the command <code>addtx a/10 de/Cab to hospital</code>, and obtain the following result:</p>
+the command <code>add a/10 de/Cab to hospital</code>, and obtain the following result:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -646,13 +646,13 @@ feature to its fullest, you are recommended to add transactions on the day it oc
 </div>
 </div>
 <div class="sect3">
-<h4 id="edittx"><a class="link" href="#edittx">4.2.4. Editing transaction: <code>edittx</code></a></h4>
+<h4 id="edittx"><a class="link" href="#edittx">4.2.4. Editing transaction: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>edittx INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
+<p>Format: <code>edit INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </div>
 <div class="paragraph">
 <p>Occasionally, you may make a mistake entering your transactions. Perhaps you entered the wrong amount, or made
-a heinous spelling error in your description. Fret not! You can correct these mistakes using <code>edittx</code>, and it would
+a heinous spelling error in your description. Fret not! You can correct these mistakes using <code>edit</code>, and it would
 be as if it never happened.</p>
 </div>
 <div class="paragraph">
@@ -665,7 +665,7 @@ $10.00 instead of $20.00:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can rectify this error simply by entering the command <code>edittx 2 a/20.00</code>:</p>
+<p>You can rectify this error simply by entering the command <code>edit 2 a/20.00</code>:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -696,13 +696,13 @@ For a more detailed guide on how to modify these transactions, refer to <a href=
 </div>
 </div>
 <div class="sect3">
-<h4 id="deletetx"><a class="link" href="#deletetx">4.2.5. Deleting transaction: <code>deletetx</code></a></h4>
+<h4 id="deletetx"><a class="link" href="#deletetx">4.2.5. Deleting transaction: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>deletetx INDEX</code></p>
+<p>Format: <code>delete INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>By a stroke of luck, you may sometimes get a reimbursement for your expenditure! While you celebrate the
-influx of precious money, do take a moment to update IchiFund using <code>deletetx</code>.</p>
+influx of precious money, do take a moment to update IchiFund using <code>delete</code>.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s say you have just recorded and edited your cab ride to the hospital:</p>
@@ -746,7 +746,7 @@ For a more detailed guide on how to modify these transactions, refer to <a href=
 <div class="sect2">
 <h3 id="repeaters"><a class="link" href="#repeaters">4.3. Repeaters</a></h3>
 <div class="sect3">
-<h4 id="creating-repeater-code-addrep-code"><a class="link" href="#creating-repeater-code-addrep-code">4.3.1. Creating repeater: <code>addrep</code></a></h4>
+<h4 id="creating-repeater-code-add-code"><a class="link" href="#creating-repeater-code-add-code">4.3.1. Creating repeater: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Creates repeater together with the associated transactions.<br>
 Format: <code>de/DESCRIPTION a/AMOUNT c/CATEGORY ty/TRANSACTION_TYPE so/MONTH_START_OFFSET eo/MONTH_END_OFFSET sm/START_MONTH sy/START_YEAR em/END_MONTH ey/END_YEAR</code></p>
@@ -757,17 +757,17 @@ Format: <code>de/DESCRIPTION a/AMOUNT c/CATEGORY ty/TRANSACTION_TYPE so/MONTH_ST
 <div class="ulist">
 <ul>
 <li>
-<p><code>addrep de/Phone bills a/42.15 c/Utilities ty/exp so/3 eo/2 sm/1 sy/2019 em/12 ey/2025</code><br>
+<p><code>add de/Phone bills a/42.15 c/Utilities ty/exp so/3 eo/2 sm/1 sy/2019 em/12 ey/2025</code><br>
 Creates a repeater titled "Phone bills" as an expenditure for Utilities of $42.15 for every third day and second last day of the month, between January 2019 to December 2025. Also creates the associated transactions.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-repeater-code-editrep-code"><a class="link" href="#editing-repeater-code-editrep-code">4.3.2. Editing repeater <code>editrep</code></a></h4>
+<h4 id="editing-repeater-code-edit-code"><a class="link" href="#editing-repeater-code-edit-code">4.3.2. Editing repeater <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits repeater together with the associated transactions.<br>
-Format: <code>editrep INDEX (must be a positive integer) [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [ty/TRANSACTION_TYPE] [so/MONTH_START_OFFSET] [eo/MONTH_END_OFFSET] [sm/START_MONTH] [sy/START_YEAR] [em/END_MONTH] [ey/END_YEAR]</code></p>
+Format: <code>edit INDEX (must be a positive integer) [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [ty/TRANSACTION_TYPE] [so/MONTH_START_OFFSET] [eo/MONTH_END_OFFSET] [sm/START_MONTH] [sy/START_YEAR] [em/END_MONTH] [ey/END_YEAR]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -775,17 +775,17 @@ Format: <code>editrep INDEX (must be a positive integer) [de/DESCRIPTION] [a/AMO
 <div class="ulist">
 <ul>
 <li>
-<p><code>editrep 1 a/31.34 c/Food ty/in so/1 eo/-1 sm/1 sy/2019 em/12 ey/2020</code><br>
+<p><code>edit 1 a/31.34 c/Food ty/in so/1 eo/-1 sm/1 sy/2019 em/12 ey/2020</code><br>
 Edits the first repeater in the current list into a $31.34 expenditure for every first day of the month, between January 2019 and December 2020. Also updates the associated transactions.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-repeater-code-delrep-code"><a class="link" href="#deleting-repeater-code-delrep-code">4.3.3. Deleting repeater: <code>delrep</code></a></h4>
+<h4 id="deleting-repeater-code-delete-code"><a class="link" href="#deleting-repeater-code-delete-code">4.3.3. Deleting repeater: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes repeater together with all created transactions associated with the specified repeater.<br>
-Format: <code>delrep INDEX</code></p>
+Format: <code>delete INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -793,14 +793,14 @@ Format: <code>delrep INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delrep 12</code><br>
+<p><code>delete 12</code><br>
 Deletes the 12th repeater in the current list. Also updates the associated transactions.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-repeater-code-findrep-code-coming-in-v2-0"><a class="link" href="#finding-repeater-code-findrep-code-coming-in-v2-0">4.3.4. Finding repeater: <code>findrep</code> [Coming in v2.0]</a></h4>
+<h4 id="finding-repeater-code-find-code-coming-in-v2-0"><a class="link" href="#finding-repeater-code-find-code-coming-in-v2-0">4.3.4. Finding repeater: <code>find</code> [Coming in v2.0]</a></h4>
 
 </div>
 </div>
@@ -860,12 +860,12 @@ The budget bar will turn from green to red when you spend over 80% of the total 
 </table>
 </div>
 <div class="sect3">
-<h4 id="creating-monthly-budget-code-addbud-code"><a class="link" href="#creating-monthly-budget-code-addbud-code">4.4.1. Creating monthly budget: <code>addbud</code></a></h4>
+<h4 id="creating-monthly-budget-code-add-code"><a class="link" href="#creating-monthly-budget-code-add-code">4.4.1. Creating monthly budget: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>addbud de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
+<p>Format: <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
 </div>
 <div class="paragraph">
-<p>You can use the <code>addbud</code> command to create a monthly budget.
+<p>You can use the <code>add</code> command to create a monthly budget.
 Let us walk through the process for creating a budget for tracking your spending on food.</p>
 </div>
 <div class="olist arabic">
@@ -921,16 +921,16 @@ You should see the newly created budget in the budget list.</p>
 <div class="paragraph">
 <p>If you want to track all monthly expenditures, simply leave out the <code>c/CATEGORY</code> argument.
 For instance, the following command creates a $500.00 budget that is applicable to all expenditures:
-<code>addbud de/General budgeting a/500</code>.</p>
+<code>add de/General budgeting a/500</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-monthly-budget-code-deletebud-code"><a class="link" href="#deleting-monthly-budget-code-deletebud-code">4.4.2. Deleting monthly budget: <code>deletebud</code></a></h4>
+<h4 id="deleting-monthly-budget-code-delete-code"><a class="link" href="#deleting-monthly-budget-code-delete-code">4.4.2. Deleting monthly budget: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>deletebud INDEX</code></p>
+<p>Format: <code>delete INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>You can use <code>deletebud</code> to delete the budget.
+<p>You can use <code>delete</code> to delete the budget.
 Let us walk through the process of deleting the <em>Saving my tummy</em> budget we created previously.</p>
 </div>
 <div class="olist arabic">
@@ -948,24 +948,24 @@ Let us walk through the process of deleting the <em>Saving my tummy</em> budget 
 <div class="olist arabic">
 <ol class="arabic" start="2">
 <li>
-<p>Type <code>deletebud 2</code> into the command bar and press enter.
+<p>Type <code>delete 2</code> into the command bar and press enter.
 You should see the <em>Saving my tummy</em> budget disappear from the budget list.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-monthly-budget-by-keywords-code-findbud-code"><a class="link" href="#finding-monthly-budget-by-keywords-code-findbud-code">4.4.3. Finding monthly budget by keywords: <code>findbud</code></a></h4>
+<h4 id="finding-monthly-budget-by-keywords-code-find-code"><a class="link" href="#finding-monthly-budget-by-keywords-code-find-code">4.4.3. Finding monthly budget by keywords: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>findbud KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="paragraph">
-<p>You can use <code>findbud</code> to find budgets with description that matches all the given keywords. To illustrate this, let us suppose you want to find all budgets with the word <em>saving</em> in its description.
-To do so, type <code>findbud saving</code> into the command bar and press enter.
+<p>You can use <code>find</code> to find budgets with description that matches all the given keywords. To illustrate this, let us suppose you want to find all budgets with the word <em>saving</em> in its description.
+To do so, type <code>find saving</code> into the command bar and press enter.
 You should see the search result in the budget list.</p>
 </div>
 <div class="paragraph">
-<p>To revert the budget list so that all budgets are listed, simply execute <code>findbud</code> without any argument.</p>
+<p>To revert the budget list so that all budgets are listed, simply execute <code>find</code> without any argument.</p>
 </div>
 </div>
 </div>
@@ -1264,28 +1264,28 @@ Displays expenditure ranking chart for July 2019.</p>
 <p><strong>Exit</strong> : <code>exit</code></p>
 </li>
 <li>
-<p><strong>Transaction Add</strong> : <code>addtx de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
+<p><strong>Transaction Add</strong> : <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </li>
 <li>
-<p><strong>Transaction Edit</strong> : <code>edittx INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
+<p><strong>Transaction Edit</strong> : <code>edit INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </li>
 <li>
-<p><strong>Transaction Delete</strong> : <code>deletetx INDEX</code></p>
+<p><strong>Transaction Delete</strong> : <code>delete INDEX</code></p>
 </li>
 <li>
-<p><strong>Transaction Find</strong> : <code>filtertx [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TRANSACTION_TYPE]</code></p>
+<p><strong>Transaction Find</strong> : <code>filter [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TRANSACTION_TYPE]</code></p>
 </li>
 <li>
-<p><strong>Transaction Repeater Add</strong> : <code>addrep de/DESCRIPTION a/AMOUNT p/DAY_OF_MONTH&#8230;&#8203; ty/TRANSACTION_TYPE</code></p>
+<p><strong>Transaction Repeater Add</strong> : <code>add de/DESCRIPTION a/AMOUNT p/DAY_OF_MONTH&#8230;&#8203; ty/TRANSACTION_TYPE</code></p>
 </li>
 <li>
-<p><strong>Transaction Repeater Edit</strong> : <code>editrep INDEX [de/DESCRIPTION] [a/AMOUNT] [p/DAY_OF_MONTH]&#8230;&#8203; [c/CATEGORY] [ty/TRANSACTION_TYPE]&#8230;&#8203;</code></p>
+<p><strong>Transaction Repeater Edit</strong> : <code>edit INDEX [de/DESCRIPTION] [a/AMOUNT] [p/DAY_OF_MONTH]&#8230;&#8203; [c/CATEGORY] [ty/TRANSACTION_TYPE]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p><strong>Transaction Repeater Delete</strong> : <code>deleterep INDEX [d/DELETEALL]</code></p>
+<p><strong>Transaction Repeater Delete</strong> : <code>delete INDEX [d/DELETEALL]</code></p>
 </li>
 <li>
-<p><strong>Transaction Repeater Find</strong> : <code>findrep [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY_OF_MONTH]&#8230;&#8203; [ty/TRANSACTION_TYPE]</code>  (Coming in v2.0)</p>
+<p><strong>Transaction Repeater Find</strong> : <code>find [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY_OF_MONTH]&#8230;&#8203; [ty/TRANSACTION_TYPE]</code>  (Coming in v2.0)</p>
 </li>
 <li>
 <p><strong>Loan Add new</strong> : <code>loannew a/Amount [d/DATE] [n/NAME]</code>  (Coming in v2.0)</p>
@@ -1306,13 +1306,13 @@ Displays expenditure ranking chart for July 2019.</p>
 <p><strong>Loan Sort By Value</strong> : <code>loansort s/BY</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Budget Add</strong> : <code>addbud de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
+<p><strong>Budget Add</strong> : <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
 </li>
 <li>
-<p><strong>Budget Delete</strong> : <code>deletebud INDEX</code></p>
+<p><strong>Budget Delete</strong> : <code>delete INDEX</code></p>
 </li>
 <li>
-<p><strong>Budget Find</strong> : <code>findbud KEYWORD [MORE_KEYWORDS]</code></p>
+<p><strong>Budget Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </li>
 <li>
 <p><strong>Expenditure Trend</strong> : <code>expenditure [y/YEAR]</code></p>
@@ -1338,4 +1338,4 @@ Displays expenditure ranking chart for July 2019.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 05:32:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-02 11:25:09 UTC</div></div></div></body></html>
