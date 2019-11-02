@@ -58,26 +58,33 @@ traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, 
 </li>
 <li>
 <p>Double-click the file to start IchiFund. The GUI should appear in a few seconds.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternatively, open a command window and run <code>java -jar ichifund.jar</code> in the appropriate directory.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
 </div>
 </div>
 </li>
+</ul>
+</div>
+</li>
 <li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-E.g., typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.<br>
+E.g., typing <code>help</code> and pressing <kbd>Enter</kbd> will open the help window.<br>
 Here are some example commands you can try in the transaction tab:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>add</code></strong><code>de/Lunch a/12.30</code> : adds an expenditure item for "Lunch" to IchiFund.</p>
+<p><code>add de/Lunch a/12.30</code> : adds an expenditure item for "Lunch" to IchiFund.</p>
 </li>
 <li>
-<p><strong><code>filter</code></strong><code>m/10 y/2019 c/!all ty/exp</code> : finds all expenditure items from October 2019.</p>
+<p><code>filter m/10 y/2019 c/!all ty/exp</code> : finds all expenditure items from October 2019.</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits IchiFund</p>
+<p><code>exit</code> : exits IchiFund</p>
 </li>
 </ul>
 </div>
@@ -194,18 +201,18 @@ These commands are recognised regardless of which tab you are currently using.</
 <ul>
 <li>
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by you.<br>
-E.g., <strong><code>add</code></strong><code>de/DESCRIPTION a/AMOUNT</code>, <code>DESCRIPTION</code> and <code>AMOUNT</code> are parameters which can be used as <strong><code>addtx</code></strong><code>de/AirPods a/299.00</code>.</p>
+E.g., <code>add de/DESCRIPTION a/AMOUNT</code>, <code>DESCRIPTION</code> and <code>AMOUNT</code> are parameters which can be used as <code>add de/AirPods a/299.00</code>.</p>
 </li>
 <li>
 <p>Items in square brackets are optional.<br>
-E.g. <strong><code>add</code></strong><code>de/DESCRIPTION a/AMOUNT [c/CATEGORY]</code> can be used as</p>
+E.g. <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY]</code> can be used as</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>add</code></strong><code>de/Saving for iPhone 11 Pro Max a/271.80 c/Gadgets</code></p>
+<p><code>add de/Saving for iPhone 11 Pro Max a/271.80 c/Gadgets</code></p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>de/Saving for iPhone 11 Pro Max a/271.80</code>.</p>
+<p><code>add de/Saving for iPhone 11 Pro Max a/271.80</code>.</p>
 </li>
 </ul>
 </div>
@@ -232,7 +239,7 @@ E.g., <code>[s/KEYWORD]…​</code> can be used as</p>
 </li>
 <li>
 <p>You can enter parameters in any order.<br>
-E.g., if the command specifies <strong><code>add</code></strong><code>de/DESCRIPTION a/AMOUNT</code>, <strong><code>add</code></strong><code>a/AMOUNT de/DESCRIPTION</code> is also acceptable.</p>
+E.g., if the command specifies <code>add de/DESCRIPTION a/AMOUNT</code>, <code>add a/AMOUNT de/DESCRIPTION</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -335,7 +342,7 @@ the category shown, as well as whether only expenditure/income items are shown.<
 </div>
 <div class="paragraph">
 <p>The filter title changes along with the filter that is applied to the list. You can change the filter using
-the <code>filter</code> command in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transactions: <code>filter</code>&#8221;</a></p>
+the <code>filter</code> command in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transaction: <code>filter</code>&#8221;</a></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -357,7 +364,7 @@ This makes it easier for you to access the transactions in the current month!
 </div>
 </div>
 <div class="sect3">
-<h4 id="filtertx"><a class="link" href="#filtertx">4.2.2. Filtering transactions: <code>filter</code></a></h4>
+<h4 id="filtertx"><a class="link" href="#filtertx">4.2.2. Filtering transaction: <code>filter</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>filter [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TYPE]</code></p>
 </div>
@@ -419,7 +426,7 @@ The GUI will update accordingly, as follows:</p>
 </td>
 <td class="content">
 To see only expenditure items, enter <code>filter ty/exp</code>; to see only income items, enter <code>filter ty/in</code>. This
-also applies when you are adding transactions in <a href="#addtx">Section 4.2.3, &#8220;Creating transaction: <code>addtx</code>&#8221;</a>
+also applies when you are adding transactions in <a href="#addtx">Section 4.2.3, &#8220;Creating transaction: <code>add</code>&#8221;</a>
 </td>
 </tr>
 </table>
@@ -464,7 +471,7 @@ the command word <code>filter</code> is keyed in at the start.
 </div>
 </div>
 <div class="sect3">
-<h4 id="addtx"><a class="link" href="#addtx">4.2.3. Creating transaction: <code>addtx</code></a></h4>
+<h4 id="addtx"><a class="link" href="#addtx">4.2.3. Creating transaction: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </div>
@@ -511,7 +518,7 @@ transactions.</p>
 </td>
 <td class="content">
 When specifying whether a transaction is an expenditure item or an income item, use the arguments
-<code>ty/exp</code> or <code>ty/in</code> respectively, similar to how would do so in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transactions: <code>filter</code>&#8221;</a>
+<code>ty/exp</code> or <code>ty/in</code> respectively, similar to how would do so in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transaction: <code>filter</code>&#8221;</a>
 </td>
 </tr>
 </table>
@@ -624,15 +631,15 @@ feature to its fullest, you are recommended to add transactions on the day it oc
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Day</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Numerical value from 1-31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whole number from 1-31</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Month</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Numerical value from 1-12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whole number from 1-12</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Year</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Numerical value from 2000-9999</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whole number from 2000-9999</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
@@ -972,7 +979,7 @@ You should see the search result in the budget list.</p>
 <div class="sect2">
 <h3 id="loans-coming-in-v2-0"><a class="link" href="#loans-coming-in-v2-0">4.5. Loans [Coming in v2.0]</a></h3>
 <div class="sect3">
-<h4 id="adding-new-loan-loannew"><a class="link" href="#adding-new-loan-loannew">4.5.1. Adding new loan: `loannew `</a></h4>
+<h4 id="adding-new-loan-code-add-code"><a class="link" href="#adding-new-loan-code-add-code">4.5.1. Adding new loan: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds new loan to list.<br>
 Format: <code>loannew  i/AMOUNT  n/NAME d/DESCRIPTION</code></p>
@@ -984,13 +991,13 @@ Format: <code>loannew  i/AMOUNT  n/NAME d/DESCRIPTION</code></p>
 <ul>
 <li>
 <p><code>loannew  a/10000 d/12122014 n/Charlie d/For food in Indonesia</code><br>
-Takes input with initialization values and adds them to a lost of current unpaid loans.</p>
+Takes input with initialization values and adds them to a list of current unpaid loans.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marking-loan-paid-code-loan-paid-code"><a class="link" href="#marking-loan-paid-code-loan-paid-code">4.5.2. Marking Loan Paid: <code>loan paid</code></a></h4>
+<h4 id="marking-loan-paid-code-paid-code"><a class="link" href="#marking-loan-paid-code-paid-code">4.5.2. Marking Loan Paid: <code>paid</code></a></h4>
 <div class="paragraph">
 <p>Marks loan as paid or reduces amount from payment.<br>
 Format: <code>loanpaid i/INDEX [i/AMOUNT]</code></p>
@@ -1002,15 +1009,15 @@ Format: <code>loanpaid i/INDEX [i/AMOUNT]</code></p>
 <ul>
 <li>
 <p><code>loanpaid i/4 a/4000</code><br>
-Takes input with initialization values and adds them to a lost of current unpaid loans.</p>
+Takes input with initialization values and adds them to a list of current unpaid loans.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="loan-categorical-search-code-loanshow-code"><a class="link" href="#loan-categorical-search-code-loanshow-code">4.5.3. Loan Categorical Search: <code>loanshow</code></a></h4>
+<h4 id="finding-loan-code-find-code"><a class="link" href="#finding-loan-code-find-code">4.5.3. Finding loan: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Shows all loans with certain name or description or date , or all loans+
+<p>Shows all loans with certain name or description or date , or all loans<br>
 Format: <code>loanshow [s/KEYWORD]</code></p>
 </div>
 <div class="paragraph">
@@ -1026,9 +1033,9 @@ Shows all loans when no keyword is given, when keyword is added, all loans with 
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-new-loan-code-loantotal-code"><a class="link" href="#adding-new-loan-code-loantotal-code">4.5.4. Adding new loan: <code>loantotal</code></a></h4>
+<h4 id="adding-new-loan-code-total-code"><a class="link" href="#adding-new-loan-code-total-code">4.5.4. Adding new loan: <code>total</code></a></h4>
 <div class="paragraph">
-<p>Finds and shows nett amount to pay/owed with keyword+
+<p>Finds and shows nett amount to pay/owed with keyword<br>
 Format: <code>loantotal s/KEYWORD</code></p>
 </div>
 <div class="paragraph">
@@ -1044,7 +1051,7 @@ If no keyword is given, it returns total difference in amount owed to other part
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-new-loan-code-loanset-code"><a class="link" href="#adding-new-loan-code-loanset-code">4.5.5. Adding new loan: <code>loanset</code></a></h4>
+<h4 id="editing-new-loan-code-edit-code"><a class="link" href="#editing-new-loan-code-edit-code">4.5.5. Editing new loan: <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Changes existing loan<br>
 Format: <code>loanset i/INDEX [a/AMOUNT] [d/DATE] [n/NAME] [d/DESCRIPTION]</code></p>
@@ -1062,7 +1069,7 @@ Takes input with initialization values for current loan identified by index, cha
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-new-loan-code-loansort-code"><a class="link" href="#adding-new-loan-code-loansort-code">4.5.6. Adding new loan: <code>loansort</code></a></h4>
+<h4 id="sorting-all-loans-code-sort-code"><a class="link" href="#sorting-all-loans-code-sort-code">4.5.6. Sorting all loans: <code>sort</code></a></h4>
 <div class="paragraph">
 <p>Finds and shows all loans sorted<br>
 Format: <code>loansort s/BY</code></p>
@@ -1273,7 +1280,7 @@ Displays expenditure ranking chart for July 2019.</p>
 <p><strong>Transaction Delete</strong> : <code>delete INDEX</code></p>
 </li>
 <li>
-<p><strong>Transaction Find</strong> : <code>filter [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TRANSACTION_TYPE]</code></p>
+<p><strong>Transaction Filter</strong> : <code>filter [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TRANSACTION_TYPE]</code></p>
 </li>
 <li>
 <p><strong>Transaction Repeater Add</strong> : <code>add de/DESCRIPTION a/AMOUNT p/DAY_OF_MONTH&#8230;&#8203; ty/TRANSACTION_TYPE</code></p>
@@ -1288,22 +1295,22 @@ Displays expenditure ranking chart for July 2019.</p>
 <p><strong>Transaction Repeater Find</strong> : <code>find [s/KEYWORD]&#8230;&#8203; [c/CATEGORY] [p/DAY_OF_MONTH]&#8230;&#8203; [ty/TRANSACTION_TYPE]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Add new</strong> : <code>loannew a/Amount [d/DATE] [n/NAME]</code>  (Coming in v2.0)</p>
+<p><strong>Loan Add new</strong> : <code>add a/Amount [d/DATE] [n/NAME]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Payment</strong> : <code>loanpaid i/INDEX [n/NAME] [a/AMOUNT]</code>  (Coming in v2.0)</p>
+<p><strong>Loan Payment</strong> : <code>paid i/INDEX [n/NAME] [a/AMOUNT]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Categorical Search</strong> : <code>loanshow [s/KEYWORD]</code>  (Coming in v2.0)</p>
+<p><strong>Loan Categorical Search</strong> : <code>find [s/KEYWORD]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Net Amount</strong> : <code>loantotal [s/KEYWORD]</code>  (Coming in v2.0)</p>
+<p><strong>Loan Net Amount</strong> : <code>total [s/KEYWORD]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Value Update</strong> : <code>loanset i/INDEX [a/AMOUNT] [s/DATE] [n/NAME] [d/DESCRIPTION]</code>  (Coming in v2.0)</p>
+<p><strong>Loan Value Update</strong> : <code>edit i/INDEX [a/AMOUNT] [s/DATE] [n/NAME] [d/DESCRIPTION]</code>  (Coming in v2.0)</p>
 </li>
 <li>
-<p><strong>Loan Sort By Value</strong> : <code>loansort s/BY</code>  (Coming in v2.0)</p>
+<p><strong>Loan Sort By Value</strong> : <code>sort s/BY</code>  (Coming in v2.0)</p>
 </li>
 <li>
 <p><strong>Budget Add</strong> : <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
@@ -1338,4 +1345,4 @@ Displays expenditure ranking chart for July 2019.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-02 11:25:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-02 18:43:21 UTC</div></div></div></body></html>
