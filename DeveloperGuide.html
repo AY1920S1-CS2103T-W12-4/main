@@ -29,7 +29,7 @@
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#global-features">4.1. Global Features</a></li>
-<li><a href="#transaction">4.2. Transaction</a></li>
+<li><a href="#transactions">4.2. Transactions</a></li>
 <li><a href="#repeaters">4.3. Repeaters</a></li>
 <li><a href="#budget">4.4. Budget</a></li>
 <li><a href="#analytics">4.5. Analytics</a></li>
@@ -114,7 +114,7 @@ To edit, go to  and import the <code>.drawio</code> files in the repository.
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/ichifund/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/ichifund/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -201,13 +201,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/ichifund/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>TransactionListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/ichifund/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -239,7 +239,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/ichifund/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -279,7 +279,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/ichifund/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -290,29 +290,24 @@ The following class plays an important role at the architecture level:</p>
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores the IchiFund data (in e.g. <code>UniqueBudgetList</code>)</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>keeps track of a <code>TransactionContext</code> object that represents the current filter applied to <code>TransactionList</code>.</p>
+</li>
+<li>
+<p>exposes an unmodifiable version of the <code>TransactionContext</code> object (as <code>ObservableValue&lt;TransactionContext&gt;</code>) that can be observed by the UI.</p>
+</li>
+<li>
+<p>exposes unmodifiable lists (e.g. <code>ObservableList&lt;Transaction&gt;</code>) that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/ModelClassDiagram.png" alt="ModelClassDiagram"></span>
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p><span class="image"><img src="images/ModelClassDiagram.png" alt="ModelClassDiagram"></span></p>
 </div>
 </div>
 <div class="sect2">
@@ -324,7 +319,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/src/main/java/seedu/ichifund/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -335,7 +330,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book data in json format and read it back.</p>
+<p>can save the IchiFund data in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -343,7 +338,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common Classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>seedu.ichifund.commons</code> package.</p>
 </div>
 </div>
 </div>
@@ -525,36 +520,30 @@ This triggers a handler, shown in the following code snippet:</p>
 <p>In designing the specific commands for tab switching, we considered an alternative implementation for
 passing information about tab switching to <code>Ui</code>.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> <code>Ui</code> detects change through an <code>InvalidationListener</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: <code>Logic</code> does not need to be aware of <code>Ui</code>.</p>
-</li>
-<li>
-<p>Cons: Requires greater understanding of JavaFX API to implement.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> <code>Logic</code> directly calls <code>Ui</code> whenever the specific command is made.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: Creates a dependency from <code>Logic</code> to <code>Ui</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description of Implementation</th>
+<th class="tableblock halign-left valign-top">Pros and Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ui</code> detects change through an <code>InvalidationListener</code> (current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: <code>Logic</code> does not need to be aware of <code>Ui</code>.</p>
+<p class="tableblock"><strong>Cons</strong>: Requires greater understanding of JavaFX API to implement.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Logic</code> directly calls <code>Ui</code> whenever the specific command is made.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Easy to implement.</p>
+<p class="tableblock"><strong>Cons</strong>: Creates a dependency from <code>Logic</code> to <code>Ui</code>.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>While Alternative 2 is much simpler to implement, we chose Alternative 1
 as we prioritised preserving the independence of <code>Logic</code> from <code>Ui</code>.</p>
@@ -601,12 +590,145 @@ When the <code>LogicManager#execute()</code> is called, the following chain of o
 </div>
 </div>
 <div class="sect2">
-<h3 id="transaction"><a class="link" href="#transaction">4.2. Transaction</a></h3>
+<h3 id="transactions"><a class="link" href="#transactions">4.2. Transactions</a></h3>
 <div class="sect3">
-<h4 id="filtering-transactions"><a class="link" href="#filtering-transactions">4.2.1. Filtering Transactions</a></h4>
+<h4 id="overviewtx"><a class="link" href="#overviewtx">4.2.1. Overview of the Transactions Model</a></h4>
+<div class="sect4">
+<h5 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h5>
+<div class="paragraph">
+<p>The transactions in IchiFund are represented using the <code>Transaction</code> class. While users are able to edit transactions,
+objects of the <code>Transaction</code> class are immutable in the internal structure. The following class diagram summarizes
+the details of the <code>Transaction</code> class:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TransactionClassDiagram.png" alt="TransactionClassDiagram">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We differentiate transactions into income and expenditure items using the <code>TransactionType</code> field, which accepts
+two unique string values, <code>"in"</code> for income and <code>"exp"</code> for expenditure in the constructor.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition, the list of transactions is subject to a filter created by an immutable <code>TransactionContext</code>.
+<code>TransactionContext</code> keeps track of the <code>Month</code>, <code>Year</code>, <code>Category</code> (optional) and <code>TransactionType</code> (optional) in the current filter.
+Naturally, this implies that a filter for <code>Month</code> and <code>Year</code> is always applied to the list of transactions.
+We defer the demonstration of how <code>TransactionContext</code> is used to filter the list of transactions to <a href="#filtertx">Section 4.2.2, &#8220;Filtering Transactions&#8221;</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>TransactionContext</code> is also used to fill in optional fields that are not specified by the user when adding transactions.
+Later, in <a href="#addtx">Section 4.2.3, &#8220;Adding Transactions&#8221;</a>, we demonstrate how this is implemented.</p>
+</div>
+<div class="paragraph">
+<p>We summarise the role of the <code>TransactionContext</code> class in the following conceptual class diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TransactionContextOodm.png" alt="TransactionContextOodm">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
+<div class="paragraph">
+<p>We encountered two major decisions when implementing our model for transactions. Here, we discuss the alternatives
+we considered, as well as the rationale for the current implementation.</p>
+</div>
+<div class="sect5">
+<h6 id="multiplicity-of-code-category-code"><a class="link" href="#multiplicity-of-code-category-code">Multiplicity of <code>Category</code></a></h6>
+<div class="paragraph">
+<p>Currently, each <code>Transaction</code> object can have only one <code>Category</code> object associated to it. In the problem domain, it is
+also natural to think of transactions being associated with multiple categories. The table below summarizes the pros and cons of each choice.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description of Implementation</th>
+<th class="tableblock halign-left valign-top">Pros and Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each <code>Transaction</code> only has one <code>Category</code>  (current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Simple to implement. No overlaps in apportionment of expenditure to categories.</p>
+<p class="tableblock"><strong>Cons</strong>: Less flexibility for the user to classify transactions.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each <code>Transaction</code> can have more than one <code>Category</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: More flexibility for the user to classify transactions.</p>
+<p class="tableblock"><strong>Cons</strong>: Overlaps in apportionment of expenditure to categories.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>While both implementations are visible, we chose to only have one <code>Category</code> associated to each
+<code>Transaction</code> as the absence of overlaps in expenditure allows us to eventually implement a clean visual
+breakdown of expenditure by category in the future.</p>
+</div>
+<div class="paragraph">
+<p>Developers, however, are welcome to implement an additional <code>Tags</code> field for <code>Transaction</code> objects, to allow
+for multiple associations.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="differentiating-between-income-and-expenditure"><a class="link" href="#differentiating-between-income-and-expenditure">Differentiating between Income and Expenditure</a></h6>
+<div class="paragraph">
+<p>Currently, we differentiate transactions that are income items and expenditure items using the <code>TransactionType</code> field in
+<code>Transaction</code>. We considered the natural alternative of using inheritance as well.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description of Implementation</th>
+<th class="tableblock halign-left valign-top">Pros and Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using the field <code>TransactionType</code> (current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Fits the parsing methods used in the current architecture well.</p>
+<p class="tableblock"><strong>Cons</strong>: More tedious to code for different behaviours for income and expenditure items in the future.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using inheritance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Allows for polymorphism of methods from a <code>Transaction</code> interface in the long run.</p>
+<p class="tableblock"><strong>Cons</strong>: Requires either the use of separate commands, or asymmetry in the parsing of command arguments.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>While it was a tough decision, we eventually decided to use <code>TransactionType</code> for differentiation as we valued maintaining the
+symmetry in the implementation of parsing in our current architecture, and we did not want to use separate commands for adding transactions.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, we did not envision further use of polymorphism in future developments. Hence the benefit of using inheritance becomes
+very limited.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="filtertx"><a class="link" href="#filtertx">4.2.2. Filtering Transactions</a></h4>
 <div class="paragraph">
 <p>The filter transactions feature allows the user to change the filter for the list of transactions.
-This feature is facilitated by <code>TransactionFeatureParser</code>, <code>FilterTransactionCommandParser</code>, and <code>TransactionCommand</code>.
+As described in <a href="#Design-Logic">Section 3.3, &#8220;Logic Component&#8221;</a>, this feature is facilitated by <code>TransactionFeatureParser</code>, <code>FilterTransactionCommandParser</code>, and <code>FilterTransactionCommand</code>.
 The arguments supported by this feature includes:</p>
 </div>
 <div class="ulist">
@@ -630,19 +752,46 @@ The arguments supported by this feature includes:</p>
 to be valid.</p>
 </div>
 <div class="sect4">
-<h5 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h5>
-
+<h5 id="implementation-5"><a class="link" href="#implementation-5">Implementation</a></h5>
+<div class="paragraph">
+<p>We omit the details of parsing facilitated by <code>IchiFundParser</code>, <code>TransactionFeatureParser</code> and <code>FilterTransactionCommandParser</code>. Instead,
+we immediately delve into the details of <code>FilterTransactionCommand#execute</code>.</p>
 </div>
-<div class="sect4">
-<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
-
+<div class="paragraph">
+<p>As prefaced in <a href="#overviewtx">Section 4.2.1, &#8220;Overview of the Transactions Model&#8221;</a>, the <code>filter</code> command interacts with <code>TransactionContext</code> to filter the list of
+transactions exposed to the UI component.</p>
+</div>
+<div class="paragraph">
+<p>Following the creation of <code>FilterTransactionCommand</code>, the execution of the command results
+in the following chain of events:</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: <code>FilterTransactionCommand</code> retrieves the current <code>TransactionContext</code> from the model.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>FilterTransactionCommand</code> creates a new <code>TransactionContext</code>, facilitated by <code>TransactionContextBuilder</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>FilterTransactionCommand</code> sets the new context in model as the newly created <code>TransactionContext</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>ModelManager</code> retrieves a <code>Predicate&lt;Transaction&gt;</code> from the new <code>TransactionContext</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>ModelManager</code> filters the list of transactions using the <code>Predicate&lt;Transaction&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>The above sequence of events is shown in greater detail in the following sequence diagram:
+image::FilterTransactionSequenceDiagram.png[]</p>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-transactions"><a class="link" href="#adding-transactions">4.2.2. Adding Transactions</a></h4>
+<h4 id="addtx"><a class="link" href="#addtx">4.2.3. Adding Transactions</a></h4>
 <div class="paragraph">
-<p>The add transaction feature allows the user to add a transaction into IchiFund.
-This feature is facilitated by <code>BudgetFeatureParser</code>, <code>AddBudgetCommandParser</code>, and <code>AddBudgetCommand</code>.
+<p>The add transaction feature allows the user to add a transaction into IchiFund. It further ensures that the current
+filter of the list of transactions is changed to allow the user to view the transaction.
+As described in <a href="#Design-Logic">Section 3.3, &#8220;Logic Component&#8221;</a>, this feature is facilitated by <code>TransactionFeatureParser</code>, <code>AddTransactionCommandParser</code>, and <code>AddTransactionCommand</code>.
 The arguments supported by this feature includes:</p>
 </div>
 <div class="ulist">
@@ -671,34 +820,283 @@ The arguments supported by this feature includes:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-5"><a class="link" href="#implementation-5">Implementation</a></h5>
-
+<h5 id="implementation-6"><a class="link" href="#implementation-6">Implementation</a></h5>
+<div class="paragraph">
+<p>We omit the details of parsing facilitated by <code>IchiFundParser</code>, <code>TransactionFeatureParser</code> and <code>AddTransactionCommandParser</code>. Instead,
+we immediately delve into the details of the <code>AddTransactionCommand#execute</code>.</p>
+</div>
+<div class="paragraph">
+<p>As prefaced in <a href="#overviewtx">Section 4.2.1, &#8220;Overview of the Transactions Model&#8221;</a>, <code>AddTransactionCommand</code> interacts with <code>TransactionContext</code> to generate
+a <code>Transaction</code> to be added to the model.</p>
+</div>
+<div class="paragraph">
+<p>The execution of an <code>AddTransactionCommand</code> results in the following sequence of events:</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: <code>AddTransactionCommand</code> retrieves the current <code>TransactionContext</code> from the model.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>AddTransactionCommand</code> generates a new <code>Transaction</code> based on the arguments and <code>TransactionContext</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>AddTransactionCommand</code> adds the new <code>Transaction</code> to the model.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>ModelManager</code> automatically sorts the list of transactions.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>AddTransactionCommand</code> calls model to execute <code>updateTransactionContext</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>ModelManager</code> updates <code>TransactionContext</code> such that the new <code>Transaction</code> is shown.</p>
+</div>
+<div class="paragraph">
+<p>When generating a new <code>Transaction</code>, <code>AddTransactionCommand</code> fills in the missing optional arguments by using
+values obtained from <code>TransactionContext</code>, or default values. This is illustrated in the following activity diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddTransactionActivityDiagram.png" alt="AddTransactionActivityDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>The above activity diagram shows the decision flow for a general optional argument. However, some optional
+arguments are never stored in <code>TransactionContext</code>, and some are always stored in <code>TransactionContext</code>. The
+following table describes the particular details for each optional argument, including the default values.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Present in <code>TransactionContext</code>?</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Day</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Never</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Current day of month from system time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Month</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not applicable</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Year</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not applicable</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Category</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sometimes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uncategorised</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TransactionType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sometimes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expenditure</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>After adding the <code>Transaction</code>, a new <code>TransactionContext</code> is created such that the new <code>Transaction</code> is displayed
+on the list of transactions. Specifically, the <code>Month</code> and <code>Year</code> filters are set to the <code>Month</code> and <code>Year</code> of the
+new <code>Transaction</code> respectively, and the <code>Category</code> and <code>TransactionType</code> filters are removed if necessary.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h5>
-
+<div class="paragraph">
+<p>In implementing the <code>add</code> and <code>filter</code> commands, we had to decide on the underlying data structure for the list of
+transactions. Currently, we store all transactions in a single iterable list. Given the use of a mandatory
+month and year filter, a natural alternative would be to store each month&#8217;s worth of transactions in a
+list, and stores these lists in another list, forming a multi-level list.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description of Implementation</th>
+<th class="tableblock halign-left valign-top">Pros and Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storing all transactions in a single list (current choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Suits existing architecture of software very well, easy to implement</p>
+<p class="tableblock"><strong>Cons</strong>: Slow performance anticipated with large number of transactions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storing transactions in multi-level list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Faster performance, more scalable</p>
+<p class="tableblock"><strong>Cons</strong>: May disrupt abstractions in current architecture, more time needed to implement</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Ultimately, we prioritised developing a minimal viable product for v1.4, and decided to avoid disrupting the
+existing architecture, and instead focus our efforts on developing more features to better address the needs of
+the target user profile.</p>
+</div>
+<div class="paragraph">
+<p>However, moving forward, we recognise that the current architecture severely lacks scalability,
+especially given the constantly growing number of transactions we expect users to create. Hence, we eventually
+intend to switch to a multi-level list.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Developers who choose to change the underlying data structures should bear in mind that many other components (Repeaters, Budgets, Analytics)
+depend on the model of Transactions, and care must be taken to ensure that these components still work well.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-transactions"><a class="link" href="#editing-transactions">4.2.3. Editing Transactions</a></h4>
-<div class="sect4">
-<h5 id="implementation-6"><a class="link" href="#implementation-6">Implementation</a></h5>
-
+<h4 id="editing-transactions"><a class="link" href="#editing-transactions">4.2.4. Editing Transactions</a></h4>
+<div class="paragraph">
+<p>The edit transaction feature allows the user to edit a transaction into IchiFund. It further ensures that the current
+filter of the list of transactions is changed to allow the user to view the transaction.
+As described in <a href="#Design-Logic">Section 3.3, &#8220;Logic Component&#8221;</a>, this feature is facilitated by <code>TransactionFeatureParser</code>, <code>EditTransactionCommandParser</code>, and <code>EditTransactionCommand</code>.
+The arguments supported by this feature includes:</p>
 </div>
-<div class="sect4">
-<h5 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h5>
-
+<div class="ulist">
+<ul>
+<li>
+<p><code>Index</code></p>
+</li>
+<li>
+<p><code>Description</code> (optional)</p>
+</li>
+<li>
+<p><code>Amount</code> (optional)</p>
+</li>
+<li>
+<p><code>Category</code> (optional)</p>
+</li>
+<li>
+<p><code>Day</code> (optional)</p>
+</li>
+<li>
+<p><code>Month</code> (optional)</p>
+</li>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+<li>
+<p><code>TransactionType</code> (optional)</p>
+</li>
+</ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="deleting-transactions"><a class="link" href="#deleting-transactions">4.2.4. Deleting Transactions</a></h4>
 <div class="sect4">
 <h5 id="implementation-7"><a class="link" href="#implementation-7">Implementation</a></h5>
-
+<div class="paragraph">
+<p>The execution of the <code>edit</code> command is similar to the delete commands in other components. The following sequence of steps
+describes the behaviour of <code>EditTransactionCommand</code> at each step:</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: The user executes <code>edit 2 de/Lunch</code> to change the description of the <code>Transaction</code> in the 2nd index to "Lunch".</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>IchiFundParser</code> redirects the input to <code>TransactionFeatureParser</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>TransactionFeatureParser</code> determines which command is being used and creates the respective <code>EditTransactionCommandParser</code> parser with the user&#8217;s input as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>EditTransactionCommandParser</code> does a validation check on the user&#8217;s input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>EditTransactionCommandParser</code> creates an <code>EditTransactionDescriptor</code> which contains the updated description information provided by the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>EditTransactionCommandParser</code> creates and returns an <code>EditTransactionCommand</code> with the <code>Index</code> and <code>EditTransactionDescriptor</code> as arguments.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: <code>LogicManager</code> calls <code>EditTransactionCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 9</strong>: <code>EditTransactionCommand</code> checks if the <code>Index</code> is too large, and retrieves the appropriate <code>Transaction</code> to be deleted from the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 10</strong>: <code>EditTransactionCommand</code> checks that the <code>Transaction</code> is not created from a <code>Repeater</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 11</strong>: <code>EditTransactionCommand</code> creates a new <code>Transaction</code> using the original <code>Transaction</code> and the <code>EditTransactionDescriptor</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 12</strong>: <code>EditTransactionCommand</code> replaces the original <code>Transaction</code> in the <code>Model</code> with the newly created <code>Transaction</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 13</strong>: <code>EditTransactionCommand</code> calls <code>Model#updateTransactionContext</code> with the newly created <code>Transaction</code> as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 14</strong>: <code>EditTransactionCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-transactions"><a class="link" href="#deleting-transactions">4.2.5. Deleting Transactions</a></h4>
+<div class="paragraph">
+<p>The delete transaction feature allows the user to delete a transaction into IchiFund using its index in the displayed list.
+As described in <a href="#Design-Logic">Section 3.3, &#8220;Logic Component&#8221;</a>, this feature is facilitated by <code>TransactionFeatureParser</code>, <code>DeleteTransactionCommandParser</code>, and <code>DeleteTransactionCommand</code>.
+The delete command takes one argument, <code>Index</code>.</p>
 </div>
 <div class="sect4">
-<h5 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h5>
-
+<h5 id="implementation-8"><a class="link" href="#implementation-8">Implementation</a></h5>
+<div class="paragraph">
+<p>The execution of the <code>delete</code> command is similar to the delete commands in other components. The following sequence of steps
+describes the behaviour of <code>DeleteTransactionCommand</code> at each step:</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: The user executes <code>delete 2</code> to delete the <code>Transaction</code> in the 2nd index.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>IchiFundParser</code> redirects the input to <code>TransactionFeatureParser</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>TransactionFeatureParser</code> determines which command is being used and creates the respective <code>DeleteTransactionCommandParser</code> parser with the user&#8217;s input as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>DeleteTransactionCommandParser</code> does a validation check on the user&#8217;s input before creating and returning a <code>DeleteRepeaterCommand</code> with desired <code>Index</code> as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>LogicManager</code> calls <code>DeleteTransactionCommand#execute()</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>DeleteTransactionCommand</code> checks if the <code>Index</code> is too large, and retrieves the appropriate <code>Transaction</code> to be deleted from the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>DeleteTransactionCommand</code> checks that the <code>Transaction</code> is not created from a <code>Repeater</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: <code>DeleteTransactionCommand</code> deletes the <code>Transaction</code> from the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 9</strong>: <code>DeleteTransactionCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
 </div>
 </div>
 </div>
@@ -713,7 +1111,7 @@ The arguments supported by this feature includes:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="implementation-8"><a class="link" href="#implementation-8">Implementation</a></h5>
+<h5 id="implementation-9"><a class="link" href="#implementation-9">Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>addrep</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>addrep</code> behaves at each step.</p>
 </div>
@@ -746,7 +1144,7 @@ The arguments supported by this feature includes:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="implementation-9"><a class="link" href="#implementation-9">Implementation</a></h5>
+<h5 id="implementation-10"><a class="link" href="#implementation-10">Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>delrep</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>delrep</code> behaves at each step.</p>
 </div>
@@ -800,7 +1198,7 @@ The arguments supported by this feature includes:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-10"><a class="link" href="#implementation-10">Implementation</a></h5>
+<h5 id="implementation-11"><a class="link" href="#implementation-11">Implementation</a></h5>
 <div class="paragraph">
 <p>When the user input the <code>add</code> command in the Budget tab, the following chain of operations occurs:</p>
 </div>
@@ -858,7 +1256,7 @@ The argument supported by this feature is:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-11"><a class="link" href="#implementation-11">Implementation</a></h5>
+<h5 id="implementation-12"><a class="link" href="#implementation-12">Implementation</a></h5>
 <div class="paragraph">
 <p>When the user input the <code>expenditure</code> command in the Analytics tab, the following chain of operations occurs:</p>
 </div>
@@ -904,7 +1302,7 @@ The argument supported by this feature is:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-12"><a class="link" href="#implementation-12">Implementation</a></h5>
+<h5 id="implementation-13"><a class="link" href="#implementation-13">Implementation</a></h5>
 <div class="paragraph">
 <p>When the user input the <code>income</code> command in the Analytics tab, the following chain of operations occurs:</p>
 </div>
@@ -950,7 +1348,7 @@ The argument supported by this feature is:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-13"><a class="link" href="#implementation-13">Implementation</a></h5>
+<h5 id="implementation-14"><a class="link" href="#implementation-14">Implementation</a></h5>
 <div class="paragraph">
 <p>When the user input the <code>balance</code> command in the Analytics tab, the following chain of operations occurs:</p>
 </div>
@@ -1130,7 +1528,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -2121,4 +2519,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 15:05:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 21:05:45 UTC</div></div></div></body></html>
