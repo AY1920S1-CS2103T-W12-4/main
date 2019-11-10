@@ -24,15 +24,14 @@
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
 <li><a href="#ichifund-basics">4.1. IchiFund Basics</a></li>
-<li><a href="#transactions">4.2. Transactions</a></li>
-<li><a href="#repeaters">4.3. Repeaters</a></li>
-<li><a href="#budgets">4.4. Budgets</a></li>
-<li><a href="#loans-coming-in-v2-0">4.5. Loans [Coming in v2.0]</a></li>
-<li><a href="#analytics">4.6. Analytics</a></li>
+<li><a href="#repeaters">4.2. Repeaters</a></li>
+<li><a href="#budgets">4.3. Budgets</a></li>
+<li><a href="#loans-coming-in-v2-0">4.4. Loans [Coming in v2.0]</a></li>
+<li><a href="#analytics">4.5. Analytics</a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
-<li><a href="#command-summary">6. Command Summary</a></li>
+<li><a href="#command-summary-v1-4">6. Command Summary (v1.4)</a></li>
 </ul>
 </div>
 </div>
@@ -274,26 +273,27 @@ clipboard. Then, paste and enter the URL into any browser to access this user gu
 <div class="sect3">
 <h4 id="exiting-ichifund-code-exit-code"><a class="link" href="#exiting-ichifund-code-exit-code">4.1.2. Exiting IchiFund : <code>exit</code></a></h4>
 <div class="paragraph">
-<p>Exits your IchiFund.<br>
-Format: <code>exit</code></p>
+<p>Format: <code>exit</code></p>
+</div>
+<div class="paragraph">
+<p>If you want to exit from IchiFund, entering the <code>exit</code> command allows you to exit the program through
+our CLI.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="saving-ichifund-data"><a class="link" href="#saving-ichifund-data">4.1.3. Saving IchiFund data</a></h4>
 <div class="paragraph">
-<p>IchiFund data are saved in the hard disk automatically after you enter any command that changes the data.<br>
-There is no need for you to save manually.</p>
+<p>IchiFund data is saved in the hard disk automatically after you enter any command that changes the data.<br>
+There is no need for you to save manually.
+=== Transactions</p>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="transactions"><a class="link" href="#transactions">4.2. Transactions</a></h3>
 <div class="paragraph">
 <p>Do you ever feel overwhelmed by the ever-growing number of transactions you have to keep track of?
 With our transactions feature, you can organise your transactions in a fuss-free manner!</p>
 </div>
+</div>
 <div class="sect3">
-<h4 id="overview"><a class="link" href="#overview">4.2.1. Overview</a></h4>
+<h4 id="overviewtx"><a class="link" href="#overviewtx">4.1.4. Overview</a></h4>
 <div class="paragraph">
 <p>In the transactions tab, you can maintain a list of your transactions, adding, editing, deleting and filtering items
 as you like. The image below gives an overview of the GUI of the feature:</p>
@@ -347,7 +347,7 @@ the category shown, as well as whether only expenditure/income items are shown.<
 </div>
 <div class="paragraph">
 <p>The filter title changes along with the filter that is applied to the list. You can change the filter using
-the <code>filter</code> command in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transaction: <code>filter</code>&#8221;</a></p>
+the <code>filter</code> command in <a href="#filtertx">Section 4.1.5, &#8220;Filtering transaction: <code>filter</code>&#8221;</a></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -369,7 +369,7 @@ This makes it easier for you to access the transactions in the current month!
 </div>
 </div>
 <div class="sect3">
-<h4 id="filtertx"><a class="link" href="#filtertx">4.2.2. Filtering transaction: <code>filter</code></a></h4>
+<h4 id="filtertx"><a class="link" href="#filtertx">4.1.5. Filtering transaction: <code>filter</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>filter [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TYPE]</code></p>
 </div>
@@ -430,8 +430,20 @@ The GUI will update accordingly, as follows:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
+Categories are case-insensitive, and can contain up to 50 alphanumerical characters, including spaces.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
 To see only expenditure items, enter <code>filter ty/exp</code>; to see only income items, enter <code>filter ty/in</code>. This
-also applies when you are adding transactions in <a href="#addtx">Section 4.2.3, &#8220;Creating transaction: <code>add</code>&#8221;</a>
+also applies when you are adding transactions in <a href="#addtx">Section 4.1.6, &#8220;Creating transaction: <code>add</code>&#8221;</a>
 </td>
 </tr>
 </table>
@@ -476,7 +488,7 @@ the command word <code>filter</code> is keyed in at the start.
 </div>
 </div>
 <div class="sect3">
-<h4 id="addtx"><a class="link" href="#addtx">4.2.3. Creating transaction: <code>add</code></a></h4>
+<h4 id="addtx"><a class="link" href="#addtx">4.1.6. Creating transaction: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </div>
@@ -508,7 +520,7 @@ command <code>add de/Lunch a/12.31 c/food d/31 m/10 y/2019 ty/exp</code></p>
 </div>
 <div class="paragraph">
 <p>Here, IchiFund automatically changes the filter for you, so that you can review the addition
-you made. This makes it convenient if you want to edit your transactions, as detailed in <a href="#edittx">Section 4.2.4, &#8220;Editing transaction: <code>edit</code>&#8221;</a></p>
+you made. This makes it convenient if you want to edit your transactions, as detailed in <a href="#edittx">Section 4.1.7, &#8220;Editing transaction: <code>edit</code>&#8221;</a></p>
 </div>
 <div class="paragraph">
 <p>Also, note that the transaction appears at the top of the list. This is because we automatically sort
@@ -523,7 +535,7 @@ transactions.</p>
 </td>
 <td class="content">
 When specifying whether a transaction is an expenditure item or an income item, use the arguments
-<code>ty/exp</code> or <code>ty/in</code> respectively, similar to how would do so in <a href="#filtertx">Section 4.2.2, &#8220;Filtering transaction: <code>filter</code>&#8221;</a>
+<code>ty/exp</code> or <code>ty/in</code> respectively, similar to how would do so in <a href="#filtertx">Section 4.1.5, &#8220;Filtering transaction: <code>filter</code>&#8221;</a>
 </td>
 </tr>
 </table>
@@ -624,15 +636,15 @@ feature to its fullest, you are recommended to add transactions on the day it oc
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Up to 50 alphanumeric characters, case-sensitive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Up to 50 alphanumeric characters with spaces; case-sensitive</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Amount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Positive number, with up to 2 decimal places; maximum value of $100000 for each transaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Positive number with up to 2 decimal places; maximum value of $99999.99 for each transaction</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Category</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Up to 50 alphanumeric characters, case-insensitive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Up to 50 alphanumeric characters with spaces; case-insensitive</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Day</p></td>
@@ -658,12 +670,12 @@ feature to its fullest, you are recommended to add transactions on the day it oc
 </div>
 </div>
 <div class="sect3">
-<h4 id="edittx"><a class="link" href="#edittx">4.2.4. Editing transaction: <code>edit</code></a></h4>
+<h4 id="edittx"><a class="link" href="#edittx">4.1.7. Editing transaction: <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>edit INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
 </div>
 <div class="paragraph">
-<p>Occasionally, you may make a mistake entering your transactions. Perhaps you entered the wrong amount, or made
+<p>Occasionally, you may make a mistake entering your transactions. Perhaps you keyed in the wrong amount, or made
 a heinous spelling error in your description. Fret not! You can correct these mistakes using <code>edit</code>, and it would
 be as if it never happened.</p>
 </div>
@@ -701,14 +713,26 @@ the filter of the transaction list changes accordingly such that the edited tran
 </td>
 <td class="content">
 Unfortunately, transactions created from repeaters cannot be edited or deleted directly.
-For a more detailed guide on how to modify these transactions, refer to <a href="#repeaters">Section 4.3, &#8220;Repeaters&#8221;</a>
+For a more detailed guide on how to modify these transactions, refer to <a href="#repeaters">Section 4.2, &#8220;Repeaters&#8221;</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The constraints in <a href="#addtx">Section 4.1.6, &#8220;Creating transaction: <code>add</code>&#8221;</a> apply to this command as well.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deletetx"><a class="link" href="#deletetx">4.2.5. Deleting transaction: <code>delete</code></a></h4>
+<h4 id="deletetx"><a class="link" href="#deletetx">4.1.8. Deleting transaction: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>delete INDEX</code></p>
 </div>
@@ -748,15 +772,74 @@ transaction list.</p>
 </td>
 <td class="content">
 Unfortunately, transactions created from repeaters cannot be edited or deleted directly.
-For a more detailed guide on how to modify these transactions, refer to <a href="#repeaters">Section 4.3, &#8220;Repeaters&#8221;</a>
+For a more detailed guide on how to modify these transactions, refer to <a href="#repeaters">Section 4.2, &#8220;Repeaters&#8221;</a>
 </td>
 </tr>
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="reducing-clutter-coming-in-v2-0"><a class="link" href="#reducing-clutter-coming-in-v2-0">4.1.9. Reducing clutter (coming in v2.0)</a></h4>
+<div class="paragraph">
+<p>Naturally, you may find your transaction list to be flooded with transactions. Beyond the
+filtering introduced in <a href="#filtertx">Section 4.1.5, &#8220;Filtering transaction: <code>filter</code>&#8221;</a>, we have in store several features to be released in the
+next major version of IchiFund.</p>
+</div>
+<div class="sect4">
+<h5 id="archiving-transactions-code-archive-code"><a class="link" href="#archiving-transactions-code-archive-code">Archiving transactions: <code>archive</code></a></h5>
+<div class="paragraph">
+<p>Format: <code>archive [INDEX]</code></p>
+</div>
+<div class="paragraph">
+<p>If you want to hide transactions from your view, but do not wish to delete it entirely, you can simply
+use the upcoming <code>archive</code> command!</p>
+</div>
+<div class="paragraph">
+<p>Suppose you want to archive the second transaction in the current list. Simply use the command <code>archive 2</code>
+to send that transaction into the archive.</p>
+</div>
+<div class="paragraph">
+<p>You can switch between the main and archived transaction lists using the command <code>archive</code>.</p>
+</div>
+<div class="paragraph">
+<p>From the archive, you can unarchive transactions with the same command. To unarchive the third transaction
+in the archive list, simply use <code>archive 3</code>, and the transaction is transferred to the main transaction list.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="finding-transactions-code-find-code"><a class="link" href="#finding-transactions-code-find-code">Finding transactions: <code>find</code></a></h5>
+<div class="paragraph">
+<p>Format: <code>find [KEYWORDS]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>If you want to quickly search for a transaction in your transaction list, you can further refine your search
+using the upcoming <code>find</code> command!</p>
+</div>
+<div class="paragraph">
+<p>The <code>find</code> command takes in keywords as parameters, allowing you to search for transactions containing
+specific keywords in their respective descriptions.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>find dinner steak</code> updates the list to show transactions from the current filter that have the words
+"dinner" and "steak" in their descriptions.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-wealth-coming-in-v2-0"><a class="link" href="#setting-wealth-coming-in-v2-0">4.1.10. Setting wealth (coming in v2.0)</a></h4>
+<div class="paragraph">
+<p>Format: <code>wealth a/AMOUNT</code></p>
+</div>
+<div class="paragraph">
+<p>If you want a quick simple summary of how much money you have left to spend, you can use our upcoming
+wealth setting feature, where you can set the amount of money you have. The wealth value is automatically updated
+with every change to your transactions list, so you do not have to worry about manually resetting wealth with every
+transaction made!</p>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="repeaters"><a class="link" href="#repeaters">4.3. Repeaters</a></h3>
+<h3 id="repeaters"><a class="link" href="#repeaters">4.2. Repeaters</a></h3>
 <div class="paragraph">
 <p>There is sometimes a need to add the same transaction over and over again. Such is the case for recurring transactions such as phone bills and salaries. With our repeater feature, you can add these recurring transactions in a hassle free manner.</p>
 </div>
@@ -769,7 +852,7 @@ For a more detailed guide on how to modify these transactions, refer to <a href=
 </div>
 </div>
 <div class="sect3">
-<h4 id="creating-repeater-code-add-code"><a class="link" href="#creating-repeater-code-add-code">4.3.1. Creating repeater: <code>add</code></a></h4>
+<h4 id="creating-repeater-code-add-code"><a class="link" href="#creating-repeater-code-add-code">4.2.1. Creating repeater: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [ty/TRANSACTION_TYPE] [so/MONTH_START_OFFSET] [eo/MONTH_END_OFFSET] sm/START_MONTH sy/START_YEAR em/END_MONTH ey/END_YEAR</code></p>
 </div>
@@ -838,7 +921,7 @@ This creates a repeater titled "Phone bills" as an expenditure for utilities of 
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-repeater-code-edit-code"><a class="link" href="#editing-repeater-code-edit-code">4.3.2. Editing repeater <code>edit</code></a></h4>
+<h4 id="editing-repeater-code-edit-code"><a class="link" href="#editing-repeater-code-edit-code">4.2.2. Editing repeater <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>edit INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [ty/TRANSACTION_TYPE] [so/MONTH_START_OFFSET] [eo/MONTH_END_OFFSET] [sm/START_MONTH] [sy/START_YEAR] [em/END_MONTH] [ey/END_YEAR]</code></p>
 </div>
@@ -886,7 +969,7 @@ This edits the first repeater in the current list into a $31.34 expenditure for 
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-repeater-code-delete-code"><a class="link" href="#deleting-repeater-code-delete-code">4.3.3. Deleting repeater: <code>delete</code></a></h4>
+<h4 id="deleting-repeater-code-delete-code"><a class="link" href="#deleting-repeater-code-delete-code">4.2.3. Deleting repeater: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>delete INDEX</code></p>
 </div>
@@ -906,7 +989,7 @@ Deletes the 12th repeater in the current list. This also deletes the transaction
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-repeater-code-find-code"><a class="link" href="#finding-repeater-code-find-code">4.3.4. Finding repeater: <code>find</code></a></h4>
+<h4 id="finding-repeater-code-find-code"><a class="link" href="#finding-repeater-code-find-code">4.2.4. Finding repeater: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
@@ -927,7 +1010,7 @@ This finds all repeaters whose description contains all of the keywords "phone" 
 </div>
 </div>
 <div class="sect2">
-<h3 id="budgets"><a class="link" href="#budgets">4.4. Budgets</a></h3>
+<h3 id="budgets"><a class="link" href="#budgets">4.3. Budgets</a></h3>
 <div class="paragraph">
 <p>After taking the effort to record your expenditures, you want to ensure that you are spending within your limit.
 This is made simple with the budgeting features in IchiFund.</p>
@@ -982,7 +1065,7 @@ The budget bar will turn from green to red when you spend over 80% of the total 
 </table>
 </div>
 <div class="sect3">
-<h4 id="creating-monthly-budget-code-add-code"><a class="link" href="#creating-monthly-budget-code-add-code">4.4.1. Creating monthly budget: <code>add</code></a></h4>
+<h4 id="creating-monthly-budget-code-add-code"><a class="link" href="#creating-monthly-budget-code-add-code">4.3.1. Creating monthly budget: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
 </div>
@@ -1047,7 +1130,7 @@ For instance, the following command creates a $500.00 budget that is applicable 
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-monthly-budget-code-delete-code"><a class="link" href="#deleting-monthly-budget-code-delete-code">4.4.2. Deleting monthly budget: <code>delete</code></a></h4>
+<h4 id="deleting-monthly-budget-code-delete-code"><a class="link" href="#deleting-monthly-budget-code-delete-code">4.3.2. Deleting monthly budget: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>delete INDEX</code></p>
 </div>
@@ -1077,7 +1160,7 @@ You should see the <em>Saving my tummy</em> budget disappear from the budget lis
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-monthly-budget-by-keywords-code-find-code"><a class="link" href="#finding-monthly-budget-by-keywords-code-find-code">4.4.3. Finding monthly budget by keywords: <code>find</code></a></h4>
+<h4 id="finding-monthly-budget-by-keywords-code-find-code"><a class="link" href="#finding-monthly-budget-by-keywords-code-find-code">4.3.3. Finding monthly budget by keywords: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>find [KEYWORDS]&#8230;&#8203;</code></p>
 </div>
@@ -1092,9 +1175,9 @@ You should see the search result in the budget list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="loans-coming-in-v2-0"><a class="link" href="#loans-coming-in-v2-0">4.5. Loans [Coming in v2.0]</a></h3>
+<h3 id="loans-coming-in-v2-0"><a class="link" href="#loans-coming-in-v2-0">4.4. Loans [Coming in v2.0]</a></h3>
 <div class="sect3">
-<h4 id="adding-new-loan-code-add-code"><a class="link" href="#adding-new-loan-code-add-code">4.5.1. Adding new loan: <code>add</code></a></h4>
+<h4 id="adding-new-loan-code-add-code"><a class="link" href="#adding-new-loan-code-add-code">4.4.1. Adding new loan: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds new loan to list.<br>
 Format: <code>loannew  i/AMOUNT  n/NAME d/DESCRIPTION</code></p>
@@ -1112,7 +1195,7 @@ Takes input with initialization values and adds them to a list of current unpaid
 </div>
 </div>
 <div class="sect3">
-<h4 id="marking-loan-paid-code-paid-code"><a class="link" href="#marking-loan-paid-code-paid-code">4.5.2. Marking Loan Paid: <code>paid</code></a></h4>
+<h4 id="marking-loan-paid-code-paid-code"><a class="link" href="#marking-loan-paid-code-paid-code">4.4.2. Marking Loan Paid: <code>paid</code></a></h4>
 <div class="paragraph">
 <p>Marks loan as paid or reduces amount from payment.<br>
 Format: <code>loanpaid i/INDEX [i/AMOUNT]</code></p>
@@ -1130,7 +1213,7 @@ Takes input with initialization values and adds them to a list of current unpaid
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-loan-code-find-code"><a class="link" href="#finding-loan-code-find-code">4.5.3. Finding loan: <code>find</code></a></h4>
+<h4 id="finding-loan-code-find-code"><a class="link" href="#finding-loan-code-find-code">4.4.3. Finding loan: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Shows all loans with certain name or description or date , or all loans<br>
 Format: <code>loanshow [s/KEYWORD]</code></p>
@@ -1148,7 +1231,7 @@ Shows all loans when no keyword is given, when keyword is added, all loans with 
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-new-loan-code-total-code"><a class="link" href="#adding-new-loan-code-total-code">4.5.4. Adding new loan: <code>total</code></a></h4>
+<h4 id="adding-new-loan-code-total-code"><a class="link" href="#adding-new-loan-code-total-code">4.4.4. Adding new loan: <code>total</code></a></h4>
 <div class="paragraph">
 <p>Finds and shows nett amount to pay/owed with keyword<br>
 Format: <code>loantotal s/KEYWORD</code></p>
@@ -1166,7 +1249,7 @@ If no keyword is given, it returns total difference in amount owed to other part
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-new-loan-code-edit-code"><a class="link" href="#editing-new-loan-code-edit-code">4.5.5. Editing new loan: <code>edit</code></a></h4>
+<h4 id="editing-new-loan-code-edit-code"><a class="link" href="#editing-new-loan-code-edit-code">4.4.5. Editing new loan: <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Changes existing loan<br>
 Format: <code>loanset i/INDEX [a/AMOUNT] [d/DATE] [n/NAME] [d/DESCRIPTION]</code></p>
@@ -1184,7 +1267,7 @@ Takes input with initialization values for current loan identified by index, cha
 </div>
 </div>
 <div class="sect3">
-<h4 id="sorting-all-loans-code-sort-code"><a class="link" href="#sorting-all-loans-code-sort-code">4.5.6. Sorting all loans: <code>sort</code></a></h4>
+<h4 id="sorting-all-loans-code-sort-code"><a class="link" href="#sorting-all-loans-code-sort-code">4.4.6. Sorting all loans: <code>sort</code></a></h4>
 <div class="paragraph">
 <p>Finds and shows all loans sorted<br>
 Format: <code>loansort s/BY</code></p>
@@ -1203,9 +1286,9 @@ Loans shown sorted by any given constrain, date or value owed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="analytics"><a class="link" href="#analytics">4.6. Analytics</a></h3>
+<h3 id="analytics"><a class="link" href="#analytics">4.5. Analytics</a></h3>
 <div class="sect3">
-<h4 id="viewing-expenditure-trend-code-expenditure-code"><a class="link" href="#viewing-expenditure-trend-code-expenditure-code">4.6.1. Viewing expenditure trend: <code>expenditure</code></a></h4>
+<h4 id="viewing-expenditure-trend-code-expenditure-code"><a class="link" href="#viewing-expenditure-trend-code-expenditure-code">4.5.1. Viewing expenditure trend: <code>expenditure</code></a></h4>
 <div class="paragraph">
 <p>Displays monthly expenditure trend for current year.
 Format: <code>expenditure [y/YEAR]</code></p>
@@ -1227,7 +1310,7 @@ Displays monthly expenditure trend for 2019.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-income-trend-code-income-code"><a class="link" href="#viewing-income-trend-code-income-code">4.6.2. Viewing income trend: <code>income</code></a></h4>
+<h4 id="viewing-income-trend-code-income-code"><a class="link" href="#viewing-income-trend-code-income-code">4.5.2. Viewing income trend: <code>income</code></a></h4>
 <div class="paragraph">
 <p>Displays monthly income trend for current year.<br>
 Format: <code>income [y/YEAR]</code></p>
@@ -1249,7 +1332,7 @@ Displays monthly income trend for 2019.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-balance-trend-code-balance-code"><a class="link" href="#viewing-balance-trend-code-balance-code">4.6.3. Viewing balance trend: <code>balance</code></a></h4>
+<h4 id="viewing-balance-trend-code-balance-code"><a class="link" href="#viewing-balance-trend-code-balance-code">4.5.3. Viewing balance trend: <code>balance</code></a></h4>
 <div class="paragraph">
 <p>Displays monthly balance (income - expenditure) trend for current year.<br>
 Format: <code>balance [y/YEAR]</code></p>
@@ -1271,7 +1354,7 @@ Displays monthly balance trend for 2019.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-expenditure-breakdown-by-category-code-breakdown-code"><a class="link" href="#viewing-expenditure-breakdown-by-category-code-breakdown-code">4.6.4. Viewing expenditure breakdown by category: <code>breakdown</code></a></h4>
+<h4 id="viewing-expenditure-breakdown-by-category-code-breakdown-code"><a class="link" href="#viewing-expenditure-breakdown-by-category-code-breakdown-code">4.5.4. Viewing expenditure breakdown by category: <code>breakdown</code></a></h4>
 <div class="paragraph">
 <p>Displays breakdown of expenditure by category.<br>
 Format: <code>breakdown [m/MONTH] [y/YEAR]</code></p>
@@ -1293,7 +1376,7 @@ Displays expenditure breakdown by category for July 2019.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-expenditure-category-ranking-chart-code-catrank-code"><a class="link" href="#viewing-expenditure-category-ranking-chart-code-catrank-code">4.6.5. Viewing expenditure category ranking chart: <code>catrank</code></a></h4>
+<h4 id="viewing-expenditure-category-ranking-chart-code-catrank-code"><a class="link" href="#viewing-expenditure-category-ranking-chart-code-catrank-code">4.5.5. Viewing expenditure category ranking chart: <code>catrank</code></a></h4>
 <div class="paragraph">
 <p>Displays expenditure category ranking chart.<br>
 Format: <code>catrank [m/MONTH] [y/YEAR]</code></p>
@@ -1315,7 +1398,7 @@ Displays expenditure category ranking chart for July 2019.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-expenditure-ranking-chart-by-month-code-mthrank-code"><a class="link" href="#viewing-expenditure-ranking-chart-by-month-code-mthrank-code">4.6.6. Viewing expenditure ranking chart by month: <code>mthrank</code></a></h4>
+<h4 id="viewing-expenditure-ranking-chart-by-month-code-mthrank-code"><a class="link" href="#viewing-expenditure-ranking-chart-by-month-code-mthrank-code">4.5.6. Viewing expenditure ranking chart by month: <code>mthrank</code></a></h4>
 <div class="paragraph">
 <p>Displays expenditure ranking chart by month.<br>
 Format: <code>mthrank [y/YEAR]</code></p>
@@ -1337,7 +1420,7 @@ Displays expenditure ranking chart by month for 2019.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-expenditure-ranking-chart-code-exprank-code"><a class="link" href="#viewing-expenditure-ranking-chart-code-exprank-code">4.6.7. Viewing expenditure ranking chart: <code>exprank</code></a></h4>
+<h4 id="viewing-expenditure-ranking-chart-code-exprank-code"><a class="link" href="#viewing-expenditure-ranking-chart-code-exprank-code">4.5.7. Viewing expenditure ranking chart: <code>exprank</code></a></h4>
 <div class="paragraph">
 <p>Displays expenditure ranking chart.<br>
 Format: <code>exprank [m/MONTH] [y/YEAR]</code></p>
@@ -1375,7 +1458,7 @@ Displays expenditure ranking chart for July 2019.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
+<h2 id="command-summary-v1-4"><a class="link" href="#command-summary-v1-4">6. Command Summary (v1.4)</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -1434,7 +1517,7 @@ Displays expenditure ranking chart for July 2019.</p>
 <p><strong>Budget Delete</strong> : <code>delete INDEX</code></p>
 </li>
 <li>
-<p><strong>Budget Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p><strong>Budget Find</strong> : <code>find [KEYWORDS]&#8230;&#8203;</code></p>
 </li>
 <li>
 <p><strong>Expenditure Trend</strong> : <code>expenditure [y/YEAR]</code></p>
@@ -1460,4 +1543,4 @@ Displays expenditure ranking chart for July 2019.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 08:07:14 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 08:48:56 UTC</div></div></div></body></html>
