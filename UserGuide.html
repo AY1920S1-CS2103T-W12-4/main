@@ -27,7 +27,7 @@
 <li><a href="#transactions">4.2. Transactions</a></li>
 <li><a href="#repeaters">4.3. Repeaters</a></li>
 <li><a href="#budgets">4.4. Budgets</a></li>
-<li><a href="#loans-coming-in-v2-0">4.5. Loans [Coming in v2.0]</a></li>
+<li><a href="#loans">4.5. Loans</a></li>
 <li><a href="#analytics">4.6. Analytics</a></li>
 </ul>
 </li>
@@ -1193,113 +1193,172 @@ You should see the search result in the budget list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="loans-coming-in-v2-0"><a class="link" href="#loans-coming-in-v2-0">4.5. Loans [Coming in v2.0]</a></h3>
-<div class="sect3">
-<h4 id="adding-new-loan-code-add-code"><a class="link" href="#adding-new-loan-code-add-code">4.5.1. Adding new loan: <code>add</code></a></h4>
+<h3 id="loans"><a class="link" href="#loans">4.5. Loans</a></h3>
 <div class="paragraph">
-<p>Adds new loan to list.<br>
-Format: <code>loannew  i/AMOUNT  n/NAME d/DESCRIPTION</code></p>
+<p>In a social setting, finances aren&#8217;t limited to just one persons own spending, one is bound to have to borrow/lend money.</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>This borrowing and lending can make it hard to keep track of how much money you actually have.
+With the loans feature you can keep track of the <code>amount</code> you owe, the <code>name</code> of the person you owe it to and the <code>date</code> by which you have to return it.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-loan-code-add-code"><a class="link" href="#adding-loan-code-add-code">4.5.1. Adding loan: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>add a/AMOUNT [c/NAME] [sm/START_MONTH] [sy/START_YEAR] [em/END_MONTH] [ey/END_YEAR] [de/DESCRIPTION]</code></p>
+</div>
+<div class="paragraph">
+<p>You can use the <code>add</code> command to create a loan. This also creates the other objects associated with the created repeater.</p>
+</div>
+<div class="paragraph">
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+The optional arguments take the following default values if left unspecified:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Default values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"No Description"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"No Name"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Start Day</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"12"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Start Month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"12"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Start Year</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"2019"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">End Day</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"1"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">End Month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"2"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">End Year</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"2020"</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="images/Loan_1_help.png" alt="Loan 1 help">
+</div>
+<div class="title">Figure 5. Usage of 'add'</div>
+</div>
+<div class="paragraph">
+<p>Constraints:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>loannew  a/10000 d/12122014 n/Charlie d/For food in Indonesia</code><br>
-Takes input with initialization values and adds them to a list of current unpaid loans.</p>
+<p>Loan end must not occur before it&#8217;s start.</p>
+</li>
+<li>
+<p>Description, Name and Dates are Alphanumeric.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="marking-loan-paid-code-paid-code"><a class="link" href="#marking-loan-paid-code-paid-code">4.5.2. Marking Loan Paid: <code>paid</code></a></h4>
 <div class="paragraph">
-<p>Marks loan as paid or reduces amount from payment.<br>
-Format: <code>loanpaid i/INDEX [i/AMOUNT]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>loanpaid i/4 a/4000</code><br>
-Takes input with initialization values and adds them to a list of current unpaid loans.</p>
+<p>`add a/420.42 n/Felix Kjellberg sd/12 sm/12 sy/2019 ed/23 em/2 ey/2020 de/Borrowed for apple earpods `</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>This creates a loan of 420.42 for "Buying airpods" taken on 12 December 2019 to 02 February 2020.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="finding-loan-code-find-code"><a class="link" href="#finding-loan-code-find-code">4.5.3. Finding loan: <code>find</code></a></h4>
+<h4 id="editing-new-loan-code-edit-code"><a class="link" href="#editing-new-loan-code-edit-code">4.5.2. Editing new loan: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Shows all loans with certain name or description or date , or all loans<br>
-Format: <code>loanshow [s/KEYWORD]</code></p>
+<p>Format: <code>edit INDEX [a/AMOUNT] [de/DESCRIPTION] [n/NAME] [sm/START_MONTH] [sy/START_YEAR] [em/END_MONTH] [ey/END_YEAR]</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>You can use the edit command to edit a loan. This can change any attribute(s) of the loan.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The loan fields will only be updated where the arguments are specified.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Loan_2_help.png" alt="Loan 2 help">
+</div>
+<div class="title">Figure 6. Usage of 'edit'</div>
+</div>
+<div class="paragraph">
+<p>Constraints:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>loanshow s/charlie</code><br>
-Shows all loans when no keyword is given, when keyword is added, all loans with given dat/name or description are shown.</p>
+<p>Loan end date must not occur before loan start date.</p>
+</li>
+<li>
+<p>Index must be specified, no change occurs otherwise.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="adding-new-loan-code-total-code"><a class="link" href="#adding-new-loan-code-total-code">4.5.4. Adding new loan: <code>total</code></a></h4>
 <div class="paragraph">
-<p>Finds and shows nett amount to pay/owed with keyword<br>
-Format: <code>loantotal s/KEYWORD</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>loantotal s/12/12/2000</code><br>
-If no keyword is given, it returns total difference in amount owed to other parties and amount to be paid.</p>
+<p>edit 1 de/Current Student Loan a/99999.99 n/DBS SG Bank sd/1 sm/1 sy/2020 ed/30 em/12 ey/2021</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>This edits the first loanr in the current list to - $99999.99 loan taken on 1st January 2020 and to be paid back by 30th December 2021.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-new-loan-code-edit-code"><a class="link" href="#editing-new-loan-code-edit-code">4.5.5. Editing new loan: <code>edit</code></a></h4>
+<h4 id="marking-loan-paid-code-paid-code"><a class="link" href="#marking-loan-paid-code-paid-code">4.5.3. Marking Loan Paid: <code>paid</code></a></h4>
 <div class="paragraph">
-<p>Changes existing loan<br>
-Format: <code>loanset i/INDEX [a/AMOUNT] [d/DATE] [n/NAME] [d/DESCRIPTION]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>loanset i/3 n/Lee d/For food in NY</code><br>
-Takes input with initialization values for current loan identified by index, change any value.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="sorting-all-loans-code-sort-code"><a class="link" href="#sorting-all-loans-code-sort-code">4.5.6. Sorting all loans: <code>sort</code></a></h4>
-<div class="paragraph">
-<p>Finds and shows all loans sorted<br>
-Format: <code>loansort s/BY</code></p>
+<p>Mark loan as paid and remove it from the list.<br>
+Take any loan, with an outstanding loan amount, and when it is paid off, it can referenced by it&#8217;s index to be removed.</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Format: <code>pay i/INDEX</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>loansort s/DATE</code><br>
-Loans shown sorted by any given constrain, date or value owed.</p>
-</li>
-</ul>
+<div class="imageblock">
+<div class="content">
+<img src="images/Loan_3_help.png" alt="Loan 3 help">
+</div>
+<div class="title">Figure 7. Usage of 'paid'</div>
 </div>
 </div>
 </div>
@@ -1308,6 +1367,20 @@ Loans shown sorted by any given constrain, date or value owed.</p>
 <div class="paragraph">
 <p>Have you ever wondered where all your money is going?
 Our analytics feature provides deeper insights into your incomes and expenditures, so that you can take control of your personal finances.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loanpaid 1</code><br>
+Takes the first loan and removes it form the list.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Loan_4_help.png" alt="Loan 4 help">
+</div>
+<div class="title">Figure 8. After Executing loanpaid</div>
 </div>
 <div class="paragraph">
 <p>On startup, the analytics tab is empty.</p>
@@ -1320,7 +1393,7 @@ The image below gives an overview of the GUI of the feature:</p>
 <div class="content">
 <img src="images/AnalyticsScreenshot.png" alt="AnalyticsScreenshot">
 </div>
-<div class="title">Figure 5. Analytics tab</div>
+<div class="title">Figure 9. Analytics tab</div>
 </div>
 <div class="paragraph">
 <p>The list of command results comprises several result cells.
@@ -1330,7 +1403,7 @@ We give a further breakdown of the information each cell displays in the followi
 <div class="content">
 <img src="images/AnalyticsCell.png" alt="AnalyticsCell">
 </div>
-<div class="title">Figure 6. Information in an analytics cell</div>
+<div class="title">Figure 10. Information in an analytics cell</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1696,31 +1769,22 @@ Displays expenditure ranking chart for July 2019.</p>
 <p><strong>Repeater Delete</strong> : <code>delete INDEX</code></p>
 </li>
 <li>
-<p><strong>Repeater Find</strong> : <code>find [KEYWORDS]&#8230;&#8203;</code></p>
+<p><strong>Repeater Filter</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </li>
 <li>
-<p><strong>Loan Add new</strong> : <code>add a/Amount [d/DATE] [n/NAME]</code>  (Coming in v2.0)</p>
+<p><strong>Loan Add new</strong> : <code>add a/Amount [d/DATE] [n/NAME] [d/DESCRIPTION] [sd/DAY] [sm/MONTH] [sy/YEAR] [ed/DAY] [em/MONTH] [ey/YEAR]</code></p>
 </li>
 <li>
-<p><strong>Loan Payment</strong> : <code>paid i/INDEX [n/NAME] [a/AMOUNT]</code>  (Coming in v2.0)</p>
+<p><strong>Loan Edit</strong> : <code>add i/Index a/Amount [d/DATE] [n/NAME] [d/DESCRIPTION] [sd/DAY] [sm/MONTH] [sy/YEAR] [ed/DAY] [em/MONTH] [ey/YEAR]</code></p>
 </li>
 <li>
-<p><strong>Loan Categorical Search</strong> : <code>find [s/KEYWORD]</code>  (Coming in v2.0)</p>
+<p><strong>Loan Pay</strong> : <code>pay i/Index</code></p>
 </li>
 <li>
-<p><strong>Loan Net Amount</strong> : <code>total [s/KEYWORD]</code>  (Coming in v2.0)</p>
+<p><strong>Budget Add</strong> : <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/day m/MONTH y/YEAR]</code></p>
 </li>
 <li>
-<p><strong>Loan Value Update</strong> : <code>edit i/INDEX [a/AMOUNT] [s/DATE] [n/NAME] [d/DESCRIPTION]</code>  (Coming in v2.0)</p>
-</li>
-<li>
-<p><strong>Loan Sort By Value</strong> : <code>sort s/BY</code>  (Coming in v2.0)</p>
-</li>
-<li>
-<p><strong>Budget Add</strong> : <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
-</li>
-<li>
-<p><strong>Budget Delete</strong> : <code>delete INDEX</code></p>
+<p><strong>Budget Delete</strong> : <code>delete i/INDEX a/Amount [n/Name]</code></p>
 </li>
 <li>
 <p><strong>Budget Find</strong> : <code>find [KEYWORDS]&#8230;&#8203;</code></p>
@@ -1749,4 +1813,4 @@ Displays expenditure ranking chart for July 2019.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:20:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:30:11 UTC</div></div></div></body></html>
