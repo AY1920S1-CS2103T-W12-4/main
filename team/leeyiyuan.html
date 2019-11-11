@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Lee Yiyuan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">IchiFund</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-W12-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Lee Yiyuan - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-addressbook-level-3"><a class="link" href="#project-addressbook-level-3">PROJECT: AddressBook - Level 3</a></h2>
+<h2 id="project-ichifund"><a class="link" href="#project-ichifund">PROJECT: IchiFund</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -10,7 +10,11 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>This portfolio documents my contributions towards the project, IchiFund, which is part of an introductory software
+engineering module, CS2103T. My team (of 5) was tasked to morph or enhance an existing address book software.
+Our resulting product, IchiFund, is a desktop finance management application for students to manage transactions, budgets and loans.
+It is optimised for students that prefer using a CLI.
+My role was to develop the <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/UserGuide.html#repeaters">Repeaters</a> component of the application.</p>
 </div>
 </div>
 </div>
@@ -20,106 +24,48 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Developed the <code>Model</code>, <code>Logic</code>, <code>Storage</code>, and <code>Ui</code> infrastructure for repeaters.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>Functionality: Provides the foundation on which features related to repeaters, in particular <code>add</code>, <code>edit</code>, <code>delete</code> and <code>find</code>, are built.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: The ability to easily create, read, update and delete repeaters on the GUI of the application depends on properly
+establishing the infrastructure for repeaters.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement demonstrates a deep understanding of the design pattern underlying the existing code.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Major enhancement</strong>: Implemented the synchronization of associated transactions whenever the repeaters are updated.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Functionality: When adding, editing and deleting repeaters, the list of associated transactions are automatically synchronized to the update.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: Repeated transactions are tedious to handle if they were to be created one by one as separate transactions. With repeaters, the user only need to create, edit and delete a single transactions and all associated transactions will automatically be updated. This greatly reduces the amount of effort needed for users to manage repeated transactions.</p>
+</li>
+<li>
+<p>Highlights: This enhancement required the implementation of an additional field in <code>Transaction</code> to allow for association between transactions and repeaters. In addition, additional functions were also implemented to synchronize the list of associated transactions whenever a repeater is added, created or deleted. This demonstrates the ability to implement features in conjunction with the work of other developers.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added the ability to edit (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/160">#160</a>), delete (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/140">#140</a>) and find (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/243">#243</a>) repeaters.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: Click <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=LeeYiyuan">here</a> to view the code I have contributed on the CS2103T tP Dashboard.</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
 </li>
 </ul>
-</div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +82,195 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="repeaters"><a class="link" href="#repeaters">Repeaters</a></h3>
+<div class="paragraph">
+<p>There is sometimes a need to add the same transaction over and over again. Such is the case for recurring transactions such as phone bills and salaries. With our repeater feature, you can add these recurring transactions in a hassle free manner.</p>
+</div>
+<div class="paragraph">
+<p>In the repeater tab, you can maintain a list of your repeaters. Each repeater is associated with a list of transactions, which are managed by the repeater. The image below gives an overview of the GUI of the feature. The associated transactions managed by each repeater are highlighted with the respective colored box.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/rep.png" alt="rep">
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-repeater-code-add-code"><a class="link" href="#creating-repeater-code-add-code">Creating repeater: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [ty/TRANSACTION_TYPE] [so/MONTH_START_OFFSET] [eo/MONTH_END_OFFSET] sm/START_MONTH sy/START_YEAR em/END_MONTH ey/END_YEAR</code></p>
+</div>
+<div class="paragraph">
+<p>You can use the <code>add</code> command to create a repeater. This also creates the transactions associated with the created repeater.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title=":information_source:"></i>
+</td>
+<td class="content">
+Duplicate repeaters, where both repeaters have exactly the same fields, are not allowed in IchiFund.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The optional arguments take the following default values if left unspecified.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Default values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Category</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Uncategorised"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"exp"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Month Start Offset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"-1" (Offset ignored)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Month End Offset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"-1" (Offset ignored)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No duplicate repeater currently exists.</p>
+</li>
+<li>
+<p>Repeater end must not occur before repeater start.</p>
+</li>
+<li>
+<p>Repeater start and end can span at most 60 months (5 years).</p>
+</li>
+<li>
+<p>At least one of month start offset or month end offset must not be ignored.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add de/Phone bills a/42.15 c/Utilities ty/exp so/3 eo/2 sm/1 sy/2019 em/12 ey/2020</code><br>
+This creates a repeater titled "Phone bills" as an expenditure for utilities of $42.15 for every third day and second last day of the month, between January 2019 to December 2020. This also creates the transactions associated with the created repeater.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-repeater-code-edit-code"><a class="link" href="#editing-repeater-code-edit-code">Editing repeater <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>edit INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [ty/TRANSACTION_TYPE] [so/MONTH_START_OFFSET] [eo/MONTH_END_OFFSET] [sm/START_MONTH] [sy/START_YEAR] [em/END_MONTH] [ey/END_YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>You can use the <code>edit</code> command to edit a repeater. This also edits the transactions associated with the edited repeater.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title=":information_source:"></i>
+</td>
+<td class="content">
+The repeater fields will only be updated where the arguments are specified.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No duplicate repeater currently exists.</p>
+</li>
+<li>
+<p>Repeater end must not occur before repeater start.</p>
+</li>
+<li>
+<p>Repeater start and end can span at most 60 months (5 years).</p>
+</li>
+<li>
+<p>At least one of month start offset or month end offset must not be ignored.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 a/31.34 c/Food ty/in so/1 eo/-1 sm/1 sy/2019 em/12 ey/2020</code><br>
+This edits the first repeater in the current list into a $31.34 expenditure for every first day of the month, between January 2019 and December 2020. This also updates the transactions associated with the edited repeater.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-repeater-code-delete-code"><a class="link" href="#deleting-repeater-code-delete-code">Deleting repeater: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>You can use the <code>delete</code> command to delete a repeater. This also deletes all transactions associated with the deleted repeater.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 12</code><br>
+Deletes the 12th repeater in the current list. This also deletes the transactions associated with the deleted repeater.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-repeater-code-find-code"><a class="link" href="#finding-repeater-code-find-code">Finding repeater: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>find [KEYWORDS]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>You can use the <code>find</code> command to find repeaters whose description matches any the (case-insensitive) given keyword(s). If no keyword is specified, then the search filter is cleared.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find phone john</code><br>
+This finds all repeaters whose description contains all of the keywords "phone" and "john".</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -151,14 +286,244 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
+<div class="sect2">
+<h3 id="repeaters-2"><a class="link" href="#repeaters-2">Repeaters</a></h3>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>Repeaters allow for the convenient management of repeated transactions through a single <code>Repeater</code> entity. The list of associated transactions are automatically synchronized to updates in <code>Repeater</code>s. The following class diagram summarizes the details of the <code>Repeater</code> class:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RepeaterClassDiagram.png" alt="RepeaterClassDiagram">
+</div>
+<div class="title">Figure 1. Class Diagram from Repeaters Model</div>
+</div>
+<div class="sect3">
+<h4 id="adding-repeater"><a class="link" href="#adding-repeater">Adding Repeater</a></h4>
+<div class="paragraph">
+<p>This feature allows the user to add a repeater in IchiFund. Adding a repeater also creates the transactions associated with the added repeater.</p>
+</div>
+<div class="sect4">
+<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>add</code> command is facilitated by the Logic and Model components of the application. The process of executing an <code>add</code> command is illustrated in the sequence diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddRepeaterSequenceDiagram.png" alt="AddRepeaterSequenceDiagram">
+</div>
+<div class="title">Figure 2. Sequence Diagram for <code>AddRepeaterCommand</code></div>
+</div>
+<div class="paragraph">
+<p>Below is an example usage scenario of how <code>add</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: In the repeaters tab, the user executes <code>add de/Phone bills a/42.15 c/Utilities ty/exp so/3 eo/2 sd/1 sm/1 sy/2019 ed/31 em/12 ey/2019</code> to add a repeater for phone bills with an amount of $42.15 on the third and second last day of every month between 1st January 2019 and 31st December 2019.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>IchiFundParser</code> determines which command is being used and creates the respective <code>AddRepeaterCommandParser</code> parser with the user&#8217;s input as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>AddRepeaterCommandParser</code> does a validation check on the user&#8217;s input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>AddRepeaterCommandParser</code> creates and returns an <code>AddRepeaterCommand</code> with the desired <code>Repeater</code> as an arugment.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>LogicManager</code> calls <code>AddRepeaterCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>AddRepeaterCommand</code> checks for the following constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>Repeater</code> to be added does not already exist in the <code>Model</code>.</p>
+</li>
+<li>
+<p>The end date of the <code>Repeater</code> to be added is no earlier than its start date.</p>
+</li>
+<li>
+<p>The start date and and end date of the <code>Repeater</code> to be added span no more than 60 months.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: <code>AddRepeaterCommand</code> fetches the running <code>RepeaterUniqueId</code> counter tracked by the <code>Model</code>, and sets it as the created <code>Repeater</code>'s unique id.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 9</strong>: <code>AddRepeaterCommand</code> increments the current <code>RepeaterUniqueId</code> counter in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 10</strong>: <code>AddRepeaterCommand</code> adds the newly created <code>Repeater</code> to the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 11</strong>: <code>AddRepeaterCommand</code> creates the associated <code>Transaction</code>s in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 12</strong>: <code>AddRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:30:11 UTC</div></div></div></body></html>
+</div>
+<div class="sect3">
+<h4 id="editing-repeater"><a class="link" href="#editing-repeater">Editing Repeater</a></h4>
+<div class="paragraph">
+<p>This feature allows the user to edit a repeater in IchiFund. Editing a repeater also updates the transactions associated with the added repeater.</p>
+</div>
+<div class="sect4">
+<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>edit</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>edit</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: In the repeaters tab, the user executes <code>edit 1 a/37.24 so/-1 eo/4</code> to edit the repeater at the 2nd index for an amount of $37.25, occuring only at the fourth last day of every month.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>IchiFundParser</code> determines which command is being used and creates the respective <code>EditRepeaterCommandParser</code> parser with the user&#8217;s input as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>EditRepeaterCommandParser</code> does a validation check on the user&#8217;s input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>EditRepeaterCommandParser</code> creates an <code>EditRepeaterDescriptor</code> which contains the updated repeater information provided by the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>EditRepeaterCommandParser</code> creates and returns an <code>EditRepeaterCommand</code> with the <code>Index</code> and <code>EditRepeaterDescriptor</code> as arguments.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>LogicManager</code> executes <code>EditRepeaterCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: <code>EditRepeaterCommand</code> checks for the following constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The updated <code>Repeater</code> does not already exist in the <code>Model</code>.</p>
+</li>
+<li>
+<p>The end date of the updated <code>Repeater</code> is no earlier than its start date.</p>
+</li>
+<li>
+<p>The start date and and end date of the updated <code>Repeater</code> span no more than 60 months.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Step 9</strong>: <code>EditRepeaterCommand</code> creates a new <code>Repeater</code> using the original <code>Repeater</code> and the <code>EditRepeaterDescriptor</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 10</strong>: <code>EditRepeaterCommand</code> replaces the original <code>Repeater</code> in the <code>Model</code> with the newly created <code>Repeater</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 11</strong>: <code>EditRepeaterCommand</code> deletes all existing associated <code>Transaction</code>s from the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 12</strong>: <code>EditRepeaterCommand</code> creates the <code>Transaction</code>s associated with the updated <code>Repeater</code> in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 13</strong>: <code>EditRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
+<div class="paragraph">
+<p>When creating an <code>EditRepeaterDescriptor</code>, <code>EditRepeaterCommandParser</code> fills in arguments unspecified by the user with default values, as shown in the activity diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RepeaterOptionalActivityDiagram.png" alt="RepeaterOptionalActivityDiagram">
+</div>
+<div class="title">Figure 3. Activity Diagram for Optional Arguments in <code>EditRepeaterCommandParser</code></div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-repeater"><a class="link" href="#deleting-repeater">Deleting Repeater</a></h4>
+<div class="paragraph">
+<p>This feature allows the user to delete repeater in IchiFund. Deleting a repeater also deletes the transactions associated with the deleted repeater.</p>
+</div>
+<div class="sect4">
+<h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>delete</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>delete</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: In the repeaters tab, the user executes <code>delete 2</code> to delete the repeater at the 2nd index.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>IchiFundParser</code> determines which command is being used and creates the respective <code>DeleteRepeaterCommandParser</code> parser with the user&#8217;s input as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>DeleteRepeaterCommandParser</code> does a validation check on the user&#8217;s input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>DeleteRepeaterCommandParser</code> creates and returns a <code>DeleteRepeaterCommand</code> with the desired <code>Index</code> as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>LogicManager</code> calls <code>DeleteRepeaterCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>DeleteRepeaterCommand</code> checks that a <code>Repeater</code> exists at the <code>Index</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: <code>DeleteRepeaterCommand</code> retrieves the <code>Repeater</code> at the <code>Index</code> from the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 9</strong>: <code>DeleteRepeaterCommand</code> deletes the <code>Repeater</code> from the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 10</strong>: <code>DeleteRepeaterCommand</code> deletes all associated <code>Transaction</code>s in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 11</strong>: <code>DeleteRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-repeater"><a class="link" href="#finding-repeater">Finding Repeater</a></h4>
+<div class="paragraph">
+<p>This feature allows the user to find repeaters in IchiFund. The search by matching provided keywords against repeater descriptions.</p>
+</div>
+<div class="sect4">
+<h5 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>find</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>find</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: In the repeaters tab, the user executes <code>find phone husband</code> to find all repeaters whose descriptions contain any of the keywords "phone" and "husband".</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>IchiFundParser</code> determines which command is being used and creates the respective <code>FindRepeaterCommandParser</code> parser with the user&#8217;s input as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>FindRepeaterCommandParser</code> does a validation check on the user&#8217;s input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>FindRepeaterCommandParser</code> creates a <code>RepeaterDescriptionPredicate</code> which filters <code>Repeater</code>s based on whether a <code>Repeater</code> contains all the keywords provided by the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>FindRepeaterCommandParser</code> creates and returns a <code>FindRepeaterCommand</code> with the <code>RepeaterDescriptionPredicate</code> as an arugment.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>LogicManager</code> calls <code>FindRepeaterCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: <code>FindRepeaterCommand</code> sets the <code>RepeaterDescriptionPredicate</code> as the filter for the repeater list in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 9</strong>: <code>FindRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:47:36 UTC</div></div></div></body></html>
