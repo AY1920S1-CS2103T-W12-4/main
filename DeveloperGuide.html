@@ -50,7 +50,7 @@
 <li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
+<li><a href="#adding-and-modifying-a-loan">G.2. Adding and modifying a Loan</a></li>
 <li><a href="#saving-data">G.3. Saving data</a></li>
 </ul>
 </li>
@@ -2715,40 +2715,86 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a person</a></h3>
+<h3 id="adding-and-modifying-a-loan"><a class="link" href="#adding-and-modifying-a-loan">G.2. Adding and modifying a Loan</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Adding a Loan while other loans are present</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites: List all loans. Multiple loans in the list.</p>
 </li>
 <li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+<p>Test case: `add a/420.42 n/Felix Kjellberg sd/12 sm/12 sy/2019 ed/23 em/2 ey/2020 de/Borrowed for apple earpods `<br>
+Expected: Loan is added to the list. Details of the added loan shown in the status message.</p>
 </li>
 <li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+<p>Test case: <code>add a/220</code><br>
+Expected: Loan is added with default values. Loan Details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Test Case: <code>add n/Felix</code>
+Expected: No amount given error is shown. No Loan is added to the list. The status shows correct format to enter.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>add</code>, <code>add a/24 n/123</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing Existing loans</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all loans. Multiple loans in the list.</p>
+</li>
+<li>
+<p>TestCase: 'edit 2 a/220 n/NewName sd/12 ey/2012'<br>
+Expected: First loan on the list is changed to new assigned values. No other loans or entries are changed.</p>
+</li>
+<li>
+<p>TestCase: 'edit 1 n/NewName sd/12 ey/2012 d/New Description for the Loan'<br>
+Expected: First loan on the list is changed to new assigned values including description. No other loans or entries are changed. Other values are derived from existing entry.</p>
+</li>
+<li>
+<p>TestCase: 'edit a/220 n/NewName sd/12 ey/2012'<br>
+Expected: Wrong format for edit command is shown in status. No Loan is edited.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>edit</code>, <code>edit 5</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Paying off Existing loans</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all loans. Multiple loans in the list.</p>
+</li>
+<li>
+<p>TestCase: 'pay 1'<br>
+Expected: First loan on the list is removed from list. No other loans or entries are changed. Status bar indicates deletion.</p>
+</li>
+<li>
+<p>TestCase: 'pay a/220'<br>
+Expected: Wrong format for pay command is shown in status. No Loan is removed. Status shows correct format of command.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>pay</code>, <code>pay a</code><br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
@@ -2772,4 +2818,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:40:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:49:29 UTC</div></div></div></body></html>

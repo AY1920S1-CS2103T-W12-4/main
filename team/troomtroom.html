@@ -369,5 +369,86 @@ The loan fields will only be updated where the arguments are specified.
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="adding-and-modifying-a-loan"><a class="link" href="#adding-and-modifying-a-loan">Adding and modifying a Loan</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a Loan while other loans are present</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all loans. Multiple loans in the list.</p>
+</li>
+<li>
+<p>Test case: `add a/420.42 n/Felix Kjellberg sd/12 sm/12 sy/2019 ed/23 em/2 ey/2020 de/Borrowed for apple earpods `<br>
+Expected: Loan is added to the list. Details of the added loan shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>add a/220</code><br>
+Expected: Loan is added with default values. Loan Details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test Case: <code>add n/Felix</code>
+Expected: No amount given error is shown. No Loan is added to the list. The status shows correct format to enter.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>add</code>, <code>add a/24 n/123</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:40:47 UTC</div></div></div></body></html>
+</li>
+<li>
+<p>Editing Existing loans</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all loans. Multiple loans in the list.</p>
+</li>
+<li>
+<p>TestCase: 'edit 2 a/220 n/NewName sd/12 ey/2012'<br>
+Expected: First loan on the list is changed to new assigned values. No other loans or entries are changed.</p>
+</li>
+<li>
+<p>TestCase: 'edit 1 n/NewName sd/12 ey/2012 d/New Description for the Loan'<br>
+Expected: First loan on the list is changed to new assigned values including description. No other loans or entries are changed. Other values are derived from existing entry.</p>
+</li>
+<li>
+<p>TestCase: 'edit a/220 n/NewName sd/12 ey/2012'<br>
+Expected: Wrong format for edit command is shown in status. No Loan is edited.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>edit</code>, <code>edit 5</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Paying off Existing loans</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all loans. Multiple loans in the list.</p>
+</li>
+<li>
+<p>TestCase: 'pay 1'<br>
+Expected: First loan on the list is removed from list. No other loans or entries are changed. Status bar indicates deletion.</p>
+</li>
+<li>
+<p>TestCase: 'pay a/220'<br>
+Expected: Wrong format for pay command is shown in status. No Loan is removed. Status shows correct format of command.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>pay</code>, <code>pay a</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:49:29 UTC</div></div></div></body></html>
