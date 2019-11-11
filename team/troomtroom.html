@@ -127,19 +127,435 @@ Take any loan, with an outstanding loan amount, and when it is paid off, it can 
 <p>Have you ever wondered where all your money is going?
 Our analytics feature provides deeper insights into your incomes and expenditures, so that you can take control of your personal finances.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>loanpaid 1</code><br>
-Takes the first loan and removes it form the list.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>On startup, the analytics tab is empty.</p>
+</div>
+<div class="paragraph">
+<p>With each analytics command entered, the analytics tab is updated with the list of command results.
+The image below gives an overview of the GUI of the feature:</p>
+</div>
+<div id="analyticsScreenshot" class="imageblock">
+<div class="content">
+<img src="../images/AnalyticsScreenshot.png" alt="AnalyticsScreenshot">
+</div>
+<div class="title">Figure 2. Analytics tab</div>
+</div>
+<div class="paragraph">
+<p>The list of command results comprises several result cells.
+We give a further breakdown of the information each cell displays in the following image:</p>
+</div>
+<div id="analyticsCell" class="imageblock">
+<div class="content">
+<img src="../images/AnalyticsCell.png" alt="AnalyticsCell">
+</div>
+<div class="title">Figure 3. Information in an analytics cell</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title=":information_source:"></i>
+</td>
+<td class="content">
+For all commands in the analytics feature, if the optional arguments <code>m/MONTH</code> and/or <code>y/YEAR</code> are not provided,
+results for the current month and/or year in the system time will be displayed.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="viewing-expenditure-trend-code-expenditure-code"><a class="link" href="#viewing-expenditure-trend-code-expenditure-code">Viewing expenditure trend: <code>expenditure</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>expenditure [y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>You may have committed to reducing your expenditure, but you are unsure if you are on the right track.
+With the <code>expenditure</code> command, you can take a quick look at your monthly expenditure trends to measure your success in
+cutting your expenditure.</p>
+</div>
+<div class="paragraph">
+<p>Suppose you made a New Year&#8217;s resolution to track your personal finances using IchiFund, and you have been diligently
+adding transactions since the start of 2019. After entering the <code>expenditure</code> command, the GUI of IchiFund may look like this:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Loan_4_help.png" alt="Loan 4 help">
+<img src="../images/expenditure.png" alt="expenditure">
 </div>
-<div class="title">Figure 2. After Executing loanpaid</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>expenditure</code><br>
+Displays monthly expenditure trend for current year.</p>
+</li>
+<li>
+<p><code>expenditure y/2019</code><br>
+Displays monthly expenditure trend for 2019.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-income-trend-code-income-code"><a class="link" href="#viewing-income-trend-code-income-code">Viewing income trend: <code>income</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>income [y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>Perhaps you are contemplating asking for a promotion at your part-time job or seeking a better-paying place of employment.
+The <code>income</code> command gives you a clear overview of your monthly income trends, allowing you to make more informed decisions
+regarding your source of income (or the lack thereof).</p>
+</div>
+<div class="paragraph">
+<p>Suppose you work part-time at a restaurant, but business has been slow for the past few months, and your boss decides to
+give you a pay cut. After entering the <code>income</code> command, the GUI of IchiFund may look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/income.png" alt="income">
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>income</code><br>
+Displays monthly income trend for current year.</p>
+</li>
+<li>
+<p><code>income y/2019</code><br>
+Displays monthly income trend for 2019.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-balance-trend-code-balance-code"><a class="link" href="#viewing-balance-trend-code-balance-code">Viewing balance trend: <code>balance</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>balance [y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>Maybe you have set a target for yourself to accumulate a certain amount of money in your savings account by the end of the year.
+With the <code>balance</code> command, you will be able to take a look at your monthly balance (income - expenditure) trends,
+and determine if more needs to be done to hit your target.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you have been saving up for a new laptop as your old one is due for a repair. With the recent pay cut, you are
+unsure if you will be able to save up enough money to purchase the laptop in time for the start of the next school semester.
+After entering the <code>balance</code> command, the GUI of IchiFund may look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/balance.png" alt="balance">
+</div>
+</div>
+<div class="paragraph">
+<p>You now know that you are on track to getting your laptop in spite of the pay cut.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>balance</code><br>
+Displays monthly balance trend for current year.</p>
+</li>
+<li>
+<p><code>balance y/2019</code><br>
+Displays monthly balance trend for 2019.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-expenditure-breakdown-by-category-code-breakdown-code"><a class="link" href="#viewing-expenditure-breakdown-by-category-code-breakdown-code">Viewing expenditure breakdown by category: <code>breakdown</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>breakdown [m/MONTH] [y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>Perhaps you have entered the <code>expenditure</code> command, and you are now aware that you are spending more than you would like to, but you are still
+unsure what is it exactly that you are spending the bulk of your money on.
+With the <code>breakdown</code> command, you will be given a clear breakdown of your expenditure by category, and hence
+be able to pinpoint the categories that have larger contributions to your expenditure.</p>
+</div>
+<div class="paragraph">
+<p>It is now mid-November, and your expenditure has exceeded half of your monthly budget. Clueless as to what you could have spent on,
+you enter the <code>breakdown</code> command, and the GUI of IchiFund may look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/breakdown.png" alt="breakdown">
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>breakdown</code><br>
+Displays expenditure breakdown by category for current month.</p>
+</li>
+<li>
+<p><code>breakdown m/7 y/2019</code><br>
+Displays expenditure breakdown by category for July 2019.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-expenditure-category-ranking-chart-code-catrank-code"><a class="link" href="#viewing-expenditure-category-ranking-chart-code-catrank-code">Viewing expenditure category ranking chart: <code>catrank</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>catrank [m/MONTH] [y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>What if, instead of the breakdown of your expenditure by category, i.e., <code>breakdown</code>, you wanted to zoom in on the top 2
+largest contributing categories to your expenditure so as to cut down on your expenditure more effectively?
+With the <code>catrank</code> command, you can take a look at your expenditure category ranking chart, and hence
+be able to zoom in on and cut down on expenditure for categories that have the largest contributions to your expenditure.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title=":information_source:"></i>
+</td>
+<td class="content">
+The expenditure category ranking chart is in decreasing order, i.e., the categories with higher expenditure will be at the top of the list,
+and the categories with lower expenditure will be at the bottom of the list.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As the month comes to a close, you realise that you have transactions from many categories, and running the <code>breakdown</code> command
+returns you a view that is too cluttered for your liking.
+After you enter the <code>catrank</code> command, and the GUI of IchiFund may look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/catrank.png" alt="catrank">
+</div>
+</div>
+<div class="paragraph">
+<p>With the <code>catrank</code> command, you are now able to identify that it must have been the trips to the beauty salon
+and the Grab rides you take on a daily basis that have contributed to your overspending, and that perhaps you should
+consider painting your own nails and taking public transport to school instead.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>catrank</code><br>
+Displays expenditure category ranking chart for current month.</p>
+</li>
+<li>
+<p><code>catrank m/7 y/2019</code><br>
+Displays expenditure category ranking chart for July 2019.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-expenditure-ranking-chart-by-month-code-mthrank-code"><a class="link" href="#viewing-expenditure-ranking-chart-by-month-code-mthrank-code">Viewing expenditure ranking chart by month: <code>mthrank</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>mthrank [y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>If you have a tendency to overspend in certain seasons or on certain occasions, with the <code>mthrank</code> command, you can look
+at your expenditure ranking chart by month, swiftly identify the months that you spend most in and take steps
+to reduce your expenditure in the same few months in the years to come.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title=":information_source:"></i>
+</td>
+<td class="content">
+The expenditure ranking chart by month is in decreasing order, i.e., the months with higher expenditure will be at the top of the list,
+and the months with lower expenditure will be at the bottom of the list.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you have always planned overseas trips over the summer break. After entering the <code>mthrank</code> command,
+the GUI of IchiFund may look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/mthrank.png" alt="mthrank">
+</div>
+</div>
+<div class="paragraph">
+<p>You are now aware that the expenditure on and during these overseas trips are burning a hole in your pocket, and
+can take measures to set a budget before going on these trips or reduce the frequency of such trips.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>mthrank</code><br>
+Displays expenditure ranking chart by month for current year.</p>
+</li>
+<li>
+<p><code>mthrank y/2019</code><br>
+Displays expenditure ranking chart by month for 2019.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-expenditure-ranking-chart-code-exprank-code"><a class="link" href="#viewing-expenditure-ranking-chart-code-exprank-code">Viewing expenditure ranking chart: <code>exprank</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>exprank [m/MONTH] [y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>If you are keen to identify the biggest purchases you make so that you can cut your expenditure swiftly,
+the command <code>exprank</code> is what you are looking for. <code>exprank</code> allows you to look at your expenditure ranking chart.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title=":information_source:"></i>
+</td>
+<td class="content">
+The expenditure ranking chart is in decreasing order, i.e., the bigger purchases will be at the top of the list,
+and the smaller purchases will be at the bottom of the list.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you have made a couple of big purchases over the course of the year. After entering the <code>exprank</code> command,
+the GUI of IchiFund may look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/exprank.png" alt="exprank">
+</div>
+</div>
+<div class="paragraph">
+<p>You are now aware that cutting expenditure on luxury items and gadgets would probably do wonders for the health of your wallet.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>exprank</code><br>
+Displays expenditure ranking chart for current year.</p>
+</li>
+<li>
+<p><code>exprank y/2019</code><br>
+Displays expenditure ranking chart for 2019.</p>
+</li>
+<li>
+<p><code>exprank m/7 y/2019</code><br>
+Displays expenditure ranking chart for July 2019.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous IchiFund folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary-v1-4"><a class="link" href="#command-summary-v1-4">Command Summary (v1.4)</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>Exit</strong> : <code>exit</code></p>
+</li>
+<li>
+<p><strong>Transaction Add</strong> : <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
+</li>
+<li>
+<p><strong>Transaction Edit</strong> : <code>edit INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [d/DAY] [m/MONTH] [y/YEAR] [ty/TRANSACTION_TYPE]</code></p>
+</li>
+<li>
+<p><strong>Transaction Delete</strong> : <code>delete INDEX</code></p>
+</li>
+<li>
+<p><strong>Transaction Filter</strong> : <code>filter [m/MONTH] [y/YEAR] [c/CATEGORY] [ty/TRANSACTION_TYPE]</code></p>
+</li>
+<li>
+<p><strong>Repeater Add</strong> : <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [ty/TRANSACTION_TYPE] [so/MONTH_START_OFFSET] [eo/MONTH_END_OFFSET] sm/START_MONTH sy/START_YEAR em/END_MONTH ey/END_YEAR</code></p>
+</li>
+<li>
+<p><strong>Repeater Edit</strong> : <code>edit INDEX [de/DESCRIPTION] [a/AMOUNT] [c/CATEGORY] [ty/TRANSACTION_TYPE] [so/MONTH_START_OFFSET] [eo/MONTH_END_OFFSET] [sm/START_MONTH] [sy/START_YEAR] [em/END_MONTH] [ey/END_YEAR]</code></p>
+</li>
+<li>
+<p><strong>Repeater Delete</strong> : <code>delete INDEX</code></p>
+</li>
+<li>
+<p><strong>Repeater Filter</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+</li>
+<li>
+<p><strong>Loan Add new</strong> : <code>add a/Amount [d/DATE] [n/NAME] [d/DESCRIPTION] [sd/DAY] [sm/MONTH] [sy/YEAR] [ed/DAY] [em/MONTH] [ey/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Loan Edit</strong> : <code>add i/Index a/Amount [d/DATE] [n/NAME] [d/DESCRIPTION] [sd/DAY] [sm/MONTH] [sy/YEAR] [ed/DAY] [em/MONTH] [ey/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Loan Pay</strong> : <code>pay i/Index</code></p>
+</li>
+<li>
+<p><strong>Budget Add</strong> : <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [d/day m/MONTH y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Budget Delete</strong> : <code>delete i/INDEX a/Amount [n/Name]</code></p>
+</li>
+<li>
+<p><strong>Budget Find</strong> : <code>find [KEYWORDS]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><strong>Expenditure Trend</strong> : <code>expenditure [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Income Trend</strong> : <code>income [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Balance Trend</strong> : <code>balance [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Categorical Breakdown</strong> : <code>breakdown [m/MONTH] [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Categorical Ranking Chart</strong> : <code>catrank [m/MONTH] [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Month-Based Ranking Chart</strong> : <code>mthrank [y/YEAR]</code></p>
+</li>
+<li>
+<p><strong>Ranking Chart</strong> : <code>exprank [m/MONTH] [y/YEAR]</code></p>
+</li>
+</ul>
 </div>
 <div class="sect3">
 <h4 id="adding-loan-code-add-code"><a class="link" href="#adding-loan-code-add-code">Adding loan: <code>add</code></a></h4>
@@ -202,7 +618,7 @@ Takes the first loan and removes it form the list.</p>
 <div class="content">
 <img src="../images/Loan_1_help.png" alt="Loan 1 help">
 </div>
-<div class="title">Figure 3. Usage of 'add'</div>
+<div class="title">Figure 4. Usage of 'add'</div>
 </div>
 <div class="paragraph">
 <p>Constraints:</p>
@@ -255,7 +671,7 @@ The loan fields will only be updated where the arguments are specified.
 <div class="content">
 <img src="../images/Loan_2_help.png" alt="Loan 2 help">
 </div>
-<div class="title">Figure 4. Usage of 'edit'</div>
+<div class="title">Figure 5. Usage of 'edit'</div>
 </div>
 <div class="paragraph">
 <p>Constraints:</p>
@@ -282,7 +698,6 @@ The loan fields will only be updated where the arguments are specified.
 </div>
 <div class="paragraph">
 <p>This edits the first loanr in the current list to - $99999.99 loan taken on 1st January 2020 and to be paid back by 30th December 2021.</p>
-</div>
 </div>
 </div>
 </div>
@@ -451,4 +866,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:26:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:34:00 UTC</div></div></div></body></html>
