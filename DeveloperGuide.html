@@ -1028,20 +1028,25 @@ describes the behaviour of <code>DeleteTransactionCommand</code> at each step:</
 <div class="sect2">
 <h3 id="repeaters"><a class="link" href="#repeaters">4.3. Repeaters</a></h3>
 <div class="sect3">
-<h4 id="adding-repeater-code-add-code"><a class="link" href="#adding-repeater-code-add-code">4.3.1. Adding Repeater : <code>add</code></a></h4>
-<div class="sect4">
-<h5 id="overview"><a class="link" href="#overview">Overview</a></h5>
+<h4 id="adding-repeater"><a class="link" href="#adding-repeater">4.3.1. Adding Repeater</a></h4>
 <div class="paragraph">
 <p>This feature allows the user to add a repeater in IchiFund. Adding a repeater also creates the transactions associated with the added repeater.</p>
-</div>
 </div>
 <div class="sect4">
 <h5 id="implementation-9"><a class="link" href="#implementation-9">Implementation</a></h5>
 <div class="paragraph">
-<p>The <code>addrep</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>addrep</code> behaves at each step.</p>
+<p>The <code>add</code> command is facilitated by the Logic and Model components of the application. The process of executing an <code>add</code> command is illustrated in the figure below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddRepeaterSequenceDiagram.png" alt="AddRepeaterSequenceDiagram">
+</div>
 </div>
 <div class="paragraph">
-<p><strong>Step 1</strong>: The user executes <code>addrep de/Phone bills a/42.15 c/Utilities ty/exp so/3 eo/2 sd/1 sm/1 sy/2019 ed/31 em/12 ey/2019</code> to add a repeater for phone bills with an amount of $42.15 on the third and second last day of every month between 1st January 2019 and 31st December 2019.</p>
+<p>Below is an example usage scenario of how <code>add</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: In the repeaters tab, the user executes <code>add de/Phone bills a/42.15 c/Utilities ty/exp so/3 eo/2 sd/1 sm/1 sy/2019 ed/31 em/12 ey/2019</code> to add a repeater for phone bills with an amount of $42.15 on the third and second last day of every month between 1st January 2019 and 31st December 2019.</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
@@ -1050,31 +1055,123 @@ describes the behaviour of <code>DeleteTransactionCommand</code> at each step:</
 <p><strong>Step 3</strong>: <code>IchiFundParser</code> determines which command is being used and creates the respective <code>AddRepeaterCommandParser</code> parser with the user&#8217;s input as an argument.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 4</strong>: <code>AddRepeaterCommandParser</code> does a validation check on the user&#8217;s input before creating and returning an <code>AddRepeaterCommand</code> with desired <code>Repeater</code> as an argument.</p>
+<p><strong>Step 4</strong>: <code>AddRepeaterCommandParser</code> does a validation check on the user&#8217;s input.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 5</strong>: <code>LogicManager</code> uses <code>AddRepeaterCommand#execute()</code> to add the <code>Repeater</code> and the associated <code>Transaction</code>s into the <code>Model</code> which is handled by <code>ModelManager</code>. In doing so, it also fetches the <code>RepeaterUniqueId</code> counter tracked by the <code>Model</code>, sets it as the created <code>Repeater</code>'s unique id, and increments the counter in the <code>Model</code> by 1.</p>
+<p><strong>Step 5</strong>: <code>AddRepeaterCommandParser</code> creates and returns an <code>AddRepeaterCommand</code> with the desired <code>Repeater</code> as an arugment.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 6</strong>: <code>AddRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+<p><strong>Step 6</strong>: <code>LogicManager</code> calls <code>AddRepeaterCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>AddRepeaterCommand</code> checks for the following constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>Repeater</code> to be added does not already exist in the <code>Model</code>.</p>
+</li>
+<li>
+<p>The end date of the <code>Repeater</code> to be added is no earlier than its start date.</p>
+</li>
+<li>
+<p>The start date and and end date of the <code>Repeater</code> to be added span no more than 60 months.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: <code>AddRepeaterCommand</code> fetches the running <code>RepeaterUniqueId</code> counter tracked by the <code>Model</code>, and sets it as the created <code>Repeater</code>'s unique id.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 9</strong>: <code>AddRepeaterCommand</code> increments the current <code>RepeaterUniqueId</code> counter in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 10</strong>: <code>AddRepeaterCommand</code> adds the newly created <code>Repeater</code> to the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 11</strong>: <code>AddRepeaterCommand</code> creates the associated <code>Transaction</code>s in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 12</strong>: <code>AddRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-repeater-code-delete-code"><a class="link" href="#deleting-repeater-code-delete-code">4.3.2. Deleting Repeater : <code>delete</code></a></h4>
-<div class="sect4">
-<h5 id="overview-2"><a class="link" href="#overview-2">Overview</a></h5>
+<h4 id="editing-repeater"><a class="link" href="#editing-repeater">4.3.2. Editing Repeater</a></h4>
 <div class="paragraph">
-<p>This feature allows the user to delete repeater in IchiFund. Delete a repeater also deletes the transactions associated with the deleted repeater.</p>
-</div>
+<p>This feature allows the user to edit a repeater in IchiFund. Editing a repeater also updates the transactions associated with the added repeater.</p>
 </div>
 <div class="sect4">
 <h5 id="implementation-10"><a class="link" href="#implementation-10">Implementation</a></h5>
 <div class="paragraph">
-<p>The <code>delrep</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>delrep</code> behaves at each step.</p>
+<p>The <code>edit</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>edit</code> behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 1</strong>: The user executes <code>delrep 2</code> to delete the repeater in the 2nd index.</p>
+<p><strong>Step 1</strong>: In the repeaters tab, the user executes <code>edit 1 a/37.24 so/-1 eo/4</code> to edit the repeater at the 2nd index for an amount of $37.25, occuring only at the fourth last day of every month.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>IchiFundParser</code> determines which command is being used and creates the respective <code>EditRepeaterCommandParser</code> parser with the user&#8217;s input as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>EditRepeaterCommandParser</code> does a validation check on the user&#8217;s input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>EditRepeaterCommandParser</code> creates an <code>EditRepeaterDescriptor</code> which contains the updated repeater information provided by the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>EditRepeaterCommandParser</code> creates and returns an <code>EditRepeaterCommand</code> with the <code>Index</code> and <code>EditRepeaterDescriptor</code> as arguments.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>LogicManager</code> executes <code>EditRepeaterCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: <code>EditRepeaterCommand</code> checks for the following constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The updated <code>Repeater</code> does not already exist in the <code>Model</code>.</p>
+</li>
+<li>
+<p>The end date of the updated <code>Repeater</code> is no earlier than its start date.</p>
+</li>
+<li>
+<p>The start date and and end date of the updated <code>Repeater</code> span no more than 60 months.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Step 9</strong>: <code>EditRepeaterCommand</code> creates a new <code>Repeater</code> using the original <code>Repeater</code> and the <code>EditRepeaterDescriptor</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 10</strong>: <code>EditRepeaterCommand</code> replaces the original <code>Repeater</code> in the <code>Model</code> with the newly created <code>Repeater</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 11</strong>: <code>EditRepeaterCommand</code> deletes all existing associated <code>Transaction</code>s from the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 12</strong>: <code>EditRepeaterCommand</code> creates the <code>Transaction</code>s associated with the updated <code>Repeater</code> in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 13</strong>: <code>EditRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-repeater"><a class="link" href="#deleting-repeater">4.3.3. Deleting Repeater</a></h4>
+<div class="paragraph">
+<p>This feature allows the user to delete repeater in IchiFund. Deleting a repeater also deletes the transactions associated with the deleted repeater.</p>
+</div>
+<div class="sect4">
+<h5 id="implementation-11"><a class="link" href="#implementation-11">Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>delete</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>delete</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: In the repeaters tab, the user executes <code>delete 2</code> to delete the repeater at the 2nd index.</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
@@ -1083,13 +1180,67 @@ describes the behaviour of <code>DeleteTransactionCommand</code> at each step:</
 <p><strong>Step 3</strong>: <code>IchiFundParser</code> determines which command is being used and creates the respective <code>DeleteRepeaterCommandParser</code> parser with the user&#8217;s input as an argument.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 4</strong>: <code>DeleteRepeaterCommandParser</code> does a validation check on the user&#8217;s input before creating and returning an <code>DeleteRepeaterCommand</code> with desired <code>Index</code> as an argument.</p>
+<p><strong>Step 4</strong>: <code>DeleteRepeaterCommandParser</code> does a validation check on the user&#8217;s input.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 5</strong>: <code>LogicManager</code> uses <code>DeleteRepeaterCommand#execute()</code> to delete the <code>Repeater</code> and the associated <code>Transaction</code>s from the <code>Model</code> which is handled by <code>ModelManager</code>.</p>
+<p><strong>Step 5</strong>: <code>DeleteRepeaterCommandParser</code> creates and returns a <code>DeleteRepeaterCommand</code> with the desired <code>Index</code> as an argument.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 6</strong>: <code>DeleteRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+<p><strong>Step 6</strong>: <code>LogicManager</code> calls <code>DeleteRepeaterCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>DeleteRepeaterCommand</code> checks that a <code>Repeater</code> exists at the <code>Index</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: <code>DeleteRepeaterCommand</code> retrieves the <code>Repeater</code> at the <code>Index</code> from the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 9</strong>: <code>DeleteRepeaterCommand</code> deletes the <code>Repeater</code> from the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 10</strong>: <code>DeleteRepeaterCommand</code> deletes all associated <code>Transaction</code>s in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 11</strong>: <code>DeleteRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-repeater"><a class="link" href="#finding-repeater">4.3.4. Finding Repeater</a></h4>
+<div class="paragraph">
+<p>This feature allows the user to find repeaters in IchiFund. The search by matching provided keywords against repeater descriptions.</p>
+</div>
+<div class="sect4">
+<h5 id="implementation-12"><a class="link" href="#implementation-12">Implementation</a></h5>
+<div class="paragraph">
+<p>The <code>find</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>find</code> behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: In the repeaters tab, the user executes <code>find phone husband</code> to find all repeaters whose descriptions contain both the keywords "phone" and "husband".</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: <code>LogicManager</code> uses <code>IchiFundParser#parserCommand()</code> to parse the input from the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>IchiFundParser</code> determines which command is being used and creates the respective <code>FindRepeaterCommandParser</code> parser with the user&#8217;s input as an argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: <code>FindRepeaterCommandParser</code> does a validation check on the user&#8217;s input.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: <code>FindRepeaterCommandParser</code> creates a <code>RepeaterDescriptionPredicate</code> which filters <code>Repeater</code>s based on whether a <code>Repeater</code> contains all the keywords provided by the user.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: <code>FindRepeaterCommandParser</code> creates and returns a <code>FindRepeaterCommand</code> with the <code>RepeaterDescriptionPredicate</code> as an arugment.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: <code>LogicManager</code> calls <code>FindRepeaterCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 8</strong>: <code>FindRepeaterCommand</code> sets the <code>RepeaterDescriptionPredicate</code> as the filter for the repeater list in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 9</strong>: <code>FindRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
 </div>
 </div>
 </div>
@@ -1123,7 +1274,7 @@ The arguments supported by this feature includes:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-11"><a class="link" href="#implementation-11">Implementation</a></h5>
+<h5 id="implementation-13"><a class="link" href="#implementation-13">Implementation</a></h5>
 <div class="paragraph">
 <p>When the user input the <code>add</code> command in the Budget tab, the following chain of operations occurs:</p>
 </div>
@@ -1181,7 +1332,7 @@ The argument supported by this feature is:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-12"><a class="link" href="#implementation-12">Implementation</a></h5>
+<h5 id="implementation-14"><a class="link" href="#implementation-14">Implementation</a></h5>
 <div class="paragraph">
 <p>When the user input the <code>expenditure</code> command in the Analytics tab, the following chain of operations occurs:</p>
 </div>
@@ -1227,7 +1378,7 @@ The argument supported by this feature is:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-13"><a class="link" href="#implementation-13">Implementation</a></h5>
+<h5 id="implementation-15"><a class="link" href="#implementation-15">Implementation</a></h5>
 <div class="paragraph">
 <p>When the user input the <code>income</code> command in the Analytics tab, the following chain of operations occurs:</p>
 </div>
@@ -1273,7 +1424,7 @@ The argument supported by this feature is:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-14"><a class="link" href="#implementation-14">Implementation</a></h5>
+<h5 id="implementation-16"><a class="link" href="#implementation-16">Implementation</a></h5>
 <div class="paragraph">
 <p>When the user input the <code>balance</code> command in the Analytics tab, the following chain of operations occurs:</p>
 </div>
@@ -2444,4 +2595,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:08:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 10:22:38 UTC</div></div></div></body></html>
