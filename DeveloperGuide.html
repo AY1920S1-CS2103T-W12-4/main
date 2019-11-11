@@ -50,8 +50,16 @@
 <li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#adding-and-modifying-a-loan">G.2. Adding and modifying a Loan</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#tab-switching">G.2. Tab switching</a></li>
+<li><a href="#filtering-transactions">G.3. Filtering transactions</a></li>
+<li><a href="#adding-a-transaction">G.4. Adding a transaction</a></li>
+<li><a href="#editing-a-transaction">G.5. Editing a transaction</a></li>
+<li><a href="#deleting-a-transaction">G.6. Deleting a transaction</a></li>
+<li><a href="#adding-a-repeater">G.7. Adding a repeater</a></li>
+<li><a href="#editing-a-repeater">G.8. Editing a repeater</a></li>
+<li><a href="#deleting-a-repeater">G.9. Deleting a repeater</a></li>
+<li><a href="#adding-and-modifying-a-loan">G.10. Adding and modifying a Loan</a></li>
+<li><a href="#saving-data">G.11. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -2694,21 +2702,26 @@ These instructions only provide a starting point for testers to work on; testers
 </li>
 <li>
 <p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+Expected: GUI shows set of sample transactions.
+Filter title set to current month and year of system time.
+Window size is fixed at 960x720px.</p>
+</li>
+<li>
+<p>Click on repeater tab
+Expected: Shows the GUI</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Saving window preferences</p>
+<p>Launch with corrupted config.json and/or preferences.json</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+<p>Manually edit config.json and/or preferences.json by adding "aaa" to start of file.</p>
 </li>
 <li>
-<p>Re-launch the app by double-clicking the jar file.<br>
-Expected: The most recent window size and location is retained.</p>
+<p>Perform same steps as above test case.</p>
 </li>
 </ol>
 </div>
@@ -2717,7 +2730,636 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-and-modifying-a-loan"><a class="link" href="#adding-and-modifying-a-loan">G.2. Adding and modifying a Loan</a></h3>
+<h3 id="tab-switching"><a class="link" href="#tab-switching">G.2. Tab switching</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Tab switching by shortcut key</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Press <code>Ctrl+2</code>.<br>
+Expected: GUI shows repeaters tab.</p>
+</li>
+<li>
+<p>Press <code>Ctrl+3</code>.<br>
+Expected: GUI shows budgets tab.</p>
+</li>
+<li>
+<p>Press <code>Ctrl+4</code>.<br>
+Expected: GUI shows loan tab.</p>
+</li>
+<li>
+<p>Press <code>Ctrl+5</code>.<br>
+Expected: GUI shows analytics tab.</p>
+</li>
+<li>
+<p>Press <code>Ctrl+1</code>.<br>
+Expected: GUI shows transaction tab.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Tab switching by command</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter command <code>rep</code>.<br>
+Expected: GUI shows repeaters tab.</p>
+</li>
+<li>
+<p>Enter command <code>budget</code>.<br>
+Expected: GUI shows budgets tab.</p>
+</li>
+<li>
+<p>Enter command <code>loan</code>.<br>
+Expected: GUI shows loan tab.</p>
+</li>
+<li>
+<p>Enter command <code>analytics</code>.<br>
+Expected: GUI shows analytics tab.</p>
+</li>
+<li>
+<p>Enter command <code>tx</code>.<br>
+Expected: GUI shows transaction tab.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Tab switching by mouse click</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click on repeater tab.<br>
+Expected: GUI shows repeaters tab.</p>
+</li>
+<li>
+<p>Click on budget tab.<br>
+Expected: GUI shows budgets tab.</p>
+</li>
+<li>
+<p>Click on loan tab.<br>
+Expected: GUI shows loan tab.</p>
+</li>
+<li>
+<p>Click on analytics tab.<br>
+Expected: GUI shows analytics tab.</p>
+</li>
+<li>
+<p>Click on transaction tab.<br>
+Expected: GUI shows transaction tab.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Separate parsing for different tabs</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>add</code> in transaction tab.<br>
+Expected: Console shows error message for <code>AddTransactionCommand</code>.</p>
+</li>
+<li>
+<p>Go to repeaters tab and enter <code>add</code>.<br>
+Expected: Console shows error message for <code>AddRepeaterCommand</code>.</p>
+</li>
+<li>
+<p>Go to budgets tab and enter <code>add</code>.<br>
+Expected: Console shows error message for <code>AddBudgetCommand</code>.</p>
+</li>
+<li>
+<p>Go to loan tab and enter <code>add</code>.<br>
+Expected: Console shows error message for <code>AddLoanCommand</code>.</p>
+</li>
+<li>
+<p>Go to analytics tab and enter <code>add</code>.<br>
+Expected: Console shows error message for unrecognised command.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="filtering-transactions"><a class="link" href="#filtering-transactions">G.3. Filtering transactions</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Filter title changes correctly</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter a <code>filter</code> command with all arguments (e.g. <code>filter m/1 y/2008 c/food ty/exp</code>)<br>
+Expected: Filter title contains information of all arguments (e.g. January 2008 Expenditure - Food)</p>
+</li>
+<li>
+<p>Enter a <code>filter</code> command with only month and year arguments (e.g. <code>filter m/2 y/2009</code>)<br>
+Expected: Filter title retains information on category and transaction type, and updates to show correct month and year.</p>
+</li>
+<li>
+<p>Enter <code>filter c/!all ty/!all</code><br>
+Expected: Filter title now only contains information about month and year.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Filters transactions correctly</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: No transactions from January 2001 and 2002</p>
+</li>
+<li>
+<p>Enter <code>add de/a a/1 c/a d/1 m/1 y/2001 ty/exp</code></p>
+</li>
+<li>
+<p>Enter <code>add de/b a/1 c/b d/1 m/1 y/2001 ty/exp</code></p>
+</li>
+<li>
+<p>Enter <code>add de/c a/1 c/a d/1 m/1 y/2001 ty/in</code></p>
+</li>
+<li>
+<p>Enter <code>filter m/1 y/2002</code><br>
+Expected: No transactions shown</p>
+</li>
+<li>
+<p>Enter <code>filter y/2001</code><br>
+Expected: All 3 transactions added shown</p>
+</li>
+<li>
+<p>Enter <code>filter ty/exp</code><br>
+Expected: Transactions with descriptions "a", "b" shown</p>
+</li>
+<li>
+<p>Enter <code>filter c/a</code><br>
+Expected: Transaction with description "a" shown</p>
+</li>
+<li>
+<p>Enter <code>filter ty/!all</code><br>
+Expected: Transactions with descriptions "a", "c" shown</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid <code>Month</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>filter m/13</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Enter <code>filter m/aaa</code><br>
+Expected: Console shows error message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid <code>Year</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>filter y/1999</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Enter <code>filter y/10000</code><br>
+Expected: Console shows error message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid <code>TransactionType</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>filter ty/xxx</code><br>
+Expected: Console shows error message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid <code>Category</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>filter c/abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Enter <code>filter c/!!!</code><br>
+Expected: Console shows error message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-transaction"><a class="link" href="#adding-a-transaction">G.4. Adding a transaction</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Transaction correctly created</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Add any valid transaction using <code>add</code> with all fields specified<br>
+Expected: GUI changes context if necessary, and transaction added is shown with correct fields</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Optional arguments correctly filled</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>filter m/3 y/2005 c/food ty/in</code></p>
+</li>
+<li>
+<p>Enter <code>add a/1 de/z</code><br>
+Expected: New transaction("z") appears in the same list, marked as income item with category as "FOOD".
+Date of transaction is X March 2005, where X is the current day of the month.</p>
+</li>
+<li>
+<p>Enter <code>filter ty/!all</code></p>
+</li>
+<li>
+<p>Enter <code>add a/1 de/y</code><br>
+Expected: New transaction("y") appears in the same list. Similar to "z", but marked as expenditure.</p>
+</li>
+<li>
+<p>Enter <code>filter c/!all</code></p>
+</li>
+<li>
+<p>Enter <code>add a/1 de/x</code><br>
+Expected: New transaction("x") appears in the same list. Similar to "y", but under category "UNCATEGORISED".</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Automatic sorting of transaction</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: Current list of transactions show no transactions.</p>
+</li>
+<li>
+<p>Enter <code>add de/a a/1 d/3</code></p>
+</li>
+<li>
+<p>Enter <code>add de/b a/1 d/2</code><br>
+Expected: New transaction("b") appears at the bottom of the transaction list.</p>
+</li>
+<li>
+<p>Enter <code>add de/c a/1 d/4</code><br>
+Expected: New transaction("c") appears at the top of the transaction list.</p>
+</li>
+<li>
+<p>Enter <code>add de/d a/1 d/4 c/z</code><br>
+Expected: New transaction("d") appears at the second index.</p>
+</li>
+<li>
+<p>Enter <code>add de/e a/1 d/4 c/a</code><br>
+Expected: New transaction("e") appears at the top of the transaction list.
+Resulting list: "e", "c", "d", "a", "b".</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Filter switch when adding transaction</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Current filter is "November 2019 Expenditure - Food"</p>
+</li>
+<li>
+<p>Enter <code>add de/a a/1 y/2018</code><br>
+Expected: Filter changes to "November 2018 Expenditure - Food"</p>
+</li>
+<li>
+<p>Enter <code>add de/a a/1 m/10</code><br>
+Expected: Filter changes to "October 2018 Expenditure - Food"</p>
+</li>
+<li>
+<p>Enter <code>add de/a a/1 c/a</code><br>
+Expected: Filter changes to "October 2018 Expenditure"</p>
+</li>
+<li>
+<p>Enter <code>add de/a a/1 ty/in</code><br>
+Expected: Filter changes to "October 2018"</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid <code>Description</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>add a/1 de/abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Enter <code>add a/1 de/!!!</code><br>
+Expected: Console shows error message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid <code>Amount</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>de/a a/a</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Enter <code>de/a a/999999</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Enter <code>de/a a/-1</code><br>
+Expected: Console shows error message.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid <code>Day</code> or <code>Date</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>add a/1 de/a d/32</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Enter <code>add a/1 de/a d/31 m/11</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Enter <code>add a/1 de/a d/30 m/2</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Enter <code>add a/1 de/a d/29 m/2 y/2003</code><br>
+Expected: Console shows error message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-transaction"><a class="link" href="#editing-a-transaction">G.5. Editing a transaction</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Transaction correctly edited</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Add any valid transaction using <code>edit</code> with any fields specified<br>
+Expected: GUI changes context if necessary, and transaction edited is shown with correct fields</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Filter switch when editing transaction</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Current filter is "November 2019 Expenditure - Food". There is at least 1 transaction shown.</p>
+</li>
+<li>
+<p>Enter <code>edit 1 y/2018</code><br>
+Expected: Filter changes to "November 2018 Expenditure - Food"</p>
+</li>
+<li>
+<p>Enter <code>edit 1 m/10</code><br>
+Expected: Filter changes to "October 2018 Expenditure - Food"</p>
+</li>
+<li>
+<p>Enter <code>edit 1 c/a</code><br>
+Expected: Filter changes to "October 2018 Expenditure"</p>
+</li>
+<li>
+<p>Enter <code>edit 1 ty/in</code><br>
+Expected: Filter changes to "October 2018"</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid <code>Index</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>edit 0 de/a</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Prerequisite: less than 20 items shown in list of transactions.</p>
+</li>
+<li>
+<p>Enter <code>edit 20 de/a</code><br>
+Expected: Console shows error message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-transaction"><a class="link" href="#deleting-a-transaction">G.6. Deleting a transaction</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Valid deletion of transaction</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: at least 2 people shown in list of transactions</p>
+</li>
+<li>
+<p>Enter <code>delete 2</code><br>
+Expected: Second transaction in list of items deleted.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid <code>Index</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>delete 0</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Enter <code>delete x</code><br>
+Expected: Console shows error message.</p>
+</li>
+<li>
+<p>Prerequisite: less than 20 items shown in list of transactions.</p>
+</li>
+<li>
+<p>Enter <code>delete 20</code><br>
+Expected: Console shows error message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-repeater"><a class="link" href="#adding-a-repeater">G.7. Adding a repeater</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding repeaters creates associated transactions</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Go to the repeaters tab.</p>
+</li>
+<li>
+<p>Add a repeater using any valid <code>add</code> command.<br>
+Expected: Shows newly created repeater with correct fields.</p>
+</li>
+<li>
+<p>Go to the transaction tab and use <code>filter</code> command to find newly added transactions.<br>
+Expected: Shows newly created transactions with correct fields for appropriate filters.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Boundary value arguments</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Add a repeater with end date later than start date by exactly 60 months.<br>
+Expected: Repeater successfully added.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Invalid command arguments</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Go to the repeaters tab.</p>
+</li>
+<li>
+<p>Add a repeater with end date earlier than start date.<br>
+Expected: Error message displayed on console.</p>
+</li>
+<li>
+<p>Add a repeater with end date later than start date by &gt;60 months.<br>
+Expected: Error message displayed on console.</p>
+</li>
+<li>
+<p>Add a repeater with both month offsets ignored.<br>
+Expected: Error message displayed on console.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Duplicate repeaters</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Add any valid repeater.</p>
+</li>
+<li>
+<p>Add a repeater with the exact same field.<br>
+Expected: Error message displayed on console.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-repeater"><a class="link" href="#editing-a-repeater">G.8. Editing a repeater</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing repeaters edits associated transactions</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Go to the repeaters tab.</p>
+</li>
+<li>
+<p>If required, add a repeater.</p>
+</li>
+<li>
+<p>Edit a repeater using a valid <code>edit</code> command (e.g. <code>edit 1 a/0.41</code>).<br>
+Expected: Shows newly created repeater with correct fields.</p>
+</li>
+<li>
+<p>Go to the transaction tab and use <code>filter</code> command to find newly edited transactions.<br>
+Expected: Shows newly edited transactions with correct fields for appropriate filters.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-repeater"><a class="link" href="#deleting-a-repeater">G.9. Deleting a repeater</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting repeaters delete associated transactions</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Go to the repeaters tab.</p>
+</li>
+<li>
+<p>If required, add a repeater.</p>
+</li>
+<li>
+<p>Delete a repeater using a valid <code>delete</code> command (e.g. <code>delete 1</code>).<br>
+Expected: GUI no longer shows deleted repeater.</p>
+</li>
+<li>
+<p>Go to the transaction tab and use <code>filter</code> command to find associated transactions.<br>
+Expected: Associated transactions cannot be found.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-and-modifying-a-loan"><a class="link" href="#adding-and-modifying-a-loan">G.10. Adding and modifying a Loan</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2728,15 +3370,15 @@ Expected: The most recent window size and location is retained.</p>
 <p>Prerequisites: List all loans. Multiple loans in the list.</p>
 </li>
 <li>
-<p>Test case: `add a/420.42 n/Felix Kjellberg sd/12 sm/12 sy/2019 ed/23 em/2 ey/2020 de/Borrowed for apple earpods `<br>
+<p>Enter `add a/420.42 n/Felix Kjellberg sd/12 sm/12 sy/2019 ed/23 em/2 ey/2020 de/Borrowed for apple earpods `<br>
 Expected: Loan is added to the list. Details of the added loan shown in the status message.</p>
 </li>
 <li>
-<p>Test case: <code>add a/220</code><br>
+<p>Enter <code>add a/220</code><br>
 Expected: Loan is added with default values. Loan Details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Test Case: <code>add n/Felix</code>
+<p>Enter <code>add n/Felix</code>
 Expected: No amount given error is shown. No Loan is added to the list. The status shows correct format to enter.</p>
 </li>
 <li>
@@ -2754,15 +3396,15 @@ Expected: Similar to previous.</p>
 <p>Prerequisites: List all loans. Multiple loans in the list.</p>
 </li>
 <li>
-<p>TestCase: 'edit 2 a/220 n/NewName sd/12 ey/2012'<br>
+<p>Enter 'edit 2 a/220 n/NewName sd/12 ey/2012'<br>
 Expected: First loan on the list is changed to new assigned values. No other loans or entries are changed.</p>
 </li>
 <li>
-<p>TestCase: 'edit 1 n/NewName sd/12 ey/2012 d/New Description for the Loan'<br>
+<p>Enter 'edit 1 n/NewName sd/12 ey/2012 d/New Description for the Loan'<br>
 Expected: First loan on the list is changed to new assigned values including description. No other loans or entries are changed. Other values are derived from existing entry.</p>
 </li>
 <li>
-<p>TestCase: 'edit a/220 n/NewName sd/12 ey/2012'<br>
+<p>Enter 'edit a/220 n/NewName sd/12 ey/2012'<br>
 Expected: Wrong format for edit command is shown in status. No Loan is edited.</p>
 </li>
 <li>
@@ -2780,11 +3422,11 @@ Expected: Similar to previous.</p>
 <p>Prerequisites: List all loans. Multiple loans in the list.</p>
 </li>
 <li>
-<p>TestCase: 'pay 1'<br>
+<p>Enter 'pay 1'<br>
 Expected: First loan on the list is removed from list. No other loans or entries are changed. Status bar indicates deletion.</p>
 </li>
 <li>
-<p>TestCase: 'pay a/220'<br>
+<p>Enter 'pay a/220'<br>
 Expected: Wrong format for pay command is shown in status. No Loan is removed. Status shows correct format of command.</p>
 </li>
 <li>
@@ -2798,24 +3440,175 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">G.11. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Dealing with missing/corrupted data files</p>
+<p>Launch with corrupted fundbook.json</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Manually edit and save data/fundbook.json, corrupting data by entering "aaaaa" at start of file.</p>
+</li>
+<li>
+<p>Double-click the jar file.<br>
+Expected: Shows the GUI with no data items. Window size is fixed at 960x720px.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Relaunch after changing list of transactions</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Go to the transaction tab.</p>
+</li>
+<li>
+<p>Add a transaction using the <code>add</code> command and exit IchiFund.</p>
+</li>
+<li>
+<p>Double-click the jar file.</p>
+</li>
+<li>
+<p>If necessary, use <code>filter</code> command to find newly added transaction.<br>
+Expected: Shows the GUI with newly added transaction.</p>
+</li>
+<li>
+<p>Edit the transaction using the <code>edit</code> command and exit IchiFund.</p>
+</li>
+<li>
+<p>Double-click the jar file.</p>
+</li>
+<li>
+<p>If necessary, use <code>filter</code> command to find newly added transaction.<br>
+Expected: Shows the GUI with newly edited transaction.</p>
+</li>
+<li>
+<p>Delete the transaction using the <code>delete</code> command and exit IchiFund.</p>
+</li>
+<li>
+<p>Double-click the jar file.</p>
+</li>
+<li>
+<p>If necessary, use <code>filter</code> command to find deleted transaction.<br>
+Expected: Shows the GUI without the deleted transaction.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Relaunch after changing list of repeaters</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Go to the repeaters tab.</p>
+</li>
+<li>
+<p>Add a repeater using the <code>add</code> command.</p>
+</li>
+<li>
+<p>Exit IchiFund.</p>
+</li>
+<li>
+<p>Double-click the jar file.</p>
+</li>
+<li>
+<p>Go to repeaters tab.<br>
+Expected: GUI shows newly added repeater.</p>
+</li>
+<li>
+<p>Go to the repeaters tab.</p>
+</li>
+<li>
+<p>Edit a repeater using the <code>edit</code> command.</p>
+</li>
+<li>
+<p>Go to the transaction tab and use <code>filter</code> command to find newly edited transactions.<br>
+Expected: Shows newly edited transactions for appropriate filters.</p>
+</li>
+<li>
+<p>Exit IchiFund.</p>
+</li>
+<li>
+<p>Double-click the jar file.</p>
+</li>
+<li>
+<p>Go to repeaters tab, or search for newly edited transactions in transaction tab.<br>
+   Expected: In repeaters tab, shows newly edited repeater; in
+transaction tab, shows newly edited transactions for appropriate filters.</p>
+</li>
+<li>
+<p>Go to the repeaters tab.</p>
+</li>
+<li>
+<p>Add a repeater using the <code>delete</code> command.</p>
+</li>
+<li>
+<p>Exit IchiFund.</p>
+</li>
+<li>
+<p>Double-click the jar file.</p>
+</li>
+<li>
+<p>Go to repeaters tab.<br>
+Expected: In repeaters tab, deleted repeater is not shown.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Relaunch after changing list of budgets</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Go to the budget tab.</p>
+</li>
+<li>
+<p>Add a budget using the <code>add</code> command and exit IchiFund.</p>
+</li>
+<li>
+<p>Double-click the jar file.</p>
+</li>
+<li>
+<p>Go to the budget tab.<br>
+Expected: Shows the GUI with newly added budget. Budget progress is the same.</p>
+</li>
+<li>
+<p>Delete a budget using the <code>delete</code> command and exit IchiFund.</p>
+</li>
+<li>
+<p>Double-click the jar file.</p>
+</li>
+<li>
+<p>Go to the budget tab.<br>
+Expected: GUI does not show deleted budget.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Relaunch after changing list of loans</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Go to the loan tab.</p>
+</li>
+<li>
+<p>Add a loan using the <code>add</code> command and exit IchiFund.</p>
+</li>
+<li>
+<p>Double-click the jar file.</p>
+</li>
+<li>
+<p>Go to the loan tab.<br>
+Expected: Shows the GUI with newly added loan.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:52:18 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:09:28 UTC</div></div></div></body></html>
