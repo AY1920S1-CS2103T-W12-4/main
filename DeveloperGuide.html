@@ -533,13 +533,13 @@ passing information about tab switching to <code>Ui</code>.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ui</code> detects change through an <code>InvalidationListener</code> (current choice)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: <code>Logic</code> does not need to be aware of <code>Ui</code>.</p>
-<p class="tableblock"><strong>Cons</strong>: Requires greater understanding of JavaFX API to implement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: <code>Logic</code> does not need to be aware of <code>Ui</code></p>
+<p class="tableblock"><strong>Cons</strong>: Requires greater understanding of JavaFX API to implement</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Logic</code> directly calls <code>Ui</code> whenever the specific command is made.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Easy to implement.</p>
-<p class="tableblock"><strong>Cons</strong>: Creates a dependency from <code>Logic</code> to <code>Ui</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Easy to implement</p>
+<p class="tableblock"><strong>Cons</strong>: Creates a dependency from <code>Logic</code> to <code>Ui</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -612,7 +612,7 @@ the details of the <code>Transaction</code> class:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-We differentiate transactions into income and expenditure items using the <code>TransactionType</code> field, which accepts
+We differentiate income items from expenditure items using the <code>TransactionType</code> field, which accepts
 two unique string values, <code>"in"</code> for income and <code>"exp"</code> for expenditure in the constructor.
 </td>
 </tr>
@@ -660,13 +660,13 @@ also natural to think of transactions being associated with multiple categories.
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Each <code>Transaction</code> only has one <code>Category</code>  (current choice)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Simple to implement. No overlaps in apportionment of expenditure to categories.</p>
-<p class="tableblock"><strong>Cons</strong>: Less flexibility for the user to classify transactions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Simple to implement. No overlaps in apportionment of expenditure to categories</p>
+<p class="tableblock"><strong>Cons</strong>: Less flexibility for the user to classify transactions</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Each <code>Transaction</code> can have more than one <code>Category</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: More flexibility for the user to classify transactions.</p>
-<p class="tableblock"><strong>Cons</strong>: Overlaps in apportionment of expenditure to categories.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: More flexibility for the user to classify transactions</p>
+<p class="tableblock"><strong>Cons</strong>: Overlaps in apportionment of expenditure to categories</p></td>
 </tr>
 </tbody>
 </table>
@@ -698,13 +698,13 @@ for multiple associations.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Using the field <code>TransactionType</code> (current choice)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Fits the parsing methods used in the current architecture well.</p>
-<p class="tableblock"><strong>Cons</strong>: More tedious to code for different behaviours for income and expenditure items in the future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Fits the parsing methods used in the current architecture well</p>
+<p class="tableblock"><strong>Cons</strong>: More tedious to code for different behaviours for income and expenditure items in the future</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Using inheritance</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Allows for polymorphism of methods from a <code>Transaction</code> interface in the long run.</p>
-<p class="tableblock"><strong>Cons</strong>: Requires either the use of separate commands, or asymmetry in the parsing of command arguments.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Allows for polymorphism of methods from a <code>Transaction</code> interface in the long run</p>
+<p class="tableblock"><strong>Cons</strong>: Requires either the use of separate commands, or asymmetry in the parsing of command arguments</p></td>
 </tr>
 </tbody>
 </table>
@@ -2595,4 +2595,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 10:25:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:12:10 UTC</div></div></div></body></html>

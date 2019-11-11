@@ -11,10 +11,10 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>This portfolio documents my contributions towards the project, IchiFund, which is part of an introductory software
-engineering module, CS2103T. My team (of 5) was tasked to morph or enhance an existing address book software.
+engineering module, CS2103T. My team of 5 was tasked to morph or enhance an existing address book software.
 Our resulting product, IchiFund, is a desktop finance management application for students to manage transactions, budgets and loans.
 It is optimised for students that prefer using a CLI.
-My role was to develop the <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/UserGuide.html#Transactions">Transactions</a> component of the application.</p>
+My role was to develop the <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/UserGuide.html#transactions">Transactions</a> component of the application.</p>
 </div>
 </div>
 </div>
@@ -50,7 +50,7 @@ The modifications to the GUI (addition of a filter title and reorganizing inform
 If left unfilled, the values taken by the optional arguments are inferred from the current filter.</p>
 </li>
 <li>
-<p>Justification: This add and filter features on their own are basic functionalities of the software. The
+<p>Justification: The add and filter features on their own are basic functionalities of the software. The
 implementation of optional arguments filled in based on the current filter allows user to provide minimal information to add
 a transaction, which significantly improves user experience.</p>
 </li>
@@ -66,7 +66,7 @@ that stores read-only information about the state of <code>Model</code> that is 
 <p><strong>Minor enhancement</strong>: Added the ability to edit and delete transactions (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/175">#175</a>)</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: Click <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=weiyang13">here</a> to view the code I have contributed on the CS2103T tP Dashboard.</p>
+<p><strong>Code contributed</strong>: Click <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=weiyang13">here</a> to view the code I have contributed.</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -270,8 +270,8 @@ feature to its fullest, you are recommended to add transactions on the day it oc
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>For more sample contributions refer to the <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/UserGuide.html#Navigation">Navigation</a>
-and <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/UserGuide.html#Transactions">Transactions</a> sections of the User Guide.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>For more sample user guide contributions, refer to the <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/UserGuide.html#Navigation">Navigation</a>
+and <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/UserGuide.html#transactions">Transactions</a> sections of the User Guide.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -316,7 +316,7 @@ the details of the <code>Transaction</code> class:</p>
 <i class="fa icon-note" title=":information_source:"></i>
 </td>
 <td class="content">
-We differentiate transactions into income and expenditure items using the <code>TransactionType</code> field, which accepts
+We differentiate income items from expenditure items using the <code>TransactionType</code> field, which accepts
 two unique string values, <code>"in"</code> for income and <code>"exp"</code> for expenditure in the constructor.
 </td>
 </tr>
@@ -364,13 +364,13 @@ also natural to think of transactions being associated with multiple categories.
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Each <code>Transaction</code> only has one <code>Category</code>  (current choice)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Simple to implement. No overlaps in apportionment of expenditure to categories.</p>
-<p class="tableblock"><strong>Cons</strong>: Less flexibility for the user to classify transactions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Simple to implement. No overlaps in apportionment of expenditure to categories</p>
+<p class="tableblock"><strong>Cons</strong>: Less flexibility for the user to classify transactions</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Each <code>Transaction</code> can have more than one <code>Category</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: More flexibility for the user to classify transactions.</p>
-<p class="tableblock"><strong>Cons</strong>: Overlaps in apportionment of expenditure to categories.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: More flexibility for the user to classify transactions</p>
+<p class="tableblock"><strong>Cons</strong>: Overlaps in apportionment of expenditure to categories</p></td>
 </tr>
 </tbody>
 </table>
@@ -402,13 +402,13 @@ for multiple associations.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Using the field <code>TransactionType</code> (current choice)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Fits the parsing methods used in the current architecture well.</p>
-<p class="tableblock"><strong>Cons</strong>: More tedious to code for different behaviours for income and expenditure items in the future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Fits the parsing methods used in the current architecture well</p>
+<p class="tableblock"><strong>Cons</strong>: More tedious to code for different behaviours for income and expenditure items in the future</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Using inheritance</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Allows for polymorphism of methods from a <code>Transaction</code> interface in the long run.</p>
-<p class="tableblock"><strong>Cons</strong>: Requires either the use of separate commands, or asymmetry in the parsing of command arguments.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong>: Allows for polymorphism of methods from a <code>Transaction</code> interface in the long run</p>
+<p class="tableblock"><strong>Cons</strong>: Requires either the use of separate commands, or asymmetry in the parsing of command arguments</p></td>
 </tr>
 </tbody>
 </table>
@@ -627,12 +627,12 @@ depend on the model of Transactions, and care must be taken to ensure that these
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>For more sample contributions refer to the <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/DeveloperGuide.html#separate-parsing-and-tab-switching">Separate Parsing and Tab Switching</a>
-and <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/DeveloperGuide.html#transaction">Transactions</a> sections of the User Guide.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>For more sample developer guide contributions, refer to the <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/DeveloperGuide.html#separate-parsing-and-tab-switching">Separate Parsing and Tab Switching</a>
+and <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/DeveloperGuide.html#transactions">Transactions</a> sections of the User Guide.</em></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 10:25:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:12:10 UTC</div></div></div></body></html>
