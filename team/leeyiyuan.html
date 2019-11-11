@@ -64,6 +64,20 @@ establishing the infrastructure for repeaters.</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Team:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other members in the team (examples:  <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/issues/276">276</a>, <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/issues/108">108</a>, <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/issues/24">24</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -265,7 +279,7 @@ Deletes the 12th repeater in the current list. This also deletes the transaction
 <ul>
 <li>
 <p><code>find phone john</code><br>
-This finds all repeaters whose description contains all of the keywords "phone" and "john".</p>
+This finds all repeaters whose description contains any of the keywords "phone" and "john".</p>
 </li>
 </ul>
 </div>
@@ -351,19 +365,31 @@ This finds all repeaters whose description contains all of the keywords "phone" 
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Step 8</strong>: <code>AddRepeaterCommand</code> fetches the running <code>RepeaterUniqueId</code> counter tracked by the <code>Model</code>, and sets it as the created <code>Repeater</code>'s unique id.</p>
+<p><strong>Step 8</strong>: <code>AddRepeaterCommand</code> fetches the running <code>RepeaterUniqueId</code> counter tracked by the <code>Model</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 9</strong>: <code>AddRepeaterCommand</code> increments the current <code>RepeaterUniqueId</code> counter in the <code>Model</code>.</p>
+<p><strong>Step 9</strong>: <code>AddRepeaterCommand</code> creates the <code>Repeater</code> and sets its unique id as the fetched <code>RepeaterUniqueId</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 10</strong>: <code>AddRepeaterCommand</code> adds the newly created <code>Repeater</code> to the <code>Model</code>.</p>
+<p><strong>Step 10</strong>: <code>AddRepeaterCommand</code> increments the current <code>RepeaterUniqueId</code> counter in the <code>Model</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 11</strong>: <code>AddRepeaterCommand</code> creates the associated <code>Transaction</code>s in the <code>Model</code>.</p>
+<p><strong>Step 11</strong>: <code>AddRepeaterCommand</code> adds the newly created <code>Repeater</code> to the <code>Model</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 12</strong>: <code>AddRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+<p><strong>Step 12</strong>: <code>AddRepeaterCommand</code> creates the associated <code>Transaction</code>s in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 13</strong>: <code>AddRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
+<div class="paragraph">
+<p>When creating a <code>Repeater</code>, <code>AddRepeaterCommandParser</code> fills in arguments unspecified by the user with default values, as shown in the activity diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RepeaterOptionalActivityDiagram.png" alt="RepeaterOptionalActivityDiagram">
+</div>
+<div class="title">Figure 3. Activity Diagram for Optional Arguments in <code>AddRepeaterCommandParser</code></div>
 </div>
 </div>
 </div>
@@ -428,15 +454,6 @@ This finds all repeaters whose description contains all of the keywords "phone" 
 </div>
 <div class="paragraph">
 <p><strong>Step 13</strong>: <code>EditRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
-</div>
-<div class="paragraph">
-<p>When creating an <code>EditRepeaterDescriptor</code>, <code>EditRepeaterCommandParser</code> fills in arguments unspecified by the user with default values, as shown in the activity diagram below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/RepeaterOptionalActivityDiagram.png" alt="RepeaterOptionalActivityDiagram">
-</div>
-<div class="title">Figure 3. Activity Diagram for Optional Arguments in <code>EditRepeaterCommandParser</code></div>
 </div>
 </div>
 </div>
@@ -526,4 +543,4 @@ This finds all repeaters whose description contains all of the keywords "phone" 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:06:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:22:44 UTC</div></div></div></body></html>

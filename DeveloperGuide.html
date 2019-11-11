@@ -1090,19 +1090,31 @@ describes the behaviour of <code>DeleteTransactionCommand</code> at each step:</
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Step 8</strong>: <code>AddRepeaterCommand</code> fetches the running <code>RepeaterUniqueId</code> counter tracked by the <code>Model</code>, and sets it as the created <code>Repeater</code>'s unique id.</p>
+<p><strong>Step 8</strong>: <code>AddRepeaterCommand</code> fetches the running <code>RepeaterUniqueId</code> counter tracked by the <code>Model</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 9</strong>: <code>AddRepeaterCommand</code> increments the current <code>RepeaterUniqueId</code> counter in the <code>Model</code>.</p>
+<p><strong>Step 9</strong>: <code>AddRepeaterCommand</code> creates the <code>Repeater</code> and sets its unique id as the fetched <code>RepeaterUniqueId</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 10</strong>: <code>AddRepeaterCommand</code> adds the newly created <code>Repeater</code> to the <code>Model</code>.</p>
+<p><strong>Step 10</strong>: <code>AddRepeaterCommand</code> increments the current <code>RepeaterUniqueId</code> counter in the <code>Model</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 11</strong>: <code>AddRepeaterCommand</code> creates the associated <code>Transaction</code>s in the <code>Model</code>.</p>
+<p><strong>Step 11</strong>: <code>AddRepeaterCommand</code> adds the newly created <code>Repeater</code> to the <code>Model</code>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 12</strong>: <code>AddRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+<p><strong>Step 12</strong>: <code>AddRepeaterCommand</code> creates the associated <code>Transaction</code>s in the <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 13</strong>: <code>AddRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
+</div>
+<div class="paragraph">
+<p>When creating a <code>Repeater</code>, <code>AddRepeaterCommandParser</code> fills in arguments unspecified by the user with default values, as shown in the activity diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RepeaterOptionalActivityDiagram.png" alt="RepeaterOptionalActivityDiagram">
+</div>
+<div class="title">Figure 18. Activity Diagram for Optional Arguments in <code>AddRepeaterCommandParser</code></div>
 </div>
 </div>
 </div>
@@ -1167,15 +1179,6 @@ describes the behaviour of <code>DeleteTransactionCommand</code> at each step:</
 </div>
 <div class="paragraph">
 <p><strong>Step 13</strong>: <code>EditRepeaterCommand</code> returns a <code>CommandResult</code> to the <code>LogicManager</code> which is returned back to the user.</p>
-</div>
-<div class="paragraph">
-<p>When creating an <code>EditRepeaterDescriptor</code>, <code>EditRepeaterCommandParser</code> fills in arguments unspecified by the user with default values, as shown in the activity diagram below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/RepeaterOptionalActivityDiagram.png" alt="RepeaterOptionalActivityDiagram">
-</div>
-<div class="title">Figure 18. Activity Diagram for Optional Arguments in <code>EditRepeaterCommandParser</code></div>
 </div>
 </div>
 </div>
@@ -2466,4 +2469,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:06:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:22:44 UTC</div></div></div></body></html>
