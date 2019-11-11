@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Olivia Yu - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">IchiFund</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-W12-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Olivia Yu - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-addressbook-level-3"><a class="link" href="#project-addressbook-level-3">PROJECT: AddressBook - Level 3</a></h2>
+<h2 id="project-ichifund"><a class="link" href="#project-ichifund">PROJECT: IchiFund</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -10,7 +10,16 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>The purpose of this portfolio is to document my contributions to IchiFund, a software engineering project under CS2103T Software Engineering module in the National University of Singapore (NUS).</p>
+</div>
+<div class="paragraph">
+<p>IchiFund is a command-line interface (CLI) application for personal finance management.
+It is designed to be an all-in-one application for finance management,
+allowing the financially conscious Computer Science (CS) undergraduate to
+manage transactions, set budgets and analyse expenditure with ease and convenience.</p>
+</div>
+<div class="paragraph">
+<p>My role was to design and implement the analytics feature of the application.</p>
 </div>
 </div>
 </div>
@@ -20,29 +29,39 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Developed the <code>Model</code>, <code>Logic</code> and <code>Ui</code> components of the analytics feature of IchiFund.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: This feature provides deeper insights into users' incomes and expenditures, allowing users to take control of their personal finances.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature enhances IchiFund significantly because users are given a clear and concise overview of their incomes and expenditures over time and across categories using the <code>expenditure</code>, <code>income</code>, <code>balance</code> and <code>breakdown</code> commands. Without this feature, the data would be too cluttered and minimally effective at best in achieving the application&#8217;s goal of easy and convenient finance management.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This feature affects commands to be added in future. It required an in-depth analysis of design alternatives. Notably, the implementation was challenging as it required a thorough understanding of the existing Address Book (Level 3) (AB3) infrastructure and an overhaul of the existing code base due to the lack of similarity between existing and intended components.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>catrank</code> command: This command allows users to view their expenditure category ranking chart.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><code>mthrank</code> command: This command allows users to view their expenditure ranking chart by month.</p>
+</li>
+<li>
+<p><code>exprank</code> command: This commands allows users view their expenditure ranking chart.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: Click <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=Alaete">here</a> to view the code I have contributed.</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +72,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Helped manage the issue tracker</p>
+</li>
+<li>
+<p>Helped review and merge pull requests</p>
 </li>
 </ul>
 </div>
@@ -63,10 +85,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Updated User Guide remove AB3 references and to be more user-friendly: <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/156">#156</a></p>
 </li>
 </ul>
 </div>
@@ -76,7 +95,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Updated placeholder image: <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/158">#158</a></p>
+</li>
+<li>
+<p>Updated the User Guide and Developer Guide</p>
 </li>
 </ul>
 </div>
@@ -86,29 +108,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/AY1920S1-CS2103T-T09-2/main/issues/180">#180</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-2/main/issues/181">#181</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-2/main/issues/182">#182</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-2/main/issues/183">#183</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-2/main/issues/184">#184</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-2/main/issues/185">#185</a>)</p>
 </li>
 </ul>
 </div>
@@ -117,9 +117,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +133,170 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="analytics"><a class="link" href="#analytics">Analytics</a></h3>
+<div class="paragraph">
+<p>Have you ever wondered where all your money is going?
+Our analytics feature provides deeper insights into your incomes and expenditures, so that you can take control of your personal finances.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loanpaid 1</code><br>
+Takes the first loan and removes it form the list.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Loan_4_help.png" alt="Loan 4 help">
+</div>
+<div class="title">Figure 1. After Executing loanpaid</div>
+</div>
+<div class="paragraph">
+<p>On startup, the analytics tab is empty.</p>
+</div>
+<div class="paragraph">
+<p>With each analytics command entered, the analytics tab is updated with the list of command results.
+The image below gives an overview of the GUI of the feature:</p>
+</div>
+<div id="analyticsScreenshot" class="imageblock">
+<div class="content">
+<img src="../images/AnalyticsScreenshot.png" alt="AnalyticsScreenshot">
+</div>
+<div class="title">Figure 2. Analytics tab</div>
+</div>
+<div class="paragraph">
+<p>The list of command results comprises several result cells.
+We give a further breakdown of the information each cell displays in the following image:</p>
+</div>
+<div id="analyticsCell" class="imageblock">
+<div class="content">
+<img src="../images/AnalyticsCell.png" alt="AnalyticsCell">
+</div>
+<div class="title">Figure 3. Information in an analytics cell</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For all commands in the analytics feature, if the optional arguments <code>m/MONTH</code> and/or <code>y/YEAR</code> are not provided,
+results for the current month and/or year in the system time will be displayed.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="viewing-expenditure-category-ranking-chart-code-catrank-code"><a class="link" href="#viewing-expenditure-category-ranking-chart-code-catrank-code">Viewing expenditure category ranking chart: <code>catrank</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>catrank [m/MONTH] [y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>What if, instead of the breakdown of your expenditure by category, i.e., <code>breakdown</code>, you wanted to zoom in on the top 2
+largest contributing categories to your expenditure so as to cut down on your expenditure more effectively?
+With the <code>catrank</code> command, you can take a look at your expenditure category ranking chart, and hence
+be able to zoom in on and cut down on expenditure for categories that have the largest contributions to your expenditure.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The expenditure category ranking chart is in decreasing order, i.e., the categories with higher expenditure will be at the top of the list,
+and the categories with lower expenditure will be at the bottom of the list.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As the month comes to a close, you realise that you have transactions from many categories, and running the <code>breakdown</code> command
+returns you a view that is too cluttered for your liking.
+After you enter the <code>catrank</code> command, and the GUI of IchiFund may look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/catrank.png" alt="catrank">
+</div>
+</div>
+<div class="paragraph">
+<p>With the <code>catrank</code> command, you are now able to identify that it must have been the trips to the beauty salon
+and the Grab rides you take on a daily basis that have contributed to your overspending, and that perhaps you should
+consider painting your own nails and taking public transport to school instead.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>catrank</code><br>
+Displays expenditure category ranking chart for current month.</p>
+</li>
+<li>
+<p><code>catrank m/7 y/2019</code><br>
+Displays expenditure category ranking chart for July 2019.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-expenditure-ranking-chart-by-month-code-mthrank-code"><a class="link" href="#viewing-expenditure-ranking-chart-by-month-code-mthrank-code">Viewing expenditure ranking chart by month: <code>mthrank</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>mthrank [y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>If you have a tendency to overspend in certain seasons or on certain occasions, with the <code>mthrank</code> command, you can look
+at your expenditure ranking chart by month, swiftly identify the months that you spend most in and take steps
+to reduce your expenditure in the same few months in the years to come.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The expenditure ranking chart by month is in decreasing order, i.e., the months with higher expenditure will be at the top of the list,
+and the months with lower expenditure will be at the bottom of the list.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you have always planned overseas trips over the summer break. After entering the <code>mthrank</code> command,
+the GUI of IchiFund may look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/mthrank.png" alt="mthrank">
+</div>
+</div>
+<div class="paragraph">
+<p>You are now aware that the expenditure on and during these overseas trips are burning a hole in your pocket, and
+can take measures to set a budget before going on these trips or reduce the frequency of such trips.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>mthrank</code><br>
+Displays expenditure ranking chart by month for current year.</p>
+</li>
+<li>
+<p><code>mthrank y/2019</code><br>
+Displays expenditure ranking chart by month for 2019.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -151,14 +312,179 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="analytics-2"><a class="link" href="#analytics-2">Analytics</a></h3>
+<div class="sect3">
+<h4 id="overviewanalytics"><a class="link" href="#overviewanalytics">Overview of the Analytics Model</a></h4>
+<div class="sect4">
+<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
+<div class="paragraph">
+<p>Analytical data in IchiFund is represented using the <code>Data</code> class. Objects of the <code>Data</code> class are immutable in the
+internal structure. The following class diagram summarizes the details of the <code>Data</code> class:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AnalyticsClassDiagram.png" alt="AnalyticsClassDiagram">
+</div>
+<div class="title">Figure 4. Class Diagram from Analytics Model</div>
+</div>
+<div class="paragraph">
+<p>In addition, analytical data associated with a command is initially stored in a <code>Report</code>. Using polymorphism, this report
+is initialised as either a <code>TrendReport</code> or a <code>BreakdownReport</code> depending on the command that was executed.
+The following class diagram summarizes the details of the <code>Report</code> class:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AnalyticsClassDiagram2.png" alt="AnalyticsClassDiagram2">
+</div>
+<div class="title">Figure 5. Class Diagram from Analytics Model</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-expenditure-trend"><a class="link" href="#view-expenditure-trend">View Expenditure Trend</a></h4>
+<div class="paragraph">
+<p>The view expenditure trend feature allows the user to view monthly expenditure trend for a year.
+This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>ExpenditureTrendCommandParser</code>, and <code>ExpenditureTrendCommand</code>.
+The argument supported by this feature is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
+<div class="paragraph">
+<p>After the user inputs the <code>expenditure</code> command in the Analytics tab, the following chain of operations occurs:</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>: The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>ExpenditureTrendCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>ExpenditureTrendCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: This arguments will be tokenized and the respective models for each argument are created.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: If the parsing of all arguments are successful, a new <code>ExpenditureTrendCommand</code> is returned back to <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: The <code>LogicManager</code> executes <code>ExpenditureTrendCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
+</div>
+<div class="paragraph">
+<p>The above sequence of events is shown in greater detail in the following sequence diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ExpenditureTrendSequenceDiagram.png" alt="ExpenditureTrendSequenceDiagram">
+</div>
+<div class="title">Figure 6. Sequence Diagram for <code>ExpenditureTrendCommand</code></div>
+</div>
+<div class="paragraph">
+<p>The details of the <code>fill trend report</code> interactions have been omitted from the diagram above, and are shown in the following separate sequence diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FillTrendReportSequenceDiagram.png" alt="FillTrendReportSequenceDiagram">
+</div>
+<div class="title">Figure 7. Sequence Diagram for <code>fill trend report</code></div>
+</div>
+<div class="paragraph">
+<p>In addition, this activity diagram shows the action sequence for one iteration of the internal for-loop for the
+execution of the <code>fillExpenditureTrendReport</code> method of an <code>ExpenditureTrendCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FillExpenditureTrendReportActivityDiagram.png" alt="FillExpenditureTrendReportActivityDiagram">
+</div>
+<div class="title">Figure 8. Activity Diagram for <code>fillExpenditureTrendReport</code> method</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-balance-trend"><a class="link" href="#view-balance-trend">View Balance Trend</a></h4>
+<div class="paragraph">
+<p>The view balance trend feature allows the user to view monthly balance trend for a year.
+This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>BalanceTrendCommandParser</code>, and <code>BalanceTrendCommand</code>.
+The argument supported by this feature is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
+<div class="paragraph">
+<p>When the user input the <code>balance</code> command in the Analytics tab, the following chain of operations occurs:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</li>
+<li>
+<p>The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>BalanceTrendCommandParser</code>.</p>
+</li>
+<li>
+<p><code>BalanceTrendCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</li>
+<li>
+<p>This arguments will be tokenized and the respective models for each argument are created.</p>
+</li>
+<li>
+<p>If the parsing of all arguments are successful, a new <code>BalanceTrendCommand</code> is returned back to <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The <code>LogicManager</code> executes <code>BalanceTrendCommand#execute()</code>.</p>
+</li>
+<li>
+<p>The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Observe that the implementation of <code>balance</code> differs slightly from that of <code>expenditure</code> and <code>income</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows the action sequence for one iteration of the internal for-loop for the
+execution of the <code>fillBalanceTrendReport</code> method of an <code>BalanceTrendCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FillBalanceTrendReportActivityDiagram.png" alt="FillBalanceTrendReportActivityDiagram">
+</div>
+<div class="title">Figure 9. Activity Diagram for <code>fillBalanceTrendReport</code> method</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
+<h2 id="project-ichifund-2"><a class="link" href="#project-ichifund-2">PROJECT: IchiFund</a></h2>
 <div class="sectionbody">
 <hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:22:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:40:47 UTC</div></div></div></body></html>

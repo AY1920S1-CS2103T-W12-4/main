@@ -1340,7 +1340,34 @@ The arguments supported by this feature includes:</p>
 <div class="sect2">
 <h3 id="analytics"><a class="link" href="#analytics">4.5. Analytics</a></h3>
 <div class="sect3">
-<h4 id="view-expenditure-trend"><a class="link" href="#view-expenditure-trend">4.5.1. View Expenditure Trend</a></h4>
+<h4 id="overviewanalytics"><a class="link" href="#overviewanalytics">4.5.1. Overview of the Analytics Model</a></h4>
+<div class="sect4">
+<h5 id="implementation-14"><a class="link" href="#implementation-14">Implementation</a></h5>
+<div class="paragraph">
+<p>Analytical data in IchiFund is represented using the <code>Data</code> class. Objects of the <code>Data</code> class are immutable in the
+internal structure. The following class diagram summarizes the details of the <code>Data</code> class:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AnalyticsClassDiagram.png" alt="AnalyticsClassDiagram">
+</div>
+<div class="title">Figure 20. Class Diagram from Analytics Model</div>
+</div>
+<div class="paragraph">
+<p>In addition, analytical data associated with a command is initially stored in a <code>Report</code>. Using polymorphism, this report
+is initialised as either a <code>TrendReport</code> or a <code>BreakdownReport</code> depending on the command that was executed.
+The following class diagram summarizes the details of the <code>Report</code> class:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AnalyticsClassDiagram2.png" alt="AnalyticsClassDiagram2">
+</div>
+<div class="title">Figure 21. Class Diagram from Analytics Model</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-expenditure-trend"><a class="link" href="#view-expenditure-trend">4.5.2. View Expenditure Trend</a></h4>
 <div class="paragraph">
 <p>The view expenditure trend feature allows the user to view monthly expenditure trend for a year.
 This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>ExpenditureTrendCommandParser</code>, and <code>ExpenditureTrendCommand</code>.
@@ -1354,39 +1381,63 @@ The argument supported by this feature is:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-14"><a class="link" href="#implementation-14">Implementation</a></h5>
+<h5 id="implementation-15"><a class="link" href="#implementation-15">Implementation</a></h5>
 <div class="paragraph">
-<p>When the user input the <code>expenditure</code> command in the Analytics tab, the following chain of operations occurs:</p>
+<p>After the user inputs the <code>expenditure</code> command in the Analytics tab, the following chain of operations occurs:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
-</li>
-<li>
-<p>The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>ExpenditureTrendCommandParser</code>.</p>
-</li>
-<li>
-<p><code>ExpenditureTrendCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
-</li>
-<li>
-<p>This arguments will be tokenized and the respective models for each argument are created.</p>
-</li>
-<li>
-<p>If the parsing of all arguments are successful, a new <code>ExpenditureTrendCommand</code> is returned back to <code>LogicManager</code>.</p>
-</li>
-<li>
-<p>The <code>LogicManager</code> executes <code>ExpenditureTrendCommand#execute()</code>.</p>
-</li>
-<li>
-<p>The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p><strong>Step 1</strong>: The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>: The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>ExpenditureTrendCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>: <code>ExpenditureTrendCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>: This arguments will be tokenized and the respective models for each argument are created.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>: If the parsing of all arguments are successful, a new <code>ExpenditureTrendCommand</code> is returned back to <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>: The <code>LogicManager</code> executes <code>ExpenditureTrendCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>: The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
+</div>
+<div class="paragraph">
+<p>The above sequence of events is shown in greater detail in the following sequence diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ExpenditureTrendSequenceDiagram.png" alt="ExpenditureTrendSequenceDiagram">
+</div>
+<div class="title">Figure 22. Sequence Diagram for <code>ExpenditureTrendCommand</code></div>
+</div>
+<div class="paragraph">
+<p>The details of the <code>fill trend report</code> interactions have been omitted from the diagram above, and are shown in the following separate sequence diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FillTrendReportSequenceDiagram.png" alt="FillTrendReportSequenceDiagram">
+</div>
+<div class="title">Figure 23. Sequence Diagram for <code>fill trend report</code></div>
+</div>
+<div class="paragraph">
+<p>In addition, this activity diagram shows the action sequence for one iteration of the internal for-loop for the
+execution of the <code>fillExpenditureTrendReport</code> method of an <code>ExpenditureTrendCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FillExpenditureTrendReportActivityDiagram.png" alt="FillExpenditureTrendReportActivityDiagram">
+</div>
+<div class="title">Figure 24. Activity Diagram for <code>fillExpenditureTrendReport</code> method</div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-income-trend"><a class="link" href="#view-income-trend">4.5.2. View Income Trend</a></h4>
+<h4 id="view-income-trend"><a class="link" href="#view-income-trend">4.5.3. View Income Trend</a></h4>
 <div class="paragraph">
 <p>The view income trend feature allows the user to view monthly income trend for a year.
 This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>IncomeTrendCommandParser</code>, and <code>IncomeTrendCommand</code>.
@@ -1400,39 +1451,48 @@ The argument supported by this feature is:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-15"><a class="link" href="#implementation-15">Implementation</a></h5>
+<h5 id="implementation-16"><a class="link" href="#implementation-16">Implementation</a></h5>
 <div class="paragraph">
 <p>When the user input the <code>income</code> command in the Analytics tab, the following chain of operations occurs:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
-</li>
-<li>
-<p>The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>IncomeTrendCommandParser</code>.</p>
-</li>
-<li>
-<p><code>IncomeTrendCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
-</li>
-<li>
-<p>This arguments will be tokenized and the respective models for each argument are created.</p>
-</li>
-<li>
-<p>If the parsing of all arguments are successful, a new <code>IncomeTrendCommand</code> is returned back to <code>LogicManager</code>.</p>
-</li>
-<li>
-<p>The <code>LogicManager</code> executes <code>IncomeTrendCommand#execute()</code>.</p>
-</li>
-<li>
-<p>The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>IncomeTrendCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. <code>IncomeTrendCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. This arguments will be tokenized and the respective models for each argument are created.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. If the parsing of all arguments are successful, a new <code>IncomeTrendCommand</code> is returned back to <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. The <code>LogicManager</code> executes <code>IncomeTrendCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>. The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Observe that the implementation of <code>income</code> is similar to that of <code>expenditure</code>, except that each transaction is tested
+for whether it is an income item.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-balance-trend"><a class="link" href="#view-balance-trend">4.5.3. View Balance Trend</a></h4>
+<h4 id="view-balance-trend"><a class="link" href="#view-balance-trend">4.5.4. View Balance Trend</a></h4>
 <div class="paragraph">
 <p>The view balance trend feature allows the user to view monthly balance trend for a year.
 This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>BalanceTrendCommandParser</code>, and <code>BalanceTrendCommand</code>.
@@ -1446,7 +1506,7 @@ The argument supported by this feature is:</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="implementation-16"><a class="link" href="#implementation-16">Implementation</a></h5>
+<h5 id="implementation-17"><a class="link" href="#implementation-17">Implementation</a></h5>
 <div class="paragraph">
 <p>When the user input the <code>balance</code> command in the Analytics tab, the following chain of operations occurs:</p>
 </div>
@@ -1475,6 +1535,249 @@ The argument supported by this feature is:</p>
 </li>
 </ol>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Observe that the implementation of <code>balance</code> differs slightly from that of <code>expenditure</code> and <code>income</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows the action sequence for one iteration of the internal for-loop for the
+execution of the <code>fillBalanceTrendReport</code> method of an <code>BalanceTrendCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FillBalanceTrendReportActivityDiagram.png" alt="FillBalanceTrendReportActivityDiagram">
+</div>
+<div class="title">Figure 25. Activity Diagram for <code>fillBalanceTrendReport</code> method</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-expenditure-breakdown-by-category"><a class="link" href="#view-expenditure-breakdown-by-category">4.5.5. View Expenditure Breakdown By Category</a></h4>
+<div class="paragraph">
+<p>The view expenditure breakdown by category feature allows the user to view breakdown of expenditure by category.
+This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>BreakdownCommandParser</code>, and <code>BreakdownCommand</code>.
+The arguments supported by this feature are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Month</code> (optional)</p>
+</li>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="implementation-18"><a class="link" href="#implementation-18">Implementation</a></h5>
+<div class="paragraph">
+<p>When the user input the <code>breakdown</code> command in the Analytics tab, the following chain of operations occurs:</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>BreakdownCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. <code>BreakdownCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. This arguments will be tokenized and the respective models for each argument are created.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. If the parsing of all arguments are successful, a new <code>BreakdownCommand</code> is returned back to <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. The <code>LogicManager</code> executes <code>BreakdownCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>. The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>BreakdownReport</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Observe that the implementation of <code>breakdown</code>, as well as the following command <code>catrank</code>,
+involve the creation of a <code>BreakdownReport</code> instead of a <code>TrendReport</code>.
+This is because the results of these commands are specific to a year <strong>and</strong> a month, as opposed to the results of the
+other commands which are only specific to a year.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-expenditure-category-ranking-chart"><a class="link" href="#view-expenditure-category-ranking-chart">4.5.6. View Expenditure Category Ranking Chart</a></h4>
+<div class="paragraph">
+<p>The view expenditure category ranking chart allows the user to view the ranked breakdown of expenditure by category.
+This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>CategoryRankingCommandParser</code>, and <code>CategoryRankingCommand</code>.
+The arguments supported by this feature are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Month</code> (optional)</p>
+</li>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="implementation-19"><a class="link" href="#implementation-19">Implementation</a></h5>
+<div class="paragraph">
+<p>When the user input the <code>catrank</code> command in the Analytics tab, the following chain of operations occurs:</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>CategoryRankingCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. <code>CategoryRankingCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. This arguments will be tokenized and the respective models for each argument are created.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. If the parsing of all arguments are successful, a new <code>CategoryRankingCommand</code> is returned back to <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. The <code>LogicManager</code> executes <code>CategoryRankingCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>. The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>BreakdownReport</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-expenditure-ranking-chart-by-month"><a class="link" href="#view-expenditure-ranking-chart-by-month">4.5.7. View Expenditure Ranking Chart By Month</a></h4>
+<div class="paragraph">
+<p>The view expenditure ranking chart by month allows the user to view the ranked monthly expenditure trends.
+This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>MonthlyExpenditureRankingCommandParser</code>, and <code>MonthlyExpenditureRankingCommand</code>.
+The argument supported by this feature is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="implementation-20"><a class="link" href="#implementation-20">Implementation</a></h5>
+<div class="paragraph">
+<p>When the user input the <code>mthrank</code> command in the Analytics tab, the following chain of operations occurs:</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>MonthlyExpenditureRankingCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. <code>MonthlyExpenditureRankingCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. This arguments will be tokenized and the respective models for each argument are created.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. If the parsing of all arguments are successful, a new <code>MonthlyExpenditureRankingCommand</code> is returned back to <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. The <code>LogicManager</code> executes <code>MonthlyExpenditureRankingCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>. The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Observe that the implementation of <code>mthrank</code> involves the creation of a <code>TrendReport</code>.
+Not only are the results of this command only specific to a year, the <code>mthrank</code> command is strikingly similar to the
+<code>expenditure</code> command, except that the sorted results are used to update the <code>DataList</code> in the <code>Model</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-expenditure-ranking-chart"><a class="link" href="#view-expenditure-ranking-chart">4.5.8. View Expenditure Ranking Chart</a></h4>
+<div class="paragraph">
+<p>The view expenditure ranking chart allows the user to view the ranked expenditure trends.
+This feature is facilitated by <code>AnalyticsFeatureParser</code>, <code>ExpenditureRankingCommandParser</code>, and <code>ExpenditureRankingCommand</code>.
+The arguments supported by this feature are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Month</code> (optional)</p>
+</li>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command is unique in the sense that if month is not specified, the report is only specific to a year. However, if
+month is specified, the report is specific to both a month <strong>and</strong> a year. This is different from the other commands that
+are only specific to a year, <strong>or</strong> a month and a year. Hence, there is an extra if-condition in the execution loop of the
+<code>ExpenditureRankingCommand</code> to account for this discrepancy.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="implementation-21"><a class="link" href="#implementation-21">Implementation</a></h5>
+<div class="paragraph">
+<p>When the user input the <code>exprank</code> command in the Analytics tab, the following chain of operations occurs:</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1</strong>. The <code>IchiFundParser</code> will delegate the parsing of the command to <code>AnalyticsFeatureParser</code> if the current active tab is Analytics.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2</strong>. The <code>AnalyticsFeatureParser</code> will delegate the parsing of the arguments to <code>ExpenditureRankingCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3</strong>. <code>ExpenditureRankingCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4</strong>. This arguments will be tokenized and the respective models for each argument are created.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5</strong>. If the parsing of all arguments are successful, a new <code>ExpenditureRankingCommand</code> is returned back to <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 6</strong>. The <code>LogicManager</code> executes <code>ExpenditureRankingCommand#execute()</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 7</strong>. The model is updated with the <code>List</code> of <code>Data</code> from the newly created <code>TrendReport</code>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1489,7 +1792,7 @@ The argument supported by this feature is:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="implementation-17"><a class="link" href="#implementation-17">Implementation</a></h5>
+<h5 id="implementation-22"><a class="link" href="#implementation-22">Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>add</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>add</code> behaves at each step.</p>
 </div>
@@ -1522,7 +1825,7 @@ The argument supported by this feature is:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="implementation-18"><a class="link" href="#implementation-18">Implementation</a></h5>
+<h5 id="implementation-23"><a class="link" href="#implementation-23">Implementation</a></h5>
 <div class="paragraph">
 <p>The <code>pay</code> command is facilitated by the Logic and Model components of the application. Given below is an example usage scenario of how <code>pay</code> behaves at each step.</p>
 </div>
@@ -2469,4 +2772,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:22:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:40:47 UTC</div></div></div></body></html>
