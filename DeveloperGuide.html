@@ -66,7 +66,7 @@
 <div class="paragraph">
 <p>Shown below is the GUI of IchiFund:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/Ui.png" alt="Ui">
 </div>
@@ -306,9 +306,6 @@ The following class plays an important role at the architecture level:</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><span class="image"><img src="images/ModelClassDiagram.png" alt="ModelClassDiagram"></span></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage Component</a></h3>
@@ -396,6 +393,7 @@ well as the <code>FeatureParser</code> that is currently in use.</p>
 <div class="content">
 <img src="images/ParserObjectDiagram.png" alt="ParserObjectDiagram">
 </div>
+<div class="title">Figure 10. Object Diagram for Parser Classes in IchiFund</div>
 </div>
 <div class="paragraph">
 <p>When <code>IchiFundParser</code> parses a command, it first checks whether it is a global command (e.g. <code>help</code>, <code>exit</code>).
@@ -462,6 +460,7 @@ the following handler is triggered:</p>
 <div class="content">
 <img src="images/SetFeatureParserSequenceDiagram.png" alt="SetFeatureParserSequenceDiagram">
 </div>
+<div class="title">Figure 11. Sequence Diagram for changing <code>FeatureParser</code></div>
 </div>
 <div class="paragraph">
 <p>As the different <code>FeatureParser</code> objects have different values for <code>tabIndex</code>, a different
@@ -522,8 +521,8 @@ passing information about tab switching to <code>Ui</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 40%;">
+<col style="width: 60%;">
 </colgroup>
 <thead>
 <tr>
@@ -604,6 +603,7 @@ the details of the <code>Transaction</code> class:</p>
 <div class="content">
 <img src="images/TransactionClassDiagram.png" alt="TransactionClassDiagram">
 </div>
+<div class="title">Figure 12. Class Diagram from Transactions Model</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -622,11 +622,7 @@ two unique string values, <code>"in"</code> for income and <code>"exp"</code> fo
 <p>In addition, the list of transactions is subject to a filter created by an immutable <code>TransactionContext</code>.
 <code>TransactionContext</code> keeps track of the <code>Month</code>, <code>Year</code>, <code>Category</code> (optional) and <code>TransactionType</code> (optional) in the current filter.
 Naturally, this implies that a filter for <code>Month</code> and <code>Year</code> is always applied to the list of transactions.
-We defer the demonstration of how <code>TransactionContext</code> is used to filter the list of transactions to <a href="#filtertx">Section 4.2.2, &#8220;Filtering Transactions&#8221;</a></p>
-</div>
-<div class="paragraph">
-<p>The <code>TransactionContext</code> is also used to fill in optional fields that are not specified by the user when adding transactions.
-Later, in <a href="#addtx">Section 4.2.3, &#8220;Adding Transactions&#8221;</a>, we demonstrate how this is implemented.</p>
+The <code>TransactionContext</code> is also used to fill in optional fields that are not specified by the user when adding transactions.</p>
 </div>
 <div class="paragraph">
 <p>We summarise the role of the <code>TransactionContext</code> class in the following conceptual class diagram:</p>
@@ -635,6 +631,7 @@ Later, in <a href="#addtx">Section 4.2.3, &#8220;Adding Transactions&#8221;</a>,
 <div class="content">
 <img src="images/TransactionContextOodm.png" alt="TransactionContextOodm">
 </div>
+<div class="title">Figure 13. Conceptual Class Diagram of <code>TransactionContext</code></div>
 </div>
 </div>
 <div class="sect4">
@@ -651,8 +648,8 @@ also natural to think of transactions being associated with multiple categories.
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 40%;">
+<col style="width: 60%;">
 </colgroup>
 <thead>
 <tr>
@@ -676,23 +673,21 @@ also natural to think of transactions being associated with multiple categories.
 <div class="paragraph">
 <p>While both implementations are visible, we chose to only have one <code>Category</code> associated to each
 <code>Transaction</code> as the absence of overlaps in expenditure allows us to eventually implement a clean visual
-breakdown of expenditure by category in the future.</p>
-</div>
-<div class="paragraph">
-<p>Developers, however, are welcome to implement an additional <code>Tags</code> field for <code>Transaction</code> objects, to allow
+breakdown of expenditure by category in the future.
+Developers, however, are welcome to implement an additional <code>Tags</code> field for <code>Transaction</code> objects, to allow
 for multiple associations.</p>
 </div>
 </div>
 <div class="sect5">
 <h6 id="differentiating-between-income-and-expenditure"><a class="link" href="#differentiating-between-income-and-expenditure">Differentiating between Income and Expenditure</a></h6>
 <div class="paragraph">
-<p>Currently, we differentiate transactions that are income items and expenditure items using the <code>TransactionType</code> field in
+<p>Currently, we differentiate income items from expenditure items using the <code>TransactionType</code> field in
 <code>Transaction</code>. We considered the natural alternative of using inheritance as well.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 40%;">
+<col style="width: 60%;">
 </colgroup>
 <thead>
 <tr>
@@ -715,10 +710,8 @@ for multiple associations.</p>
 </table>
 <div class="paragraph">
 <p>While it was a tough decision, we eventually decided to use <code>TransactionType</code> for differentiation as we valued maintaining the
-symmetry in the implementation of parsing in our current architecture, and we did not want to use separate commands for adding transactions.</p>
-</div>
-<div class="paragraph">
-<p>Furthermore, we did not envision further use of polymorphism in future developments. Hence the benefit of using inheritance becomes
+symmetry in the implementation of parsing in our current architecture, and we did not want to use separate commands for adding transactions.
+Furthermore, we did not envision further use of polymorphism in future developments. Hence the benefit of using inheritance becomes
 very limited.</p>
 </div>
 </div>
@@ -729,27 +722,8 @@ very limited.</p>
 <div class="paragraph">
 <p>The filter transactions feature allows the user to change the filter for the list of transactions.
 As described in <a href="#Design-Logic">Section 3.3, &#8220;Logic Component&#8221;</a>, this feature is facilitated by <code>TransactionFeatureParser</code>, <code>FilterTransactionCommandParser</code>, and <code>FilterTransactionCommand</code>.
-The arguments supported by this feature includes:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Month</code> (optional)</p>
-</li>
-<li>
-<p><code>Year</code> (optional)</p>
-</li>
-<li>
-<p><code>Category</code> (optional)</p>
-</li>
-<li>
-<p><code>TransactionType</code> (optional)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Although all arguments are optional, the user has to input at least one argument for the command
-to be valid.</p>
+The arguments supported by this feature are: <code>Month</code>, <code>Year</code>, <code>Category</code> and <code>TransactionType</code>. All of these arguments are
+optional, but the user has to input at least one argument for the command to be valid.</p>
 </div>
 <div class="sect4">
 <h5 id="implementation-5"><a class="link" href="#implementation-5">Implementation</a></h5>
@@ -759,10 +733,8 @@ we immediately delve into the details of <code>FilterTransactionCommand#execute<
 </div>
 <div class="paragraph">
 <p>As prefaced in <a href="#overviewtx">Section 4.2.1, &#8220;Overview of the Transactions Model&#8221;</a>, the <code>filter</code> command interacts with <code>TransactionContext</code> to filter the list of
-transactions exposed to the UI component.</p>
-</div>
-<div class="paragraph">
-<p>Following the creation of <code>FilterTransactionCommand</code>, the execution of the command results
+transactions exposed to the UI component.
+Following the creation of <code>FilterTransactionCommand</code>, the execution of the command results
 in the following chain of events:</p>
 </div>
 <div class="paragraph">
@@ -781,8 +753,13 @@ in the following chain of events:</p>
 <p><strong>Step 5</strong>: <code>ModelManager</code> filters the list of transactions using the <code>Predicate&lt;Transaction&gt;</code>.</p>
 </div>
 <div class="paragraph">
-<p>The above sequence of events is shown in greater detail in the following sequence diagram:
-image::FilterTransactionSequenceDiagram.png[]</p>
+<p>The above sequence of events is shown in greater detail in the following sequence diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FilterTransactionSequenceDiagram.png" alt="FilterTransactionSequenceDiagram">
+</div>
+<div class="title">Figure 14. Sequence Diagram for <code>FilterTransactionCommand</code></div>
 </div>
 </div>
 </div>
@@ -792,32 +769,8 @@ image::FilterTransactionSequenceDiagram.png[]</p>
 <p>The add transaction feature allows the user to add a transaction into IchiFund. It further ensures that the current
 filter of the list of transactions is changed to allow the user to view the transaction.
 As described in <a href="#Design-Logic">Section 3.3, &#8220;Logic Component&#8221;</a>, this feature is facilitated by <code>TransactionFeatureParser</code>, <code>AddTransactionCommandParser</code>, and <code>AddTransactionCommand</code>.
-The arguments supported by this feature includes:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Description</code></p>
-</li>
-<li>
-<p><code>Amount</code></p>
-</li>
-<li>
-<p><code>Category</code> (optional)</p>
-</li>
-<li>
-<p><code>Day</code> (optional)</p>
-</li>
-<li>
-<p><code>Month</code> (optional)</p>
-</li>
-<li>
-<p><code>Year</code> (optional)</p>
-</li>
-<li>
-<p><code>TransactionType</code> (optional)</p>
-</li>
-</ul>
+The arguments supported by this feature are: <code>Description</code>, <code>Amount</code>, <code>Category</code>, <code>Day</code>, <code>Month</code>, <code>Year</code> and <code>TransactionType</code>.
+Of these arguments, only <code>Description</code> and <code>Amount</code> are mandatory.</p>
 </div>
 <div class="sect4">
 <h5 id="implementation-6"><a class="link" href="#implementation-6">Implementation</a></h5>
@@ -827,10 +780,8 @@ we immediately delve into the details of the <code>AddTransactionCommand#execute
 </div>
 <div class="paragraph">
 <p>As prefaced in <a href="#overviewtx">Section 4.2.1, &#8220;Overview of the Transactions Model&#8221;</a>, <code>AddTransactionCommand</code> interacts with <code>TransactionContext</code> to generate
-a <code>Transaction</code> to be added to the model.</p>
-</div>
-<div class="paragraph">
-<p>The execution of an <code>AddTransactionCommand</code> results in the following sequence of events:</p>
+a <code>Transaction</code> to be added to the model.
+The execution of an <code>AddTransactionCommand</code> results in the following sequence of events:</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 1</strong>: <code>AddTransactionCommand</code> retrieves the current <code>TransactionContext</code> from the model.</p>
@@ -851,29 +802,30 @@ a <code>Transaction</code> to be added to the model.</p>
 <p><strong>Step 6</strong>: <code>ModelManager</code> updates <code>TransactionContext</code> such that the new <code>Transaction</code> is shown.</p>
 </div>
 <div class="paragraph">
-<p>When generating a new <code>Transaction</code>, <code>AddTransactionCommand</code> fills in the missing optional arguments by using
-values obtained from <code>TransactionContext</code>, or default values. This is illustrated in the following activity diagram:</p>
+<p>To create a new <code>Transaction</code>, <code>AddTransactionCommand</code> fills in the missing arguments using
+values obtained from <code>TransactionContext</code>, or default values. This is illustrated in the activity diagram below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AddTransactionActivityDiagram.png" alt="AddTransactionActivityDiagram">
 </div>
+<div class="title">Figure 15. Activity Diagram for Optional Arguments in <code>AddTransactionCommand</code></div>
 </div>
 <div class="paragraph">
 <p>The above activity diagram shows the decision flow for a general optional argument. However, some optional
-arguments are never stored in <code>TransactionContext</code>, and some are always stored in <code>TransactionContext</code>. The
-following table describes the particular details for each optional argument, including the default values.</p>
+arguments are never stored in <code>TransactionContext</code>, and some are always stored. The
+following table describes the particular details for each optional argument.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 20%;">
+<col style="width: 38%;">
+<col style="width: 42%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Argument</th>
-<th class="tableblock halign-left valign-top">Present in <code>TransactionContext</code>?</th>
+<th class="tableblock halign-left valign-top">Stored in <code>TransactionContext</code>?</th>
 <th class="tableblock halign-left valign-top">Default value</th>
 </tr>
 </thead>
@@ -921,8 +873,8 @@ list, and stores these lists in another list, forming a multi-level list.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 40%;">
+<col style="width: 60%;">
 </colgroup>
 <thead>
 <tr>
@@ -944,9 +896,8 @@ list, and stores these lists in another list, forming a multi-level list.</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Ultimately, we prioritised developing a minimal viable product for v1.4, and decided to avoid disrupting the
-existing architecture, and instead focus our efforts on developing more features to better address the needs of
-the target user profile.</p>
+<p>Ultimately, we decided to avoid disrupting the existing architecture, and instead focus our efforts on
+developing more features to better address the needs of the target user profile.</p>
 </div>
 <div class="paragraph">
 <p>However, moving forward, we recognise that the current architecture severely lacks scalability,
@@ -974,35 +925,9 @@ depend on the model of Transactions, and care must be taken to ensure that these
 <p>The edit transaction feature allows the user to edit a transaction into IchiFund. It further ensures that the current
 filter of the list of transactions is changed to allow the user to view the transaction.
 As described in <a href="#Design-Logic">Section 3.3, &#8220;Logic Component&#8221;</a>, this feature is facilitated by <code>TransactionFeatureParser</code>, <code>EditTransactionCommandParser</code>, and <code>EditTransactionCommand</code>.
-The arguments supported by this feature includes:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Index</code></p>
-</li>
-<li>
-<p><code>Description</code> (optional)</p>
-</li>
-<li>
-<p><code>Amount</code> (optional)</p>
-</li>
-<li>
-<p><code>Category</code> (optional)</p>
-</li>
-<li>
-<p><code>Day</code> (optional)</p>
-</li>
-<li>
-<p><code>Month</code> (optional)</p>
-</li>
-<li>
-<p><code>Year</code> (optional)</p>
-</li>
-<li>
-<p><code>TransactionType</code> (optional)</p>
-</li>
-</ul>
+The arguments supported by this feature are <code>Index</code>, <code>Description</code>, <code>Amount</code>, <code>Category</code>, <code>Day</code>, <code>Month</code>,
+<code>Year</code> and <code>TransactionType</code>. Of these arguments, only <code>Index</code> is mandatory, but at least one of the optional arguments
+(which are fields to be edited) need to be present.</p>
 </div>
 <div class="sect4">
 <h5 id="implementation-7"><a class="link" href="#implementation-7">Implementation</a></h5>
@@ -1234,7 +1159,7 @@ The arguments supported by this feature includes:</p>
 <div class="content">
 <img src="images/AddBudgetSequenceDiagram.png" alt="AddBudgetSequenceDiagram">
 </div>
-<div class="title">Figure 10. Sequence Diagram for <code>add</code> Command under Budget Tab</div>
+<div class="title">Figure 16. Sequence Diagram for <code>add</code> Command under Budget Tab</div>
 </div>
 </div>
 </div>
@@ -2519,4 +2444,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 03:43:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:08:40 UTC</div></div></div></body></html>
