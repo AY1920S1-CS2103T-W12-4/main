@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Eugene Lim - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">IchiFund</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-W12-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Eugene Lim - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-addressbook-level-3"><a class="link" href="#project-addressbook-level-3">PROJECT: AddressBook - Level 3</a></h2>
+<h2 id="project-ichifund"><a class="link" href="#project-ichifund">PROJECT: IchiFund</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -10,7 +10,15 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>This portfolio documents my contributions towards the project, IchiFund,
+which is part of a software engineering module, CS2103T.
+My team decided to morph an existing address book software into a
+desktop finance management application for university students who prefer
+using a command-line interface. We call this application IchiFund.</p>
+</div>
+<div class="paragraph">
+<p>My role was to develop the <a href="https://ay1920s1-cs2103t-w12-4.github.io/main/UserGuide.html#budgets">Budgets</a>
+component and design the user interface for the application.</p>
 </div>
 </div>
 </div>
@@ -20,29 +28,51 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Developed the <code>Model</code>, <code>Logic</code>, <code>Storage</code>, and <code>Ui</code>
+infrastructure for budgeting features.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>Functionality: Provides the foundation on which features related to budget,
+such as <code>add</code>, <code>delete</code>, and <code>find</code>, are built upon.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: The ability to read, create, delete, and find budgets on the
+application depends on the budget infrastructure. With this infrastructure in
+place, it is easy to implement and extend the budgeting features within IchiFund.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement is part of the core features in IchiFund. The
+ability to implement this enhancement demonstrates a deep understanding of the
+underlying MVC design pattern of the original addressbook3 codebase. This is
+clearly highlighted when I introduced a <code>Task</code> abstraction to update all budgets
+upon an update of any transaction.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Redesigned the user interface from bottom up (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/131">#131</a>).</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Added the ability to add transactions (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/99">#99</a>).</p>
+</li>
+<li>
+<p>Added the ability to delete transactions (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/103">#103</a>).</p>
+</li>
+<li>
+<p>Added the ability to find transactions (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/163">#163</a>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: Click <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=nexolute">here</a> to
+view the code that I have contributed.</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +83,14 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pulls">pull requests (PRs)</a> and
+<a href="https://github.com/AY1920S1-CS2103T-W12-4/main/issues">issue tracker</a>.</p>
+</li>
+<li>
+<p>Refactored existing code of Address Book 3 to IchiFund (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/83">#83</a>).</p>
+</li>
+<li>
+<p>Protected the master branch.</p>
 </li>
 </ul>
 </div>
@@ -63,10 +100,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Modified the GUI (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/131">#131</a>).</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote additional tests for budget features (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/162">#162</a>).</p>
 </li>
 </ul>
 </div>
@@ -76,7 +113,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Redesigned the logo for IchiFund (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/244">#244</a>).</p>
+</li>
+<li>
+<p>Redesigned the existing class diagrams for the developer guide (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/144">#144</a>).</p>
 </li>
 </ul>
 </div>
@@ -86,16 +126,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments): (PR <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/pull/259">#259</a>).</p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Contributed to forum discussions <a href="https://github.com/nus-cs2103-AY1920S1/forum/issues/91">here</a>.</p>
 </li>
 </ul>
 </div>
@@ -105,10 +139,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Integrated Travis to the team repository.</p>
 </li>
 <li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Integrated a new Github plugin (SlackBot) to the team repository.</p>
 </li>
 </ul>
 </div>
@@ -117,9 +151,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +167,132 @@
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="creating-monthly-budget-code-add-code"><a class="link" href="#creating-monthly-budget-code-add-code">Creating monthly budget: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
+</div>
+<div class="paragraph">
+<p>You can use the <code>add</code> command to create a budget.
+Let us first walk through the process of creating a budget for tracking your spending on food.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check to make sure you are in the budgets tab. If not, switch to it.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addbud1.png" alt="addbud1">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Type <code>add de/Saving my tummy a/82.69 c/food</code> into the command bar.
+This will create an $82.69 budget named <em>Saving my tummy</em>
+that tracks this month&#8217;s expenditures tagged with the <em>food</em> category.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the optional arguments <code>m/MONTH</code> and <code>y/YEAR</code> are not provided, the budget will track all transactions.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addbud2.png" alt="addbud2">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>Press enter to run the command.
+You should see the newly created budget on the budget list.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addbud3.png" alt="addbud3">
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to track all monthly expenditures, simply leave out the <code>c/CATEGORY</code> argument.
+For instance, the following command creates a $500.00 budget that applies to all expenditures:
+<code>add de/General budgeting a/500</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-monthly-budget-code-delete-code"><a class="link" href="#deleting-monthly-budget-code-delete-code">Deleting monthly budget: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>You can use <code>delete</code> to delete a budget with a given index.
+Let us walk through the process of deleting the <em>Saving my tummy</em> budget we created previously.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify the index of the budget you are deleting. Here, the index is 2.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/deletebud1.png" alt="deletebud1">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Type <code>delete 2</code> into the command bar and press enter.
+You should see the <em>Saving my tummy</em> budget disappear from the list.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-monthly-budget-by-keywords-code-find-code"><a class="link" href="#finding-monthly-budget-by-keywords-code-find-code">Finding monthly budget by keywords: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>find [KEYWORDS]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>You can use <code>find</code> to find budgets with description that matches all the given keywords.
+To illustrate this, let us suppose you want to find all budgets with <em>saving</em> in its description.
+To do so, type <code>find saving</code> into the command bar and press enter.
+You should see the search result on the budget list.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you are unsure about which keywords the budget you are looking for contains,
+you can enter multiple keywords separated by space.
+IchiFund will return to you all results that match with at least one keyword.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can also revert the budget list to show all budgets by executing <code>find</code> without any argument.
+To revert the budget list so that all budgets are listed, simply execute <code>find</code> without any argument.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -151,14 +308,151 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">Logic Component</a></h3>
+<div id="fig-LogicClassDiagram" class="imageblock">
+<div class="content">
+<img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
+<div class="title">Figure 1. Structure of the Logic Component</div>
 </div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p><strong>API</strong> :
+<a href="{repoURL}/src/main/java/seedu/ichifund/logic/Logic.java"><code>Logic.java</code></a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Logic</code> uses the <code>IchiFundParser</code> class to parse the user command.</p>
+</li>
+<li>
+<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+</li>
+<li>
+<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
+</div>
+<div class="title">Figure 2. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+</div>
+<div class="sect3">
+<h4 id="tasks"><a class="link" href="#tasks">Tasks</a></h4>
+<div class="paragraph">
+<p>Some models in IchiFund must be refreshed after a command is executed.
+For instance, when a new <code>Transaction</code> is added, all <code>Budget</code> must be recomputed.
+<code>Task</code> can be used to facilitate such updates.</p>
+</div>
+<div class="sect4">
+<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
+<div class="paragraph">
+<p>This feature is managed by <code>TaskManager</code>.
+The role of <code>TaskManager</code> is to maintain a list of all active <code>Task</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>LogicManager</code> holds an instance of the <code>TaskManager</code>.
+When the <code>LogicManager#execute()</code> is called, the following chain of operations occurs:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>After <code>Command#execute()</code> is completed, <code>TaskManager#executeAll()</code> is called.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/TaskCode.png" alt="TaskCode">
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:09:28 UTC</div></div></div></body></html>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p><code>TaskManager#executeAll()</code> will iterate through all active <code>Task</code> and call the respective <code>Task#execute()</code> method.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-budget"><a class="link" href="#adding-budget">Adding Budget</a></h4>
+<div class="paragraph">
+<p>The add budget feature allows the user to add a budget into IchiFund.
+This feature is facilitated by <code>BudgetFeatureParser</code>, <code>AddBudgetCommandParser</code>, and <code>AddBudgetCommand</code>.
+The arguments supported by this feature includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Description</code></p>
+</li>
+<li>
+<p><code>Amount</code></p>
+</li>
+<li>
+<p><code>Category</code> (optional)</p>
+</li>
+<li>
+<p><code>Month</code> (optional)</p>
+</li>
+<li>
+<p><code>Year</code> (optional)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
+<div class="paragraph">
+<p>When the user input the <code>add</code> command in the Budget tab, the following chain of operations occurs:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>IchiFundParser</code> will delegate the parsing of the command to <code>BudgetFeatureParser</code> if the current active tab is Budget.</p>
+</li>
+<li>
+<p>The <code>BudgetFeatureParser</code> will delegate the parsing of the arguments to <code>AddBudgetCommandParser</code>.</p>
+</li>
+<li>
+<p><code>AddBudgetCommandParser#parse()</code> will take in a <code>String</code> input consisting of the arguments.</p>
+</li>
+<li>
+<p>This arguments will be tokenized and the respective models for each argument are created.</p>
+</li>
+<li>
+<p>If the parsing of all arguments are successful, a new <code>Budget</code> object is created using the arguments, and a new <code>AddBudgetCommand</code> is returned back to <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The <code>LogicManager</code> executes <code>AddBudgetCommand#execute()</code>.</p>
+</li>
+<li>
+<p>The newly created <code>Budget</code> is added to the model.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This process is further illustrated in the following sequence diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddBudgetSequenceDiagram.png" alt="AddBudgetSequenceDiagram">
+</div>
+<div class="title">Figure 3. Sequence Diagram for <code>add</code> Command under Budget Tab</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:26:31 UTC</div></div></div></body></html>

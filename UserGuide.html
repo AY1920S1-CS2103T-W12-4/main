@@ -1035,52 +1035,36 @@ This is made simple with the budgeting features in IchiFund.</p>
 </div>
 <div class="paragraph">
 <p>Each budget that you create will have a description and a maximum expenditure limit.
-For advanced users who require finer control in their budgeting, you can also
-restrict which expenditures to include in the budget computation.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-In v1.4, all budgets are restricted to monthly budget.
-</td>
-</tr>
-</table>
+If you are an advanced user who wants finer control in your budgeting,
+you can also restrict which expenditures to include in your budget computation.</p>
 </div>
 <div class="paragraph">
-<p>In the budget tab, you can maintain a list of your monthly budgets, adding, deleting and filtering items
-as you like. The image below gives an overview of the GUI of the feature:</p>
+<p>Once you are in the budget tab, you will see a list of your budgets.
+Here, you can add, delete, and find budgets.
+The image below gives an overview of the budget interface</p>
 </div>
 <div id="budgetsScreenshot" class="imageblock">
 <div class="content">
 <img src="images/BudgetsScreenshot.png" alt="BudgetsScreenshot">
 </div>
-<div class="title">Figure 3. Budgets tab</div>
+<div class="title">Figure 3. Overview of the budget interface</div>
 </div>
 <div class="paragraph">
-<p>The budget list comprises several budget cells. Each budget cell represents a single budget.
+<p>The budget list comprises several budget cells.
+Each cell represents a single budget.
 We give a further breakdown of the information each budget cell displays in the following image:</p>
 </div>
 <div id="budgetCell" class="imageblock">
 <div class="content">
 <img src="images/BudgetCell.png" alt="BudgetCell">
 </div>
-<div class="title">Figure 4. Information in a budget cell</div>
+<div class="title">Figure 4. Breakdown of the information of each budget cell</div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The budget bar will turn from green to red when you spend over 80% of the total amount.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>On the left, you will see the index, description, and criteria.
+The index is used to reference a particular budget in the commands,
+the description is a phrase you set to identify your budget,
+and the criteria tell you which expenditure the budget takes into account.</p>
 </div>
 <div class="sect3">
 <h4 id="creating-monthly-budget-code-add-code"><a class="link" href="#creating-monthly-budget-code-add-code">4.4.1. Creating monthly budget: <code>add</code></a></h4>
@@ -1088,8 +1072,8 @@ The budget bar will turn from green to red when you spend over 80% of the total 
 <p>Format: <code>add de/DESCRIPTION a/AMOUNT [c/CATEGORY] [m/MONTH y/YEAR]</code></p>
 </div>
 <div class="paragraph">
-<p>You can use the <code>add</code> command to create a monthly budget.
-Let us walk through the process for creating a budget for tracking your spending on food.</p>
+<p>You can use the <code>add</code> command to create a budget.
+Let us first walk through the process of creating a budget for tracking your spending on food.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1106,8 +1090,9 @@ Let us walk through the process for creating a budget for tracking your spending
 <div class="olist arabic">
 <ol class="arabic" start="2">
 <li>
-<p>Type <code>addbud de/Saving my tummy a/82.69 c/food</code> into the command bar.
-This will create a $82.69 budget named <em>Saving my tummy</em> that tracks this month&#8217;s expenditures tagged with the <em>food</em> category.</p>
+<p>Type <code>add de/Saving my tummy a/82.69 c/food</code> into the command bar.
+This will create an $82.69 budget named <em>Saving my tummy</em>
+that tracks this month&#8217;s expenditures tagged with the <em>food</em> category.</p>
 </li>
 </ol>
 </div>
@@ -1118,7 +1103,7 @@ This will create a $82.69 budget named <em>Saving my tummy</em> that tracks this
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the optional arguments <code>m/MONTH</code> and <code>y/YEAR</code> are not provided, the budget will track on all transactions.
+If the optional arguments <code>m/MONTH</code> and <code>y/YEAR</code> are not provided, the budget will track all transactions.
 </td>
 </tr>
 </table>
@@ -1132,7 +1117,7 @@ If the optional arguments <code>m/MONTH</code> and <code>y/YEAR</code> are not p
 <ol class="arabic" start="3">
 <li>
 <p>Press enter to run the command.
-You should see the newly created budget in the budget list.</p>
+You should see the newly created budget on the budget list.</p>
 </li>
 </ol>
 </div>
@@ -1143,7 +1128,7 @@ You should see the newly created budget in the budget list.</p>
 </div>
 <div class="paragraph">
 <p>If you want to track all monthly expenditures, simply leave out the <code>c/CATEGORY</code> argument.
-For instance, the following command creates a $500.00 budget that is applicable to all expenditures:
+For instance, the following command creates a $500.00 budget that applies to all expenditures:
 <code>add de/General budgeting a/500</code>.</p>
 </div>
 </div>
@@ -1153,7 +1138,7 @@ For instance, the following command creates a $500.00 budget that is applicable 
 <p>Format: <code>delete INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>You can use <code>delete</code> to delete the budget.
+<p>You can use <code>delete</code> to delete a budget with a given index.
 Let us walk through the process of deleting the <em>Saving my tummy</em> budget we created previously.</p>
 </div>
 <div class="olist arabic">
@@ -1172,7 +1157,7 @@ Let us walk through the process of deleting the <em>Saving my tummy</em> budget 
 <ol class="arabic" start="2">
 <li>
 <p>Type <code>delete 2</code> into the command bar and press enter.
-You should see the <em>Saving my tummy</em> budget disappear from the budget list.</p>
+You should see the <em>Saving my tummy</em> budget disappear from the list.</p>
 </li>
 </ol>
 </div>
@@ -1183,12 +1168,28 @@ You should see the <em>Saving my tummy</em> budget disappear from the budget lis
 <p>Format: <code>find [KEYWORDS]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>You can use <code>find</code> to find budgets with description that matches all the given keywords. To illustrate this, let us suppose you want to find all budgets with the word <em>saving</em> in its description.
+<p>You can use <code>find</code> to find budgets with description that matches all the given keywords.
+To illustrate this, let us suppose you want to find all budgets with <em>saving</em> in its description.
 To do so, type <code>find saving</code> into the command bar and press enter.
-You should see the search result in the budget list.</p>
+You should see the search result on the budget list.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you are unsure about which keywords the budget you are looking for contains,
+you can enter multiple keywords separated by space.
+IchiFund will return to you all results that match with at least one keyword.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>To revert the budget list so that all budgets are listed, simply execute <code>find</code> without any argument.</p>
+<p>You can also revert the budget list to show all budgets by executing <code>find</code> without any argument.
+To revert the budget list so that all budgets are listed, simply execute <code>find</code> without any argument.</p>
 </div>
 </div>
 </div>
@@ -1812,4 +1813,4 @@ Displays expenditure ranking chart for July 2019.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:09:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:26:31 UTC</div></div></div></body></html>
